@@ -19,3 +19,10 @@ main {
 h2.noteBody {
 	margin: 0;
 }
+
+#notesGrid {
+	opacity: 0;
+	transition: all 0.5s ease-in;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}

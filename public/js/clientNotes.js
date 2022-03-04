@@ -17,4 +17,5 @@ function renderNotes(data) {
 		newElement.style.backgroundColor = data[i].color;
 		notesGrid.insertAdjacentElement("beforeend", newElement);
 	}
+	notesGrid.style.opacity = "1";
 }
