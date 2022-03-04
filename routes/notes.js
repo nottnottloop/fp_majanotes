@@ -71,14 +71,27 @@ router
 function checkValidNote(req, res) {
   let passed = true;
   let message = [];
+  //test for title being too long
   if (req.body.title.length > maxTitleChars) {
     message.push(`Max ${maxTitleChars} chars for notes!<br>`);
     passed = false;
   }
+  //test for note being too long
   if (req.body.note.length > maxNoteChars) {
     message.push(`Max ${maxNoteChars} chars for notes!<br>`);
     passed = false;
   }
+  //test for no title
+  if (req.body.title.length === 0) {
+    message.push(`Title can't be empty!<br>`);
+    passed = false;
+  }
+  //test for no note
+  if (req.body.note.length === 0) {
+    message.push(`Note can't be empty!<br>`);
+    passed = false;
+  }
+  //if tests weren't passed, gather up all the error messages and take the user to the error page
   if (!passed) {
     message = message.join('');
     res.render("notes/invalid", {message: message});
