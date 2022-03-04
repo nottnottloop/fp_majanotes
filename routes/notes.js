@@ -15,10 +15,9 @@ router.get("/data", (req, res) => {
   res.set('Content-Type', 'application/json');
   //try to read the data. if the data doesn't exist, we send an empty array
   try {
-    //read the file. get a native JS object. send the file back pretty printed
+    //read the file, send it back
     notesJson = fs.readFileSync(path.resolve(__dirname, "../data/notesData.json"), "utf-8");
-    notesData = JSON.parse(notesJson);
-    res.send(JSON.stringify(notesData, null, 2));
+    res.send(notesJson);
   } catch (err) {
     res.send([]);
   }
@@ -54,7 +53,7 @@ router
     //append our new note
     notesData.push(newNote);
     //turn our native JS object back into a json file, ready to write it back
-    notesJson = JSON.stringify(notesData);
+    notesJson = JSON.stringify(notesData, null, 2);
     //write the json file
     fs.writeFileSync(path.resolve(__dirname, "../data/notesData.json"), notesJson, "utf-8");
     console.log(`New note added:\nTitle: ${newNote.title}\nNote: ${newNote.note}\nColor: ${newNote.color}\n`)
