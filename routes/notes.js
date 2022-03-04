@@ -91,6 +91,27 @@ router
   .post((req, res) => {
     console.log("Recieved emoji post request:")
     console.log(req.body)
+    let notesJson;
+    let notesData;
+    //similar to the push request for the notes themselves above
+    try {
+      notesJson = fs.readFileSync(path.resolve(__dirname, "../data/notesData.json"), "utf-8");
+      notesData = JSON.parse(notesJson);
+    } catch (err) {
+      console.log("Error: " + err);
+      res.sendStatus(500);
+    }
+    const objectToModify = notesData.filter(e => e.id === req.body.id);
+    if (!objectToModify[0][req.body.emoji]) {
+      objectToModify[0][req.body.emoji] = 1;
+    } else {
+      objectToModify[0][req.body.emoji] = objectToModify[0][req.body.emoji] + 1;
+    }
+    notesData = notesData.filter(e => e.id !== req.body.id);
+    console.log(`Updating note ${objectToModify[0]['title']} to ${req.body.emoji} count ${objectToModify[0][req.body.emoji]}`)
+    notesData.push(objectToModify[0]);
+    notesJson = JSON.stringify(notesData, null, 2);
+    fs.writeFileSync(path.resolve(__dirname, "../data/notesData.json"), notesJson, "utf-8");
     res.sendStatus(200);
   })
 
