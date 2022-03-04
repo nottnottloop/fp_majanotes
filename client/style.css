@@ -29,3 +29,7 @@ button {
 .img-fluid {
     border-radius: 20px 20px 0px 0px;
 }
+
+.reactions {
+    padding: 10px;
+}
