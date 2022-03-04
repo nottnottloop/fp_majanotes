@@ -91,6 +91,11 @@ function checkValidNote(req, res) {
     message.push(`Note can't be empty!<br>`);
     passed = false;
   }
+  //check if there's html in the note
+  if (/<\/?[a-z][\s\S]*>/i.test(req.body.title) || /<\/?[a-z][\s\S]*>/i.test(req.body.note)) {
+    message.push(`Please don't put HTML in your note... :(<br>`);
+    passed = false;
+  }
   //if tests weren't passed, gather up all the error messages and take the user to the error page
   if (!passed) {
     message = message.join('');
