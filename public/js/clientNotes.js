@@ -15,11 +15,14 @@ function renderNotes(data) {
 	for (let i = 0; i < data.length; i++) {
 		let newElement = document.createElement("section");
 		newElement.classList.add("noteBody");
+		let heartCount = data[i]['heart'] || 0;
+		let thumbsCount = data[i]['thumbs'] || 0;
+		let neutralCount = data[i]['neutral'] || 0;
 		newElement.insertAdjacentHTML("beforeend", `<h2 class="noteTitle">${data[i].title}</h2>`);
 		newElement.insertAdjacentHTML("beforeend", `<p class="noteContent">${data[i].note}</p>`);
-		newElement.insertAdjacentHTML("beforeend", `<button id="heart${data[i].id}" class="emojiButton">❤️</p>`);
-		newElement.insertAdjacentHTML("beforeend", `<button id="thumbs${data[i].id}" class="emojiButton">👎</p>`);
-		newElement.insertAdjacentHTML("beforeend", `<button id="neutral${data[i].id}" class="emojiButton">😐</p>`);
+		newElement.insertAdjacentHTML("beforeend", `<button id="heart${data[i].id}" class="emojiButton">❤️</p><p id="heartCount${data[i].id}">${heartCount}</p>`);
+		newElement.insertAdjacentHTML("beforeend", `<button id="thumbs${data[i].id}" class="emojiButton">👎</p><p id="thumbsCount${data[i].id}">${thumbsCount}</p>`);
+		newElement.insertAdjacentHTML("beforeend", `<button id="neutral${data[i].id}" class="emojiButton">😐</p><p id="neutralCount${data[i].id}">${neutralCount}</p>`);
 		newElement.style.backgroundColor = data[i].color;
 		notesGrid.insertAdjacentElement("beforeend", newElement);
 	}
@@ -48,5 +51,8 @@ function addEmojiFunctionality(element, emoji, id) {
 			emoji: emoji,
 			id: id
 		}));
+
+		const usedEmojiButton = document.querySelector(`#${emoji}Count${id}`);
+		usedEmojiButton.textContent = parseInt(usedEmojiButton.textContent) + 1;
 	});
 }
