@@ -10,6 +10,15 @@
 	<title>New MajaNote</title>
 </head>
 <body>
-	<h1>New note</h1>
+	<h1>New MajaNote</h1>
+	<form action="notes/new" method="POST">
+		<label id="titleLabel">Title:
+			<input type="text" id="titleBox" name="titleBox" value="<%= locals.title %>">
+		</label><br>
+		<label id="noteLabel">MajaNote:<br>
+			<textarea id="noteBox" name="noteBox" rows="4", cols="50"><%= locals.note %></textarea>
+		</label><br>
+		<button id="submitButton" type="submit">Submit</button>
+	</form>
 </body>
 </html>
