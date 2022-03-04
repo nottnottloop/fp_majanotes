@@ -11,12 +11,12 @@
 </head>
 <body>
 	<h1>New MajaNote</h1>
-	<form action="notes/new" method="POST">
+	<form action="./new" method="POST">
 		<label id="titleLabel">Title:
-			<input type="text" id="titleBox" name="titleBox" value="<%= locals.title %>">
+			<input type="text" id="titleBox" name="title" value="<%= locals.title %>">
 		</label><br>
 		<label id="noteLabel">MajaNote:<br>
-			<textarea id="noteBox" name="noteBox" rows="4", cols="50"><%= locals.note %></textarea>
+			<textarea id="noteBox" name="note" rows="4", cols="50"><%= locals.note %></textarea>
 		</label><br>
 		<button id="submitButton" type="submit">Submit</button>
 	</form>

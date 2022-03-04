@@ -5,9 +5,15 @@ router.get("/", (req, res) => {
   res.render("notes/notes");
 });
 
-router.get("/new", (req, res) => {
+router
+  .route("/new")
+  .get((req, res) => {
   res.render("notes/new");
-});
+  })
+  .post((req, res) => {
+    console.log(`Title: ${req.body.title}\nNote: ${req.body.note}`)
+    res.redirect(".");
+  });
 
 //router
 //  .route("/:id")
