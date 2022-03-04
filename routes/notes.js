@@ -9,11 +9,11 @@ router.get("/new", (req, res) => {
   res.render("notes/new");
 });
 
-router
-  .route("/:id")
-  .get((req, res) => {
-    res.send(req.params.id);
-  });
+//router
+//  .route("/:id")
+//  .get((req, res) => {
+//    res.send(req.params.id);
+//  });
 
 //this code is ran every time a router matches this sort of call. for reference
 //router.param("id", (req, res, next, id) => {
