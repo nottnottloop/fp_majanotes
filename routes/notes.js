@@ -91,6 +91,7 @@ router
   .post((req, res) => {
     console.log("Recieved emoji post request:")
     console.log(req.body)
+    res.sendStatus(200);
   })
 
 function checkValidNote(req, res) {
