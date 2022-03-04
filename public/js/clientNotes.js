@@ -17,9 +17,9 @@ function renderNotes(data) {
 		newElement.classList.add("noteBody");
 		newElement.insertAdjacentHTML("beforeend", `<h2 class="noteTitle">${data[i].title}</h2>`);
 		newElement.insertAdjacentHTML("beforeend", `<p class="noteContent">${data[i].note}</p>`);
-		newElement.insertAdjacentHTML("beforeend", `<button id="heart${i}" class="emojiButton">❤️</p>`);
-		newElement.insertAdjacentHTML("beforeend", `<button id="thumbs${i}" class="emojiButton">👎</p>`);
-		newElement.insertAdjacentHTML("beforeend", `<button id="neutral${i}" class="emojiButton">😐</p>`);
+		newElement.insertAdjacentHTML("beforeend", `<button id="heart${data[i].id}" class="emojiButton">❤️</p>`);
+		newElement.insertAdjacentHTML("beforeend", `<button id="thumbs${data[i].id}" class="emojiButton">👎</p>`);
+		newElement.insertAdjacentHTML("beforeend", `<button id="neutral${data[i].id}" class="emojiButton">😐</p>`);
 		newElement.style.backgroundColor = data[i].color;
 		notesGrid.insertAdjacentElement("beforeend", newElement);
 	}
@@ -37,16 +37,16 @@ function renderNotes(data) {
 	}
 }
 
-function addEmojiFunctionality(element, emoji, index) {
+function addEmojiFunctionality(element, emoji, id) {
 	element.addEventListener('click', () => {
 		let xhr = new XMLHttpRequest();
 		xhr.open("POST", `${protocol}//${host}/notes/emoji`);
 		xhr.setRequestHeader('Content-Type', 'application/json');
-		let str = JSON.stringify({emoji:emoji, index:index})
+		let str = JSON.stringify({emoji:emoji, index:id})
 		console.log(str)
 		xhr.send(JSON.stringify({
 			emoji: emoji,
-			index: index
+			id: id
 		}));
 	});
 }

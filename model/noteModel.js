@@ -1,5 +1,6 @@
 class Note {
-	constructor(title, note, color) {
+	constructor(id, title, note, color) {
+		this.id = id;
 		this.title = title;
 		this.note = note;
 		this.color = color;

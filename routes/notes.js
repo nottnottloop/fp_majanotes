@@ -39,11 +39,11 @@ router
     req.body.title = req.body.title.replaceAll(">", "&gt;")
     req.body.note = req.body.note.replaceAll("<", "&lt;")
     req.body.note = req.body.note.replaceAll(">", "&gt;")
+
     //perform our data validation function. 
     //if the data is not valid, make sure we don't continue with the rest of this post request as if it was successful. we do this with a return
     if(!checkValidNote(req, res)) { return };
-    //create a new note object, using the model, based on response we recieved from the user
-    const newNote = new note(req.body.title, req.body.note, req.body.color);
+
     //create notesJson (for the json string) and notesData (for our javascript object) outside of the scope of the upcoming blocks.
     //this is so we can actually refer to these variables throughout the function
     let notesJson;
@@ -53,8 +53,10 @@ router
       //we use path.resolve instead of just including a pathname (e.g argument 1 = "data/notesData.json") because
       //in that case node will use the current working directory of the server instead of an absolute path regardless of cwd
       notesJson = fs.readFileSync(path.resolve(__dirname, "../data/notesData.json"), "utf-8");
+
       //parse the notesJson (file) into a notesData object that works natively in JS. we can't manipulate a json directly
       notesData = JSON.parse(notesJson);
+
     } catch (err) {
       //this code is executed if the file does not exist (node calls this ENOENT). in this case, we will make a new file
       //we set the notesJson and notesData to nothing so that the rest of the code will work correctly
@@ -63,13 +65,20 @@ router
       notesJson = [];
       notesData = [];
     }
+    //create a new note object, using the model, based on response we recieved from the user
+    //the first field, the ID, is equal to the length of notesData
+    const newNote = new note(notesData.length, req.body.title, req.body.note, req.body.color);
+
     //append our new note
     notesData.push(newNote);
+
     //turn our native JS object back into a json file, ready to write it back
     notesJson = JSON.stringify(notesData, null, 2);
+
     //write the json file
     fs.writeFileSync(path.resolve(__dirname, "../data/notesData.json"), notesJson, "utf-8");
     console.log(`New note added:\nTitle: ${newNote.title}\nNote: ${newNote.note}\nColor: ${newNote.color}\n`)
+
     //this whole route is mounted on /notes. so this redirect redirects to /notes, not /
     res.redirect(".");
   });
@@ -80,7 +89,8 @@ router
 
   })
   .post((req, res) => {
-    console.log(req.body + "\n");
+    console.log("Recieved emoji post request:")
+    console.log(req.body)
   })
 
 function checkValidNote(req, res) {
