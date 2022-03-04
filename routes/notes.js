@@ -33,6 +33,12 @@ router
     res.render("notes/new");
   })
   .post((req, res) => {
+    //replace all html tags so that we don't have code injections
+    //without this, you can type valid html into the page and it will render!
+    req.body.title = req.body.title.replaceAll("<", "&lt;")
+    req.body.title = req.body.title.replaceAll(">", "&gt;")
+    req.body.note = req.body.note.replaceAll("<", "&lt;")
+    req.body.note = req.body.note.replaceAll(">", "&gt;")
     //perform our data validation function. 
     //if the data is not valid, make sure we don't continue with the rest of this post request as if it was successful. we do this with a return
     if(!checkValidNote(req, res)) { return };
@@ -92,10 +98,11 @@ function checkValidNote(req, res) {
     passed = false;
   }
   //check if there's html in the note
-  if (/<\/?[a-z][\s\S]*>/i.test(req.body.title) || /<\/?[a-z][\s\S]*>/i.test(req.body.note)) {
-    message.push(`Please don't put HTML in your note... :(<br>`);
-    passed = false;
-  }
+  //no longer needed, we perform replaceAll on <> characters above
+  //if (/<\/?[a-z][\s\S]*>/i.test(req.body.title) || /<\/?[a-z][\s\S]*>/i.test(req.body.note)) {
+  //  message.push(`Please don't put HTML in your note... :(<br>`);
+  //  passed = false;
+  //}
   //if tests weren't passed, gather up all the error messages and take the user to the error page
   if (!passed) {
     message = message.join('');
