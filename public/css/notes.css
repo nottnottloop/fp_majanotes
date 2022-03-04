@@ -26,3 +26,8 @@ h2.noteBody {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 }
+
+.emojiButton {
+	background: transparent;
+	border: 0;
+}

@@ -4,6 +4,7 @@ const app = express();
 const notesRouter = require("./routes/notes");
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.set("view engine", "ejs");
 
 //root of site is the notes page, redirect correctly

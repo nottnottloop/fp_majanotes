@@ -74,6 +74,15 @@ router
     res.redirect(".");
   });
 
+router
+  .route("/emoji")
+  .get((req, res) => {
+
+  })
+  .post((req, res) => {
+    console.log(req.body + "\n");
+  })
+
 function checkValidNote(req, res) {
   let passed = true;
   let message = [];
