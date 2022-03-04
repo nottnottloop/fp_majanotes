@@ -3,16 +3,31 @@ const fs = require("fs");
 const path = require('path');
 const router = express.Router();
 
-const note = require("../model/noteModel");
+const note = require(path.resolve(__dirname, "../model/noteModel"));
 
 router.get("/", (req, res) => {
   res.render("notes/notes");
 });
 
+//this will send all the data we have on the server to the client
+router.get("/data", (req, res) => {
+  //set the header correctly for the API so it pretty prints :)
+  res.set('Content-Type', 'application/json');
+  //try to read the data. if the data doesn't exist, we send an empty array
+  try {
+    //read the file. get a native JS object. send the file back pretty printed
+    notesJson = fs.readFileSync(path.resolve(__dirname, "../data/notesData.json"), "utf-8");
+    notesData = JSON.parse(notesJson);
+    res.send(JSON.stringify(notesData, null, 2));
+  } catch (err) {
+    res.send([]);
+  }
+});
+
 router
   .route("/new")
   .get((req, res) => {
-  res.render("notes/new");
+    res.render("notes/new");
   })
   .post((req, res) => {
     //create a new note object, using the model, based on response we recieved from the user
