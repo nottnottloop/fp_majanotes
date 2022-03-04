@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+const note = require("../model/noteModel");
+
 router.get("/", (req, res) => {
   res.render("notes/notes");
 });
@@ -11,7 +13,8 @@ router
   res.render("notes/new");
   })
   .post((req, res) => {
-    console.log(`Title: ${req.body.title}\nNote: ${req.body.note}`)
+    const newNote = new note(req.body.title, req.body.note, req.body.color);
+    console.log(`Title: ${newNote.title}\nNote: ${newNote.note}\nColor: ${newNote.color}\n`)
     res.redirect(".");
   });
 

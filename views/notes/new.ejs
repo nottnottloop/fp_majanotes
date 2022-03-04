@@ -12,11 +12,19 @@
 <body>
 	<h1>New MajaNote</h1>
 	<form action="./new" method="POST">
-		<label id="titleLabel">Title:
+		<label id="titleLabel" for="titleBox">Title:
 			<input type="text" id="titleBox" name="title" value="<%= locals.title %>">
 		</label><br>
-		<label id="noteLabel">MajaNote:<br>
+		<label id="noteLabel" for="noteBox">MajaNote:<br>
 			<textarea id="noteBox" name="note" rows="4", cols="50"><%= locals.note %></textarea>
+		</label><br>
+		<label id="colorLabel" for="colorDropdown">Color:
+			<select name="color" id="colorDropdown">
+				<option value="blue">Blue</option>
+				<option value="green">Green</option>
+				<option value="red">Red</option>
+				<option value="yellow">Yellow</option>
+			</select>
 		</label><br>
 		<button id="submitButton" type="submit">Submit</button>
 	</form>
