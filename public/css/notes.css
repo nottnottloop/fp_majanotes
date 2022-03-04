@@ -7,4 +7,15 @@
 
 main {
 	margin-top: 15%;
+	display: flex;
+}
+
+
+.noteBody {
+	margin: 50px;
+	padding: 20px 30px 30px 20px;
+}
+
+h2.noteBody {
+	margin: 0;
 }
