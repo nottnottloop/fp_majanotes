@@ -5,6 +5,10 @@ const router = express.Router();
 
 const note = require(path.resolve(__dirname, "../model/noteModel"));
 
+//constant values for data validation
+const maxTitleChars = 60;
+const maxNoteChars = 200;
+
 router.get("/", (req, res) => {
   res.render("notes/notes");
 });
@@ -29,6 +33,9 @@ router
     res.render("notes/new");
   })
   .post((req, res) => {
+    //perform our data validation function. 
+    //if the data is not valid, make sure we don't continue with the rest of this post request as if it was successful. we do this with a return
+    if(!checkValidNote(req, res)) { return };
     //create a new note object, using the model, based on response we recieved from the user
     const newNote = new note(req.body.title, req.body.note, req.body.color);
     //create notesJson (for the json string) and notesData (for our javascript object) outside of the scope of the upcoming blocks.
@@ -60,6 +67,19 @@ router
     //this whole route is mounted on /notes. so this redirect redirects to /notes, not /
     res.redirect(".");
   });
+
+function checkValidNote(req, res) {
+  let passed = true;
+  if (req.body.title.length > maxTitleChars) {
+    res.render('notes/invalid', { message: `Max ${maxTitleChars} chars for notes!`});
+    passed = false;
+  }
+  if (req.body.note.length > maxNoteChars) {
+    res.render('notes/invalid', { message: `Max ${maxNoteChars} chars for notes!`});
+    passed = false;
+  }
+  return passed;
+}
 
 //router
 //  .route("/:id")
