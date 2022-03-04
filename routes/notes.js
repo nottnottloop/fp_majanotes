@@ -70,13 +70,18 @@ router
 
 function checkValidNote(req, res) {
   let passed = true;
+  let message = [];
   if (req.body.title.length > maxTitleChars) {
-    res.render('notes/invalid', { message: `Max ${maxTitleChars} chars for notes!`});
+    message.push(`Max ${maxTitleChars} chars for notes!<br>`);
     passed = false;
   }
   if (req.body.note.length > maxNoteChars) {
-    res.render('notes/invalid', { message: `Max ${maxNoteChars} chars for notes!`});
+    message.push(`Max ${maxNoteChars} chars for notes!<br>`);
     passed = false;
+  }
+  if (!passed) {
+    message = message.join('');
+    res.render("notes/invalid", {message: message});
   }
   return passed;
 }
