@@ -1,5 +1,6 @@
 const express = require("express");
 const fs = require("fs");
+const path = require('path');
 const router = express.Router();
 
 const note = require("../model/noteModel");
@@ -16,15 +17,22 @@ router
   .post((req, res) => {
     //create a new note object, using the model, based on response we recieved from the user
     const newNote = new note(req.body.title, req.body.note, req.body.color);
+    //create notesJson (for the json string) and notesData (for our javascript object) outside of the scope of the upcoming blocks.
+    //this is so we can actually refer to these variables throughout the function
     let notesJson;
     let notesData;
     try {
       //open and read the notes json file we have stored
-      let notesJson = fs.readFileSync("data/notesData.json", "utf-8");
+      //we use path.resolve instead of just including a pathname (e.g argument 1 = "data/notesData.json") because
+      //in that case node will use the current working directory of the server instead of an absolute path regardless of cwd
+      notesJson = fs.readFileSync(path.resolve(__dirname, "../data/notesData.json"), "utf-8");
       //parse the notesJson (file) into a notesData object that works natively in JS. we can't manipulate a json directly
       notesData = JSON.parse(notesJson);
     } catch (err) {
+      //this code is executed if the file does not exist (node calls this ENOENT). in this case, we will make a new file
+      //we set the notesJson and notesData to nothing so that the rest of the code will work correctly
       console.log("Error: " + err);
+      console.log("Creating new notesData.json");
       notesJson = [];
       notesData = [];
     }
@@ -33,7 +41,7 @@ router
     //turn our native JS object back into a json file, ready to write it back
     notesJson = JSON.stringify(notesData);
     //write the json file
-    fs.writeFileSync("data/notesData.json", notesJson, "utf-8");
+    fs.writeFileSync(path.resolve(__dirname, "../data/notesData.json"), notesJson, "utf-8");
     console.log(`New note added:\nTitle: ${newNote.title}\nNote: ${newNote.note}\nColor: ${newNote.color}\n`)
     //this whole route is mounted on /notes. so this redirect redirects to /notes, not /
     res.redirect(".");
