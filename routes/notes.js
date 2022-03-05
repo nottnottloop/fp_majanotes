@@ -89,7 +89,7 @@ router
 
   })
   .post((req, res) => {
-    console.log("Recieved emoji post request:")
+    console.log("\nRecieved emoji post request:")
     console.log(req.body)
     let notesJson;
     let notesData;

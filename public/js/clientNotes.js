@@ -12,6 +12,7 @@ fetch(`${protocol}//${host}/notes/data`)
 
 function renderNotes(data) {
 	notesCount = data.length;
+	data = sortData(data);
 	for (let i = 0; i < data.length; i++) {
 		let newElement = document.createElement("section");
 		newElement.classList.add("noteBody");
@@ -21,8 +22,8 @@ function renderNotes(data) {
 		newElement.insertAdjacentHTML("beforeend", `<h2 class="noteTitle">${data[i].title}</h2>`);
 		newElement.insertAdjacentHTML("beforeend", `<p class="noteContent">${data[i].note}</p>`);
 		newElement.insertAdjacentHTML("beforeend", `<button id="heart${data[i].id}" class="emojiButton">❤️</p><p id="heartCount${data[i].id}">${heartCount}</p>`);
-		newElement.insertAdjacentHTML("beforeend", `<button id="thumbs${data[i].id}" class="emojiButton">👎</p><p id="thumbsCount${data[i].id}">${thumbsCount}</p>`);
 		newElement.insertAdjacentHTML("beforeend", `<button id="neutral${data[i].id}" class="emojiButton">😐</p><p id="neutralCount${data[i].id}">${neutralCount}</p>`);
+		newElement.insertAdjacentHTML("beforeend", `<button id="thumbs${data[i].id}" class="emojiButton">👎</p><p id="thumbsCount${data[i].id}">${thumbsCount}</p>`);
 		newElement.style.backgroundColor = data[i].color;
 		notesGrid.insertAdjacentElement("beforeend", newElement);
 	}
@@ -38,6 +39,18 @@ function renderNotes(data) {
 		addEmojiFunctionality(thumbs, "thumbs", i);
 		addEmojiFunctionality(neutral, "neutral", i);
 	}
+}
+
+function sortData(data) {
+	data.forEach(e => {
+		let score = 0;
+		let heart = e.heart || 0;
+		let thumbs = e.thumbs || 0;
+		let neutral = e.neutral || 0;
+		e.score = (heart * 3) + (neutral * 1) - (thumbs * 3)
+	});
+	data.sort((a, b) => b.score - a.score);
+	return data;
 }
 
 function addEmojiFunctionality(element, emoji, id) {
