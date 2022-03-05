@@ -20,4 +20,5 @@ Then run `npm run dev` to start a server on http://localhost:3000
 
 # Process
 Initially we wrote most of the backend with a bad frontend:
-![](github/badfrontend.png)
+
+![](github/badfrontendscaled.png)
