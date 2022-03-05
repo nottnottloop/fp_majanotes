@@ -41,19 +41,22 @@ document.querySelector("#giphyRemove").addEventListener('click', e => {
 });
 
 document.querySelector("#submitButton").addEventListener('click', e => {
-	e.preventDefault();
-	let title = document.querySelector("#titleBox").value;
-	let note = document.querySelector("#noteBox").value;
-	let color = document.querySelector("#colorDropdown").value;
-
-	let xhr = new XMLHttpRequest();
-	xhr.open("POST", `${protocol}//${host}/notes/new`);
-	xhr.setRequestHeader('Content-Type', 'application/json');
-	xhr.send(JSON.stringify({
-		title: title,
-		note: note,
-		color: color,
-		gif: selectedGif
-	}));
-	window.location.href = `${protocol}//${host}/notes`
+	document.querySelector("#giphyUrl").value = selectedGif;
 });
+//document.querySelector("#submitButton").addEventListener('click', e => {
+//	e.preventDefault();
+//	let title = document.querySelector("#titleBox").value;
+//	let note = document.querySelector("#noteBox").value;
+//	let color = document.querySelector("#colorDropdown").value;
+
+//	let xhr = new XMLHttpRequest();
+//	xhr.open("POST", `${protocol}//${host}/notes/new`);
+//	xhr.setRequestHeader('Content-Type', 'application/json');
+//	xhr.send(JSON.stringify({
+//		title: title,
+//		note: note,
+//		color: color,
+//		gif: selectedGif
+//	}));
+//	window.location.href = `${protocol}//${host}/notes`
+//});

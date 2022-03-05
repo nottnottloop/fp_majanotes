@@ -11,5 +11,9 @@ button {
 }
 
 #giphySearch {
-	margin: 0;
+	margin: 10;
+}
+
+#giphyUrl {
+	display: none;
 }

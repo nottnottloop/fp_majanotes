@@ -14,7 +14,7 @@
 <body>
 	<h1 id="homeButton"><a href="/notes">home</a></h1>
 	<h1>New MajaNote</h1>
-	<form>
+	<form action="./new" method="POST">
 		<label id="titleLabel" for="titleBox">Title:
 			<input type="text" id="titleBox" name="title" value="<%= locals.title %>">
 		</label><br>
@@ -33,7 +33,8 @@
 			<input id="giphySearch" type="search">
 			<button id="giphyButton">Go</button>
 			<button id="giphyRemove">Remove GIF</button>
-		<div id="giphyGifs"></div>
+			<input id="giphyUrl" name="gif">
+			<div id="giphyGifs"></div>
 		</label><br>
 		<button id="submitButton" type="submit">Submit</button>
 	</form>
