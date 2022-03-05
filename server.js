@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 
 const notesRouter = require("./routes/notes");
+const emojiRouter = require("./routes/emoji");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -14,5 +15,6 @@ app.use("/public", express.static("public"));
 
 //handle all routes under notes
 app.use("/notes", notesRouter);
+app.use("/notes/emoji", emojiRouter);
 
 app.listen(3000);
