@@ -10,8 +10,20 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 }
 
-a {
+#homeButton a {
+	color: cyan;
+	position: absolute;
+	top: 0;
+	right: 15%;
+	display: inline;
+}
+
+#createButton a {
 	color: lime;
+	position: absolute;
+	top: 0;
+	right: 15%;
+	display: inline;
 }
 
 img {
