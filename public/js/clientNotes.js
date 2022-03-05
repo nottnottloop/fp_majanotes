@@ -12,13 +12,19 @@ fetch(`${protocol}//${host}/notes/data`)
 
 function renderNotes(data) {
 	notesCount = data.length;
-	data = sortData(data);
+	//sort the notes according to popularity
+	data = scoreAndSortNotes(data);
+	//iterate over all notes after they have been sorted
 	for (let i = 0; i < data.length; i++) {
 		let newElement = document.createElement("section");
 		newElement.classList.add("noteBody");
+		//notes aren't guaranteed to have 'heart', 'thumbs' or 'neutral' fields
+		//if they don't exist, make sure the count values equal 0 instead of undefined
+		//that's why we can't just use e.g. data[i].heart 
 		let heartCount = data[i]['heart'] || 0;
 		let thumbsCount = data[i]['thumbs'] || 0;
 		let neutralCount = data[i]['neutral'] || 0;
+		//remember that i is our iterating variable. we are grabbing the info from one gif at a time (data[i])
 		if (data[i].gif) {
 			newElement.insertAdjacentHTML("beforeend", `<img class="noteImage" src="${data[i].gif}">`);
 		}
@@ -30,7 +36,7 @@ function renderNotes(data) {
 		newElement.style.backgroundColor = data[i].color;
 		notesGrid.insertAdjacentElement("beforeend", newElement);
 	}
-	//now change the opacity so the notes fade in :)
+	//now change the opacity so the notes fade in using our transition CSS property :)
 	notesGrid.style.opacity = "1";
 
 	for (let i = 0; i < notesCount; i++) {
@@ -44,9 +50,10 @@ function renderNotes(data) {
 	}
 }
 
-function sortData(data) {
+function scoreAndSortNotes(data) {
 	data.forEach(e => {
 		let score = 0;
+		//again, we are not guaranteed to have 'heart', 'thumbs' or 'neutral' attributes
 		let heart = e.heart || 0;
 		let thumbs = e.thumbs || 0;
 		let neutral = e.neutral || 0;
@@ -68,6 +75,7 @@ function addEmojiFunctionality(element, emoji, id) {
 			id: id
 		}));
 
+		//update the count of the emoji button we just clicked
 		const usedEmojiButton = document.querySelector(`#${emoji}Count${id}`);
 		usedEmojiButton.textContent = parseInt(usedEmojiButton.textContent) + 1;
 	});
