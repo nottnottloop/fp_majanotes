@@ -69,6 +69,12 @@ router
     //the first field, the ID, is equal to the length of notesData
     const newNote = new note(notesData.length, req.body.title, req.body.note, req.body.color);
 
+    if (req.body.gif) {
+      newNote.gif = req.body.gif;
+    }
+
+    const debugGif = newNote.gif || "No gif :("
+
     //append our new note
     notesData.push(newNote);
 
@@ -77,7 +83,7 @@ router
 
     //write the json file
     fs.writeFileSync(path.resolve(__dirname, "../data/notesData.json"), notesJson, "utf-8");
-    console.log(`New note added:\nTitle: ${newNote.title}\nNote: ${newNote.note}\nColor: ${newNote.color}\n`)
+    console.log(`\nNew note added:\nTitle: ${newNote.title}\nNote: ${newNote.note}\nColor: ${newNote.color}\nGIF: ${debugGif}`)
 
     //this whole route is mounted on /notes. so this redirect redirects to /notes, not /
     res.redirect(".");
