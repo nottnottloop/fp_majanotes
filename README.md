@@ -20,7 +20,7 @@ Then run `npm run dev` to start a server on http://localhost:3000
 * [Giphy API](https://developers.giphy.com/)
 
 # Process
-Initially we wrote most of the backend with a bad frontend:
+Initially we focused on prototyping and getting the backend working first:
 
 ![](github/badfrontendscaled.png)
 
