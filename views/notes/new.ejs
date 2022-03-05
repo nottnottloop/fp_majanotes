@@ -13,7 +13,7 @@
 </head>
 <body>
 	<h1>New MajaNote</h1>
-	<form action="./new" method="POST">
+	<form>
 		<label id="titleLabel" for="titleBox">Title:
 			<input type="text" id="titleBox" name="title" value="<%= locals.title %>">
 		</label><br>
@@ -28,12 +28,10 @@
 				<option value="red">Red</option>
 				<option value="yellow">Yellow</option>
 			</select><br>
-		<form id="giphyForm">
 			<label for="giphySearch">Search for GIFs</label>
 			<input id="giphySearch" type="search">
 			<button id="giphyButton">Go</button>
 			<button id="giphyRemove">Remove GIF</button>
-		</form>
 		<div id="giphyGifs"></div>
 		</label><br>
 		<button id="submitButton" type="submit">Submit</button>
