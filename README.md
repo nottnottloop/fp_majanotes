@@ -24,6 +24,8 @@ Initially we wrote most of the backend with a bad frontend:
 
 ![](github/badfrontendscaled.png)
 
+![](github/badfrontendnewmajanote.png)
+
 # License
 
 [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) (?????????)
