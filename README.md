@@ -1,3 +1,4 @@
+<!-- improve this README by following https://github.com/getfutureproof/fp_guides_wiki/wiki/Writing-READMEs -->
 # Majanotes
 
 Anonymous journalling application built by 
@@ -22,3 +23,16 @@ Then run `npm run dev` to start a server on http://localhost:3000
 Initially we wrote most of the backend with a bad frontend:
 
 ![](github/badfrontendscaled.png)
+
+# License
+
+[CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) (?????????)
+
+# Wins & Challenges
+## Wins
+Additional features include:
+* Scoring system based on the popularity of a post, determined by its emoji count
+	* More popular posts are placed higher in the feed
+* Good server-side data verfication. Posts are not allowed if they don't have a title or body, or if the title and body are too long
+	* All HTML tags are converted to ampersand character codes before being saved so HTML injection cannot occur
+## Challenges
