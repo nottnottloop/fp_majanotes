@@ -10,7 +10,7 @@ Anonymous journalling application built by
 Made as a group project for futureproof
 
 # Installation & usage
-After cloning, run `npm install` to download all dependencies
+After cloning, run `npm install` to install all dependencies
 
 Then run `npm run dev` to start a server on http://localhost:3000
 
