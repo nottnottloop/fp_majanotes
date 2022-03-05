@@ -34,5 +34,6 @@ Additional features include:
 * Scoring system based on the popularity of a post, determined by its emoji count
 	* More popular posts are placed higher in the feed
 * Good server-side data verfication. Posts are not allowed if they don't have a title or body, or if the title and body are too long
+	* Errors are displayed individually if there are multiple errors
 	* All HTML tags are converted to ampersand character codes before being saved so HTML injection cannot occur
 ## Challenges
