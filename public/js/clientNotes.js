@@ -24,9 +24,9 @@ function renderNotes(data) {
 		}
 		newElement.insertAdjacentHTML("beforeend", `<h2 class="noteTitle">${data[i].title}</h2>`);
 		newElement.insertAdjacentHTML("beforeend", `<p class="noteContent">${data[i].note}</p>`);
-		newElement.insertAdjacentHTML("beforeend", `<button id="heart${data[i].id}" class="emojiButton">❤️</p><p id="heartCount${data[i].id}">${heartCount}</p>`);
-		newElement.insertAdjacentHTML("beforeend", `<button id="neutral${data[i].id}" class="emojiButton">😐</p><p id="neutralCount${data[i].id}">${neutralCount}</p>`);
-		newElement.insertAdjacentHTML("beforeend", `<button id="thumbs${data[i].id}" class="emojiButton">👎</p><p id="thumbsCount${data[i].id}">${thumbsCount}</p>`);
+		newElement.insertAdjacentHTML("beforeend", `<button id="heart${data[i].id}" class="emojiButton">❤️</p><p class="emojiCount" id="heartCount${data[i].id}">${heartCount}</p>`);
+		newElement.insertAdjacentHTML("beforeend", `<button id="neutral${data[i].id}" class="emojiButton">😐</p><p class="emojiCount" id="neutralCount${data[i].id}">${neutralCount}</p>`);
+		newElement.insertAdjacentHTML("beforeend", `<button id="thumbs${data[i].id}" class="emojiButton">👎</p><p class="emojiCount" id="thumbsCount${data[i].id}">${thumbsCount}</p>`);
 		newElement.style.backgroundColor = data[i].color;
 		notesGrid.insertAdjacentElement("beforeend", newElement);
 	}
