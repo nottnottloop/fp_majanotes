@@ -11,8 +11,16 @@ const maxNoteChars = 200;
 
 router.use(bodyParser.urlencoded({extended: false}))
 
-router.get("/", (req, res) => {
-  res.render("notes/index.ejs");
+router.get("/", (req, res) => { 
+  //we need to modify index.ejs & pass the data from our json file here
+  try {
+    //read the file, send it back
+    notesJson = fs.readFileSync(path.resolve(__dirname, "../data/notesData.json"), "utf-8");
+    res.render("notes/index.ejs",{data: notesJson});
+  } catch (err) {
+    res.send([]);
+  }
+  
 });
 
 //this will send all the data we have on the server to the client
@@ -29,16 +37,9 @@ router.get("/data", (req, res) => {
   }
 });
 
-router.get('/new', (req, res)=>{
-  res.render('notes/new.ejs')
-})
 
-router.post('/new', (req ,res)=>{
-  res.send(req.body.note)
-})
-//Im thinking to simplify our POST /new endpoint?? Instead of the code below???
-
-/*router
+//I commented out the replaceAll below since its causing errors?
+router
   .route("/new")
   .get((req, res) => {
     res.render("notes/new");
@@ -46,10 +47,11 @@ router.post('/new', (req ,res)=>{
   .post((req, res) => {
     //replace all html tags so that we don't have code injections
     //without this, you can type valid html into the page and it will render!
-    req.body.title = req.body.title.replaceAll("<", "&lt;")
+    /*req.body.title = req.body.title.replaceAll("<", "&lt;")
     req.body.title = req.body.title.replaceAll(">", "&gt;")
     req.body.note = req.body.note.replaceAll("<", "&lt;")
-    req.body.note = req.body.note.replaceAll(">", "&gt;")
+    req.body.note = req.body.note.replaceAll(">", "&gt;")*/ 
+
 
     //perform our data validation function. 
     //if the data is not valid, make sure we don't continue with the rest of this post request as if it was successful. we do this with a return
@@ -97,8 +99,9 @@ router.post('/new', (req ,res)=>{
     console.log(`\nNew note added:\nTitle: ${newNote.title}\nNote: ${newNote.note}\nColor: ${newNote.color}\nGIF: ${debugGif}`)
 
     //this whole route is mounted on /notes. so this redirect redirects to /notes, not /
-    res.redirect(".");
-  });*/
+    res.status(200).redirect(".");
+
+  });
 
 function checkValidNote(req, res) {
   let passed = true;
