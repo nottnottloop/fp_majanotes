@@ -8,7 +8,7 @@ main {
 
 .noteBody {
 	margin: 30px;
-	padding: 20px 30px 20px 20px;
+	padding: 30px;
 }
 
 p.noteContent {
@@ -27,12 +27,22 @@ h2.noteBody {
 	opacity: 0;
 	transition: all 0.5s ease-in;
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(4, 1fr);
 	margin-top: 0px;
+}
+@media screen and (max-width: 1200px) {
+	#notesGrid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+@media screen and (max-width: 810px) {
+	#notesGrid {
+		grid-template-columns: repeat(2, 1fr);
+	}
 }
 
 .emojiButton {
-	display: inline-block;
+	position: relative;
 	margin-left: 10px;
 	margin-right: 10px;
 	padding: 0;
