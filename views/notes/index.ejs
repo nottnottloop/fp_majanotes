@@ -15,12 +15,14 @@
 	<h1 id="createButton"><a href="/new">+create</a></h1>
 	<h1>MajaNotes  </h1>
 	<h1>Our JSON file(database) has <%= data.length %> items so far:</h1>
-	<div>
+	<!--<div>
 	<h2><%= JSON.stringify(data[0]) %></h2>
-	</div>
+	</div> -->
 	<div>
 		<% data.forEach((item) => { %>
-		<div style="background-color: <%= item.color %> "><%= item.title %></div>
+		<div style="background-color: <%= item.color %> "><%= item.title %>
+		
+		</div>
 		<% }) %>
 	</div>
 	<ul>

@@ -16,7 +16,6 @@ router.get("/", (req, res) => {
   try {
     //read the file, send it back
     notesJson = fs.readFileSync(path.resolve(__dirname, "../data/notesData.json"), "utf-8");
-    console.log(notesJson,JSON.parse(notesJson))
     res.render("notes/index.ejs",{data: JSON.parse(notesJson)})
     
   } catch(err){
