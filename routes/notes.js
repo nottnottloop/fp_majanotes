@@ -12,7 +12,7 @@ const maxNoteChars = 200;
 router.use(bodyParser.urlencoded({extended: false}))
 
 router.get("/", (req, res) => {
-  res.render("notes/notes.ejs");
+  res.render("notes/index.ejs");
 });
 
 //this will send all the data we have on the server to the client
@@ -34,7 +34,6 @@ router.get('/new', (req, res)=>{
 })
 
 router.post('/new', (req ,res)=>{
-  console.log(req.body.title,req.body.note)
   res.send(req.body.note)
 })
 //Im thinking to simplify our POST /new endpoint?? Instead of the code below???
