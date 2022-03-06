@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "test": "jest --watchAll",
+    "start": "node start.js",
+    "run": "nodemon start.js"
   },
   "keywords": [],
   "author": "",
