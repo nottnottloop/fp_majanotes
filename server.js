@@ -17,4 +17,6 @@ app.use("/public", express.static("public"));
 app.use("/notes", notesRouter);
 app.use("/notes/emoji", emojiRouter);
 
-app.listen(3000);
+app.listen(3000, ()=>{
+    console.log("Server listening on port 3000")
+});
