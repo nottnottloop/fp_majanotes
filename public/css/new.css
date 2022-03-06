@@ -1,0 +1,19 @@
+form {
+	margin-top: 30px;
+}
+
+textarea, input {
+	margin-bottom: 30px;
+}
+
+button {
+	margin-top: 10px;
+}
+
+#giphySearch {
+	margin: 10;
+}
+
+#giphyUrl {
+	display: none;
+}

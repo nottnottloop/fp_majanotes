@@ -1,0 +1,67 @@
+
+
+main {
+	margin-top: 5%;
+	display: flex;
+}
+
+
+.noteBody {
+	margin: 30px;
+	padding: 30px;
+}
+
+p.noteContent {
+	margin-bottom:10px;
+}
+
+.noteTitle {
+	margin: 10px;
+}
+
+h2.noteBody {
+	margin: 0;
+}
+
+#notesGrid {
+	opacity: 0;
+	transition: all 0.5s ease-in;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	margin-top: 0px;
+}
+@media screen and (max-width: 1200px) {
+	#notesGrid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+@media screen and (max-width: 810px) {
+	#notesGrid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+.emojiButton {
+	position: relative;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 0;
+	background: transparent;
+	border: 0;
+}
+
+.emojiCount {
+	margin: 0;
+	margin-top: -10px;
+}
+
+.noteImage {
+	width: 50%;
+	height: 50%;
+	max-width: 50%;
+	max-height: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	/*display: none;*/
+}
