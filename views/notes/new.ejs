@@ -12,14 +12,14 @@
 	<title>New MajaNote</title>
 </head>
 <body>
-	<h1 id="homeButton"><a href="/notes">home</a></h1>
+	<h1 id="homeButton"><a href="/">home</a></h1>
 	<h1>New MajaNote</h1>
 	<form action="/new" method="POST">
 		<label id="titleLabel" for="titleBox">Title:
-			<input type="text" id="titleBox" name="title" value="<%= locals.title %>">
+			<input type="text" required id="titleBox" name="title" value="<%= locals.title %>">
 		</label><br>
 		<label id="noteLabel" for="noteBox">MajaNote: (max 200 chars)<br>
-			<textarea id="noteBox" name="note" rows="8", cols="50"><%= locals.note %></textarea>
+			<textarea id="noteBox" required name="note" rows="8", cols="50"><%= locals.note %></textarea>
 		</label><br>
 		<label id="colorLabel" for="colorDropdown">Color:
 			<select name="color" id="colorDropdown">
