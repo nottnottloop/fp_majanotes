@@ -10,7 +10,7 @@ const maxTitleChars = 60;
 const maxNoteChars = 200;
 
 router.get("/", (req, res) => {
-  res.render("notes");
+  res.render("index");
 });
 
 //this will send all the data we have on the server to the client
