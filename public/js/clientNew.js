@@ -62,7 +62,7 @@ document.querySelector("#submitButton").addEventListener('click', e => {
 //	let color = document.querySelector("#colorDropdown").value;
 
 //	let xhr = new XMLHttpRequest();
-//	xhr.open("POST", `${protocol}//${host}/notes/new`);
+//	xhr.open("POST", `${protocol}//${host}/new`);
 //	xhr.setRequestHeader('Content-Type', 'application/json');
 //	xhr.send(JSON.stringify({
 //		title: title,

@@ -10,7 +10,7 @@ const maxTitleChars = 60;
 const maxNoteChars = 200;
 
 router.get("/", (req, res) => {
-  res.render("notes/notes");
+  res.render("notes");
 });
 
 //this will send all the data we have on the server to the client
@@ -30,7 +30,7 @@ router.get("/data", (req, res) => {
 router
   .route("/new")
   .get((req, res) => {
-    res.render("notes/new");
+    res.render("new");
   })
   .post((req, res) => {
     //replace all html tags so that we don't have code injections
@@ -122,7 +122,7 @@ function checkValidNote(req, res) {
   //if tests weren't passed, gather up all the error messages and take the user to the error page
   if (!passed) {
     message = message.join('');
-    res.render("notes/invalid", {message: message});
+    res.render("invalid", {message: message});
   }
   return passed;
 }

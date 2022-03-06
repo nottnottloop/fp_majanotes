@@ -5,7 +5,7 @@ const notesGrid = document.querySelector("#notesGrid");
 
 let notesCount = 0;
 
-fetch(`${protocol}//${host}/notes/data`)
+fetch(`${protocol}//${host}/data`)
 	.then(resp => resp.json())
 	.then(data => renderNotes(data))
 	.catch(e => console.log(`Error: ${e}`));
@@ -66,7 +66,7 @@ function scoreAndSortNotes(data) {
 function addEmojiFunctionality(element, emoji, id) {
 	element.addEventListener('click', () => {
 		let xhr = new XMLHttpRequest();
-		xhr.open("POST", `${protocol}//${host}/notes/emoji`);
+		xhr.open("POST", `${protocol}//${host}/emoji`);
 		xhr.setRequestHeader('Content-Type', 'application/json');
 		let str = JSON.stringify({emoji:emoji, index:id})
 		console.log(str)
