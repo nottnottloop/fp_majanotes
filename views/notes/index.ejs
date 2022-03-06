@@ -18,11 +18,17 @@
 	<div>
 	<h2><%= JSON.stringify(data[0]) %></h2>
 	</div>
+	<div>
+		<% data.forEach((item) => { %>
+		<div style="background-color: <%= item.color %> "><%= item.title %></div>
+		<% }) %>
+	</div>
 	<ul>
 	  <% data.forEach((item) => { %>
 	  <li><h3>ID:<%= item.id %></h3><h3>Title:<%= item.title %></h3><h3>Color:<%= item.color %></h3>
 		<h3>GIF:<%= item.gif %></h3></li>
 	  <% }) %>
 	</ul>
+	
 </body>
 </html>
