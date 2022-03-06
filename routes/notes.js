@@ -1,16 +1,18 @@
 const express = require("express");
-const fs = require("fs");
+const fs = require("fs")
 const path = require('path');
 const router = express.Router();
-
+const bodyParser= require("body-parser"); //We need this to be able to extract req.body.title/ req.body....etc
 const note = require(path.resolve(__dirname, "../model/noteModel"));
 
 //constant values for data validation
 const maxTitleChars = 60;
 const maxNoteChars = 200;
 
+router.use(bodyParser.urlencoded({extended: false}))
+
 router.get("/", (req, res) => {
-  res.render("notes/notes");
+  res.render("notes/notes.ejs");
 });
 
 //this will send all the data we have on the server to the client
@@ -27,7 +29,17 @@ router.get("/data", (req, res) => {
   }
 });
 
-router
+router.get('/new', (req, res)=>{
+  res.render('notes/new.ejs')
+})
+
+router.post('/new', (req ,res)=>{
+  console.log(req.body.title,req.body.note)
+  res.send(req.body.note)
+})
+//Im thinking to simplify our POST /new endpoint?? Instead of the code below???
+
+/*router
   .route("/new")
   .get((req, res) => {
     res.render("notes/new");
@@ -87,7 +99,7 @@ router
 
     //this whole route is mounted on /notes. so this redirect redirects to /notes, not /
     res.redirect(".");
-  });
+  });*/
 
 function checkValidNote(req, res) {
   let passed = true;
