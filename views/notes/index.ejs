@@ -7,19 +7,22 @@
 	<link rel="stylesheet" type="text/css" href="/css/base.css">
 	<link rel="stylesheet" type="text/css" href="/css/notes.css">
 	<link rel="icon" href="/favicon.ico">
-	<script defer src="../../public/js/clientBase.js"></script>
-	<script defer src="../../public/js/clientNotes.js"></script>
+	<script defer src="/js/clientBase.js"></script>
+	<script defer src="/js/clientNotes.js"></script>
 	<title>MajaNotes</title>
 </head>
 <body>
 	<h1 id="createButton"><a href="/new">+create</a></h1>
 	<h1>MajaNotes  </h1>
-	<h1>Our JSON(database) has <%= data.length %> items so far:</h1>
+	<h1>Our JSON file(database) has <%= data.length %> items so far:</h1>
 	<div>
 	<h2><%= JSON.stringify(data[0]) %></h2>
-	<h2><%= JSON.stringify(data[1]) %></h2>
-	<h2><%= JSON.stringify(data[2]) %></h2>
-	<h2><%= JSON.stringify(data[3]) %></h2>
 	</div>
+	<ul>
+	  <% data.forEach((item) => { %>
+	  <li><h3>ID:<%= item.id %></h3><h3>Title:<%= item.title %></h3><h3>Color:<%= item.color %></h3>
+		<h3>GIF:<%= item.gif %></h3></li>
+	  <% }) %>
+	</ul>
 </body>
 </html>
