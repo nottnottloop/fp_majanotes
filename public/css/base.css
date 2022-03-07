@@ -34,7 +34,8 @@ img {
 	text-align: right;
 	font-weight: bold;
 	display: inline-block;
-	background: transparent;
+	background: white;
+	border-width: 3px;
 	margin-left: 80%;
 	white-space: nowrap;
 }

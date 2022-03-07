@@ -34,9 +34,22 @@ function buildNoteElement(data) {
 	if (data['comments']) {
 		commentCount = data['comments'].length;
 	}
-	//remember that i is our iterating variable. we are grabbing the info from one gif at a time (data[i])
-	let commentLocation = `${window.location.href}comment/${data.id}`
-	newElement.insertAdjacentHTML("beforeend", `<a href="${commentLocation}"><button class="commentButton">💬: ${commentCount}</button></a>`);
+
+	let commentLinkElement = document.createElement("a");
+	let commentButtonElement = document.createElement("button");
+
+	commentLinkElement.href = `${window.location.href}comment/${data.id}`;
+	commentButtonElement.classList.add("commentButton");
+	commentButtonElement.id = `commentButton${data.id}`;
+	commentButtonElement.textContent = `💬: ${commentCount}`;
+	commentLinkElement.insertAdjacentElement("beforeend", commentButtonElement);
+	newElement.insertAdjacentElement("beforeend", commentLinkElement);
+	if (data.comments) {
+		commentButtonElement.style.borderColor = "green";
+	} else {
+		commentButtonElement.style.borderColor = "red";
+	}
+
 	if (data.gif) {
 		newElement.insertAdjacentHTML("beforeend", `<img class="noteImage" src="${data.gif}">`);
 	}
