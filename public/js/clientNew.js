@@ -56,18 +56,6 @@ const noteBox = document.querySelector("#noteBox");
 noteBox.addEventListener('keyup', updateTextBoxCounter);
 noteBox.addEventListener('keydown', updateTextBoxCounter);
 
-function updateTextBoxCounter(e) {
-	let len = 0;
-	if (noteBox.value.length) {
-		len = noteBox.value.length;
-	}
-  if (len >= 200 + 1) {
-    noteBox.value = noteBox.value.substring(0, 200);
-  } else {
-    document.querySelector('#charNum').textContent = 200 - len;
-  }
-}
-
 //document.querySelector("#submitButton").addEventListener('click', e => {
 //	e.preventDefault();
 //	let title = document.querySelector("#titleBox").value;
