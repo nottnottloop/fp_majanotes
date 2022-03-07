@@ -22,6 +22,4 @@ app.use("/new", newRouter);
 app.use("/emoji", emojiRouter);
 app.use("/comment", commentRouter);
 
-
-
-module.exports=app;
+module.exports = app;
