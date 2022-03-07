@@ -67,7 +67,7 @@ router
     fs.writeFileSync(path.resolve(__dirname, "../data/notesData.json"), notesJson, "utf-8");
     console.log(`\nNew note added:\nID: ${newNote.id}\nTitle: ${newNote.title}\nNote: ${newNote.note}\nColor: ${newNote.color}\nGIF: ${debugGif}`)
 
-    res.render("index");
+    res.redirect("/");
   });
 
 function checkValidNote(req, res) {

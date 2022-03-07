@@ -30,7 +30,12 @@ function buildNoteElement(data) {
 	let heartCount = data['heart'] || 0;
 	let thumbsCount = data['thumbs'] || 0;
 	let neutralCount = data['neutral'] || 0;
+	let commentCount = 0
+	if (data['comments']) {
+		commentCount = data['comments'].length;
+	}
 	//remember that i is our iterating variable. we are grabbing the info from one gif at a time (data[i])
+	newElement.insertAdjacentHTML("beforeend", `<p class="commentCount">💬: ${commentCount}</p>`);
 	if (data.gif) {
 		newElement.insertAdjacentHTML("beforeend", `<img class="noteImage" src="${data.gif}">`);
 	}
