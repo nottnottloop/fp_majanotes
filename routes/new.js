@@ -95,7 +95,7 @@ function checkValidNote(req, res) {
   let message = [];
   //test for title being too long
   if (req.body.title.length > maxTitleChars) {
-    message.push(`Max ${maxTitleChars} chars for notes!<br>`);
+    message.push(`Max ${maxTitleChars} chars for titles!<br>`);
     passed = false;
   }
   //test for note being too long
@@ -122,7 +122,7 @@ function checkValidNote(req, res) {
   //if tests weren't passed, gather up all the error messages and take the user to the error page
   if (!passed) {
     message = message.join('');
-    res.render("invalid", {message: message});
+    res.render("new", {title: req.body.title, note: req.body.note, message: message});
   }
   return passed;
 }
