@@ -3,6 +3,8 @@ const path = require("path");
 const app = express();
 
 const notesRouter = require("./routes");
+const dataRouter = require("./routes/data");
+const newRouter = require("./routes/new");
 const emojiRouter = require("./routes/emoji");
 
 app.use(express.urlencoded({ extended: true }));
@@ -16,6 +18,8 @@ app.use("/public", express.static(path.resolve(__dirname, "public")));
 
 //handle all routes under notes
 app.use("/", notesRouter);
+app.use("/data", dataRouter);
+app.use("/new", newRouter);
 app.use("/emoji", emojiRouter);
 
 app.listen(3000, ()=>{
