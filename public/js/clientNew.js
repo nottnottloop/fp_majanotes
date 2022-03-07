@@ -1,7 +1,5 @@
 const apiKey = `B9l8mpk3zgHi1IkTjbd0IK5PcGqAVGAp`;
 let selectedGif = '';
-const protocol = window.location.protocol;
-const host = window.location.host;
 
 document.querySelector("#giphyButton").addEventListener('click', e => {
 	e.preventDefault();
