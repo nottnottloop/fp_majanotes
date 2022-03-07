@@ -1,13 +1,3 @@
-const protocol = window.location.protocol;
-const host = window.location.host;
-
-let notesCount = 0;
-
-fetch(`${protocol}//${host}/data`)
-	.then(resp => resp.json())
-	.then(data => renderNotes(data))
-	.catch(e => console.log(`Error: ${e}`));
-
 function renderNotes(data) {
 	const notesGrid = document.querySelector("#notesGrid");
 	notesCount = data.length;
