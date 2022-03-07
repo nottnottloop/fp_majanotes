@@ -48,9 +48,27 @@ router
       notesJson = [];
       notesData = [];
     }
+    let modifiedColor;
+    switch (req.body.color) {
+      case "white":
+        modifiedColor = "white";
+        break;
+      case "blue":
+        modifiedColor = "cornflowerblue";
+        break;
+      case "green":
+        modifiedColor = "palegreen";
+        break;
+      case "red":
+        modifiedColor = "firebrick";
+        break;
+      case "yellow":
+        modifiedColor = "khaki";
+        break;
+    }
     //create a new note object, using the model, based on response we recieved from the user
     //the first field, the ID, is equal to the length of notesData
-    const newNote = new note(notesData.length, req.body.title, req.body.note, req.body.color);
+    const newNote = new note(notesData.length, req.body.title, req.body.note, modifiedColor);
 
     if (req.body.gif) {
       newNote.gif = req.body.gif;

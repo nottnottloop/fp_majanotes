@@ -64,7 +64,6 @@ function buildNoteElement(data) {
 
 function scoreAndSortNotes(data) {
 	data.forEach(e => {
-		let score = 0;
 		//again, we are not guaranteed to have 'heart', 'thumbs' or 'neutral' attributes
 		let heart = e.heart || 0;
 		let thumbs = e.thumbs || 0;
@@ -80,8 +79,6 @@ function addEmojiFunctionality(element, emoji, id) {
 		let xhr = new XMLHttpRequest();
 		xhr.open("POST", `${protocol}//${host}/emoji`);
 		xhr.setRequestHeader('Content-Type', 'application/json');
-		let str = JSON.stringify({emoji:emoji, id:id})
-		console.log(str)
 		xhr.send(JSON.stringify({
 			emoji: emoji,
 			id: id

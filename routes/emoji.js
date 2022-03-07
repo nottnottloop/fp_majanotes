@@ -5,9 +5,6 @@ const router = express.Router();
 
 router
   .route("/")
-  .get((req, res) => {
-
-  })
   .post((req, res) => {
     console.log("\nRecieved emoji post request:")
     console.log(req.body)
