@@ -46,6 +46,7 @@ router
       //we set the notesJson and notesData to nothing so that the rest of the code will work correctly
       console.log("Error: " + err);
       console.log("Creating new notesData.json");
+      fs.mkdirSync("data");
       notesJson = [];
       notesData = [];
     }
