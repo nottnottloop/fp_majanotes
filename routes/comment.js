@@ -3,12 +3,21 @@ const fs = require("fs");
 const path = require('path');
 const router = express.Router();
 
+const constants = require("constants");
+
 router
   .route("/:id")
   .get((req, res) => {
 	res.render("comment");
   })
   .post((req, res) => {
+    //replace all html tags so that we don't have code injections
+    //without this, you can type valid html into the page and it will render!
+    req.body.comment = req.body.comment.replaceAll("<", "&lt;")
+    req.body.comment = req.body.comment.replaceAll(">", "&gt;")
+
+    if(!checkValidComment(req, res)) { return };
+
     let notesJson;
     let notesData;
     try {
@@ -38,5 +47,21 @@ router
     console.log(`\nComment\n${req.body.comment}\nAdded to note '${noteToModify.title}' with ID ${noteToModify.id}`);
     res.redirect(req.originalUrl);
   });
+
+function checkValidComment(req, res) {
+  let passed = true;
+  //test for comment being too long
+  if (req.body.comment.length > constants.maxNoteChars) {
+    passed = false;
+  }
+  //test for no comment
+  if (req.body.comment.length === 0) {
+    passed = false;
+  }
+  if (!passed) {
+    res.redirect(req.originalUrl);
+  }
+  return passed;
+}
 
 module.exports = router;

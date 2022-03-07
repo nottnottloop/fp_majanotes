@@ -4,16 +4,10 @@ const path = require('path');
 const router = express.Router();
 
 const note = require(path.resolve(__dirname, "../model/noteModel"));
-
-//constant values for data validation
-const maxTitleChars = 60;
-const maxNoteChars = 200;
+const constants = require(path.resolve(__dirname, "constants"));
 
 router
   .route("/")
-  .get((req, res) => {
-    res.render("new");
-  })
   .post((req, res) => {
     //replace all html tags so that we don't have code injections
     //without this, you can type valid html into the page and it will render!
@@ -44,7 +38,10 @@ router
       //we set the notesJson and notesData to nothing so that the rest of the code will work correctly
       console.log("Error: " + err);
       console.log("Creating new notesData.json");
-      fs.mkdirSync("data");
+      //check if data directory exists. if not, create it
+      if (!fs.existsSync("data")) {
+        fs.mkdirSync("data");
+      }
       notesJson = [];
       notesData = [];
     }
@@ -94,13 +91,13 @@ function checkValidNote(req, res) {
   //we will append failure messages to this array so we can have more than one
   let message = [];
   //test for title being too long
-  if (req.body.title.length > maxTitleChars) {
-    message.push(`Max ${maxTitleChars} chars for notes!<br>`);
+  if (req.body.title.length > constants.maxTitleChars) {
+    message.push(`Max ${constants.maxTitleChars} chars for titles!<br>`);
     passed = false;
   }
   //test for note being too long
-  if (req.body.note.length > maxNoteChars) {
-    message.push(`Max ${maxNoteChars} chars for notes!<br>`);
+  if (req.body.note.length > constants.maxNoteChars) {
+    message.push(`Max ${constants.maxNoteChars} chars for notes!<br>`);
     passed = false;
   }
   //test for no title
@@ -122,7 +119,7 @@ function checkValidNote(req, res) {
   //if tests weren't passed, gather up all the error messages and take the user to the error page
   if (!passed) {
     message = message.join('');
-    res.render("invalid", {message: message});
+    res.render("index", {title: req.body.title, note: req.body.note, message: message});
   }
   return passed;
 }
