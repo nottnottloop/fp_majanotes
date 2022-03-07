@@ -65,10 +65,9 @@ router
 
     //write the json file
     fs.writeFileSync(path.resolve(__dirname, "../data/notesData.json"), notesJson, "utf-8");
-    console.log(`\nNew note added:\nTitle: ${newNote.title}\nNote: ${newNote.note}\nColor: ${newNote.color}\nGIF: ${debugGif}`)
+    console.log(`\nNew note added:\nID: ${newNote.id}\nTitle: ${newNote.title}\nNote: ${newNote.note}\nColor: ${newNote.color}\nGIF: ${debugGif}`)
 
-    //this whole route is mounted on /notes. so this redirect redirects to /notes, not /
-    res.redirect(".");
+    res.render("index");
   });
 
 function checkValidNote(req, res) {

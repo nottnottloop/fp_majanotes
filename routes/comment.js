@@ -36,6 +36,7 @@ router
     //write the json file
     fs.writeFileSync(path.resolve(__dirname, "../data/notesData.json"), notesJson, "utf-8");
     console.log(`\nComment\n${req.body.comment}\nAdded to note '${noteToModify.title}' with ID ${noteToModify.id}`);
+    res.render("comment");
   });
 
 module.exports = router;

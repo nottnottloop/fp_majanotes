@@ -31,4 +31,5 @@ function renderComments(data) {
 	for (let i = 0; i < data.comments.length; i++) {
 		commentsSection.insertAdjacentHTML("beforeend", `<h3 class="comment">${i+1}. ${data.comments[i]}</h3>`);
 	}
+	commentsSection.style.backgroundColor = data.color;
 }
