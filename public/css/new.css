@@ -17,3 +17,7 @@ button {
 #giphyUrl {
 	display: none;
 }
+
+#selectGifText {
+	display: none;
+}

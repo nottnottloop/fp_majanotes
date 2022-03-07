@@ -30,7 +30,7 @@
 			</label></label><br>
 			<label id="colorLabel" for="colorDropdown">Color:
 				<select name="color" id="colorDropdown">
-					<option value="white">White</option>
+					<option selected value="white">White</option>
 					<option value="blue">Blue</option>
 					<option value="green">Green</option>
 					<option value="red">Red</option>
@@ -41,7 +41,8 @@
 				<button id="giphyButton">Go</button>
 				<button id="giphyRemove">Remove GIF</button>
 				<input id="giphyUrl" name="gif">
-				<div id="giphyGifs"></div>
+				<h2 id="selectGifText"><br>Select your GIF:</h2>
+				<a class="disabled-link" href="javascript:void(0)"><div id="giphyGifs"></div></a>
 			</label>
 			<h3 id="errorMessages"><%- locals.message %></h3>
 			<button id="submitButton" type="submit">Submit</button>

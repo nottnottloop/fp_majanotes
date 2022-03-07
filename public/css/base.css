@@ -57,3 +57,15 @@ img {
 textarea, input {
 	margin-bottom: 30px;
 }
+
+figure {
+	display: inline-grid;
+	max-width: 10%;
+}
+
+.disabled-link{
+	cursor: default;
+	pointer-events: none;        
+	text-decoration: none;
+	color: black;
+}
