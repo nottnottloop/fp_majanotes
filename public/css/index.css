@@ -28,10 +28,11 @@ button {
 
 .card {
     border-radius: 20px;
+	margin: 10px 30px;
 }
 
-.img-fluid {
-    border-radius: 20px 20px 0px 0px;
+.gif-img {
+	width: 100%;
 }
 
 .reactions {
@@ -68,6 +69,7 @@ h2.noteBody {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	margin-top: 0px;
+	
 }
 @media screen and (max-width: 1200px) {
 	#notesGrid {
