@@ -11,12 +11,12 @@ fetch(`${protocol}//${host}/data/${id}`)
 function renderCommentNote(data) {
 	const notesGrid = document.querySelector("#notesGrid");
 	notesGrid.insertAdjacentElement("beforeend", buildNoteElement(data));
-		const heart = document.querySelector(`#heart${id}`);
-		const thumbs = document.querySelector(`#thumbs${id}`);
-		const neutral = document.querySelector(`#neutral${id}`);
+	const heart = document.querySelector(`#heart${id}`);
+	const thumbs = document.querySelector(`#thumbs${id}`);
+	const neutral = document.querySelector(`#neutral${id}`);
 
-		addEmojiFunctionality(heart, "heart", id);
-		addEmojiFunctionality(thumbs, "thumbs", id);
-		addEmojiFunctionality(neutral, "neutral", id);
+	addEmojiFunctionality(heart, "heart", id);
+	addEmojiFunctionality(thumbs, "thumbs", id);
+	addEmojiFunctionality(neutral, "neutral", id);
 	notesGrid.style.opacity = 1;
 }

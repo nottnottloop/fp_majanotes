@@ -18,9 +18,9 @@
 	<h1 id="homeButton"><a href="/">home</a></h1>
 	<main id="notesGrid">
 	</main>
-	<form action="./new" method="POST">
-		<label id="noteLabel" for="noteBox">Leave a comment (max 200 chars):<br>
-			<textarea id="noteBox" required name="note" rows="8", cols="50"><%= locals.note %></textarea>
+	<form method="POST">
+		<label id="commentLabel" for="commentBox">Leave a comment (max 200 chars):<br>
+			<textarea id="commentBox" required name="comment" rows="8", cols="50"><%= locals.comment %></textarea>
 		</label><br>
 		<button id="submitButton" type="submit">Submit</button>
 	</form>
