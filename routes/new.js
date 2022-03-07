@@ -5,6 +5,8 @@ const router = express.Router();
 
 const note = require(path.resolve(__dirname, "../model/noteModel"));
 
+router.use(express.static(path.join(__dirname,"../public")))
+
 //constant values for data validation
 const maxTitleChars = 60;
 const maxNoteChars = 200;

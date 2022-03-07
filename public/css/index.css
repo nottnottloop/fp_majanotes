@@ -30,10 +30,27 @@ h2.noteBody {
 	grid-template-columns: repeat(4, 1fr);
 	margin-top: 0px;
 }
+<<<<<<< HEAD:public/css/notes.css
+.deleteButton { /* Added this for the delete button on each note */
+	display: block;
+	background-image: url('../bin.png'); 
+	width: 30px;
+	height:30px;
+}
+
+.emojiButton {
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 0;
+	background: transparent;
+	border: 0;
+=======
 @media screen and (max-width: 1200px) {
 	#notesGrid {
 		grid-template-columns: repeat(3, 1fr);
 	}
+>>>>>>> b624919b9f7bc4b369e368393f9ef01a4331c724:public/css/index.css
 }
 @media screen and (max-width: 810px) {
 	#notesGrid {
