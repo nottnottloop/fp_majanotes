@@ -5,26 +5,7 @@ function renderNotes(data) {
 	data = scoreAndSortNotes(data);
 	//iterate over all notes after they have been sorted
 	for (let i = 0; i < data.length; i++) {
-<<<<<<< HEAD
-		let newElement = document.createElement("section");
-		newElement.classList.add("noteBody");
-		let heartCount = data[i]['heart'] || 0;
-		let thumbsCount = data[i]['thumbs'] || 0;
-		let neutralCount = data[i]['neutral'] || 0;
-		if (data[i].gif) {
-			newElement.insertAdjacentHTML("beforeend", `<img class="noteImage" src="${data[i].gif}">`);
-		}
-		newElement.insertAdjacentHTML("beforeend", `<h2 class="noteTitle">${data[i].title}</h2>`);
-		newElement.insertAdjacentHTML("beforeend", `<p class="noteContent">${data[i].note}</p>`);
-		newElement.insertAdjacentHTML("beforeend", `<img class="deleteButton"></img>`)
-		newElement.insertAdjacentHTML("beforeend", `<button id="heart${data[i].id}" class="emojiButton">❤️</p><p class="emojiCount" id="heartCount${data[i].id}">${heartCount}</p>`);
-		newElement.insertAdjacentHTML("beforeend", `<button id="neutral${data[i].id}" class="emojiButton">😐</p><p class="emojiCount" id="neutralCount${data[i].id}">${neutralCount}</p>`);
-		newElement.insertAdjacentHTML("beforeend", `<button id="thumbs${data[i].id}" class="emojiButton">👎</p><p class="emojiCount" id="thumbsCount${data[i].id}">${thumbsCount}</p>`);
-		newElement.style.backgroundColor = data[i].color;
-		notesGrid.insertAdjacentElement("beforeend", newElement);
-=======
 		notesGrid.insertAdjacentElement("beforeend", buildNoteElement(data[i]));
->>>>>>> b624919b9f7bc4b369e368393f9ef01a4331c724
 	}
 	//now change the opacity so the notes fade in using our transition CSS property :)
 	notesGrid.style.opacity = "1";
