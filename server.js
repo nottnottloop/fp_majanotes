@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const app = express();
 
-const notesRouter = require("./routes/notes");
+const notesRouter = require("./routes");
 const emojiRouter = require("./routes/emoji");
 
 app.use(express.urlencoded({ extended: true }));
