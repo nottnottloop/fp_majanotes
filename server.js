@@ -6,6 +6,7 @@ const notesRouter = require("./routes");
 const dataRouter = require("./routes/data");
 const newRouter = require("./routes/new");
 const emojiRouter = require("./routes/emoji");
+const commentRouter = require("./routes/comment");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -21,6 +22,7 @@ app.use("/", notesRouter);
 app.use("/data", dataRouter);
 app.use("/new", newRouter);
 app.use("/emoji", emojiRouter);
+app.use("/comment", commentRouter);
 
 app.listen(3000, ()=>{
     console.log("MajaNotes listening on port 3000")
