@@ -43,3 +43,7 @@ function renderComments(data) {
 	}
 	commentsSection.style.backgroundColor = data.color;
 }
+
+const commentBox = document.querySelector("#commentBox");
+commentBox.addEventListener('keyup', updateTextBoxCounter);
+commentBox.addEventListener('keydown', updateTextBoxCounter);
