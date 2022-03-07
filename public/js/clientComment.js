@@ -10,6 +10,7 @@ fetch(`${protocol}//${host}/data/${id}`)
 
 function renderCommentPage(data) {
 	renderCommentNote(data);
+	renderCommentHeader(data);
 	renderComments(data);
 }
 
@@ -24,6 +25,15 @@ function renderCommentNote(data) {
 	addEmojiFunctionality(thumbs, "thumbs", id);
 	addEmojiFunctionality(neutral, "neutral", id);
 	notesGrid.style.opacity = 1;
+}
+
+function renderCommentHeader(data) {
+	const commentHeader = document.querySelector("#commentHeader");
+	let commentCount;
+	data.comments ? commentCount = data.comments.length : commentCount = 0;
+	let commentText;
+	commentCount == 1 ? commentText = "Comment" : commentText = "Comments";
+	commentHeader.textContent = `${commentCount} ${commentText}`;
 }
 
 function renderComments(data) {
