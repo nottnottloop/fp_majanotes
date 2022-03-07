@@ -8,8 +8,15 @@ main {
 
 .noteBody {
 	margin: 30px;
-	padding: 20px 30px 0px 20px;
-	padding-bottom: 0;
+	padding: 30px 10px 30px 30px;
+}
+
+p.noteContent {
+	margin-bottom:10px;
+}
+
+.noteTitle {
+	margin: 10px;
 }
 
 h2.noteBody {
@@ -20,9 +27,10 @@ h2.noteBody {
 	opacity: 0;
 	transition: all 0.5s ease-in;
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(4, 1fr);
 	margin-top: 0px;
 }
+<<<<<<< HEAD:public/css/notes.css
 .deleteButton { /* Added this for the delete button on each note */
 	display: block;
 	background-image: url('../bin.png'); 
@@ -37,12 +45,20 @@ h2.noteBody {
 	padding: 0;
 	background: transparent;
 	border: 0;
+=======
+@media screen and (max-width: 1200px) {
+	#notesGrid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+>>>>>>> b624919b9f7bc4b369e368393f9ef01a4331c724:public/css/index.css
+}
+@media screen and (max-width: 810px) {
+	#notesGrid {
+		grid-template-columns: repeat(2, 1fr);
+	}
 }
 
-.emojiCount {
-	margin: 0;
-	margin-top: -10px;
-}
+
 
 .noteImage {
 	width: 50%;

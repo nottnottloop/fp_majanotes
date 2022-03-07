@@ -11,28 +11,10 @@ router.use(express.static(path.join(__dirname,"../public")))
 const maxTitleChars = 60;
 const maxNoteChars = 200;
 
-router.get("/", (req, res) => {
-  res.render("notes/notes");
-});
-
-//this will send all the data we have on the server to the client
-router.get("/data", (req, res) => {
-  //set the header correctly for the API so it pretty prints :)
-  res.set('Content-Type', 'application/json');
-  //try to read the data. if the data doesn't exist, we send an empty array
-  try {
-    //read the file, send it back
-    notesJson = fs.readFileSync(path.resolve(__dirname, "../data/notesData.json"), "utf-8");
-    res.send(notesJson);
-  } catch (err) {
-    res.send([]);
-  }
-});
-
 router
-  .route("/new")
+  .route("/")
   .get((req, res) => {
-    res.render("notes/new");
+    res.render("new");
   })
   .post((req, res) => {
     //replace all html tags so that we don't have code injections
@@ -85,46 +67,14 @@ router
 
     //write the json file
     fs.writeFileSync(path.resolve(__dirname, "../data/notesData.json"), notesJson, "utf-8");
-    console.log(`\nNew note added:\nTitle: ${newNote.title}\nNote: ${newNote.note}\nColor: ${newNote.color}\nGIF: ${debugGif}`)
+    console.log(`\nNew note added:\nID: ${newNote.id}\nTitle: ${newNote.title}\nNote: ${newNote.note}\nColor: ${newNote.color}\nGIF: ${debugGif}`)
 
-    //this whole route is mounted on /notes. so this redirect redirects to /notes, not /
-    res.redirect(".");
+    res.redirect("/");
   });
-
-router
-  .route("/emoji")
-  .get((req, res) => {
-
-  })
-  .post((req, res) => {
-    console.log("\nRecieved emoji post request:")
-    console.log(req.body)
-    let notesJson;
-    let notesData;
-    //similar to the push request for the notes themselves above
-    try {
-      notesJson = fs.readFileSync(path.resolve(__dirname, "../data/notesData.json"), "utf-8");
-      notesData = JSON.parse(notesJson);
-    } catch (err) {
-      console.log("Error: " + err);
-      res.sendStatus(500);
-    }
-    const objectToModify = notesData.filter(e => e.id === req.body.id);
-    if (!objectToModify[0][req.body.emoji]) {
-      objectToModify[0][req.body.emoji] = 1;
-    } else {
-      objectToModify[0][req.body.emoji] = objectToModify[0][req.body.emoji] + 1;
-    }
-    notesData = notesData.filter(e => e.id !== req.body.id);
-    console.log(`Updating note ${objectToModify[0]['title']} to ${req.body.emoji} count ${objectToModify[0][req.body.emoji]}`)
-    notesData.push(objectToModify[0]);
-    notesJson = JSON.stringify(notesData, null, 2);
-    fs.writeFileSync(path.resolve(__dirname, "../data/notesData.json"), notesJson, "utf-8");
-    res.sendStatus(200);
-  })
 
 function checkValidNote(req, res) {
   let passed = true;
+  //we will append failure messages to this array so we can have more than one
   let message = [];
   //test for title being too long
   if (req.body.title.length > maxTitleChars) {
@@ -155,21 +105,9 @@ function checkValidNote(req, res) {
   //if tests weren't passed, gather up all the error messages and take the user to the error page
   if (!passed) {
     message = message.join('');
-    res.render("notes/invalid", {message: message});
+    res.render("invalid", {message: message});
   }
   return passed;
 }
-
-//router
-//  .route("/:id")
-//  .get((req, res) => {
-//    res.send(req.params.id);
-//  });
-
-//this code is ran every time a router matches this sort of call. for reference
-//router.param("id", (req, res, next, id) => {
-//  req.user = users[id];
-//  next();
-//});
 
 module.exports = router;
