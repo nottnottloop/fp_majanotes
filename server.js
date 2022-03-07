@@ -14,18 +14,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json());
 app.set("view engine", "ejs");
 
-//root of site is the notes page, redirect correctly
-app.get("/", (req, res) => {
-    //res.redirect("/notes")
-    res.render("index.ejs")
-});
-app.get("/new", (req, res)=>{
-    res.render("new.ejs")
-})
-app.post("/new", (req ,res)=>{
-    console.log(req.body.note)
-    
-})
 //when someone goes to a file in /public, let them see it with no dynamic rendering. this serves our css
 app.use("/public", express.static(path.resolve(__dirname, "public")));
 
