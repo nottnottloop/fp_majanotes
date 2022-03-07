@@ -1,7 +1,6 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-var bodyParser = require('body-parser')
 
 const notesRouter = require("./routes");
 const dataRouter = require("./routes/data");
@@ -9,8 +8,7 @@ const newRouter = require("./routes/new");
 const emojiRouter = require("./routes/emoji");
 const commentRouter = require("./routes/comment");
 
-//app.use(express.urlencoded({ extended: true }));
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.set("view engine", "ejs");
 
