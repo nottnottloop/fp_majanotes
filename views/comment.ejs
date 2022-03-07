@@ -6,18 +6,24 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="public/css/base.css">
 	<link rel="stylesheet" href="public/css/index.css">
+	<link rel="stylesheet" href="public/css/comment.css">
 	<link rel="icon" href="public/favicon.ico">
 	<script defer src="public/js/clientBase.js"></script>
 	<script defer src="public/js/clientComment.js"></script>
 	<script defer src="public/js/clientNotes.js"></script>
-	<title>Add a comment</title>
+	<title>Leave a comment</title>
 </head>
 <body>
+	<h1>Leave a comment</h1>
 	<h1 id="homeButton"><a href="/">home</a></h1>
 	<main id="notesGrid">
 	</main>
-	<form>
-		<input type="button" value="Go back!" onclick="history.back()">
+	<form action="./new" method="POST">
+		<label id="noteLabel" for="noteBox">Leave a comment (max 200 chars):<br>
+			<textarea id="noteBox" required name="note" rows="8", cols="50"><%= locals.note %></textarea>
+		</label><br>
+		<button id="submitButton" type="submit">Submit</button>
 	</form>
+	<input type="button" value="Go back!" onclick="history.back()">
 </body>
 </html>
