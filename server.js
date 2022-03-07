@@ -19,5 +19,5 @@ app.use("/", notesRouter);
 app.use("/emoji", emojiRouter);
 
 app.listen(3000, ()=>{
-    console.log("Server listening on port 3000")
+    console.log("MajaNotes listening on port 3000")
 });
