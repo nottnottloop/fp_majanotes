@@ -3,6 +3,10 @@ const fs = require("fs");
 const path = require('path');
 const router = express.Router();
 
+router.get("/", (req, res) => {
+	res.render("comment");
+});
+
 //request only one note, and their comments
 router.get("/:id", (req, res) => {
   res.set('Content-Type', 'application/json');
