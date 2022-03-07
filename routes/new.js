@@ -44,7 +44,10 @@ router
       //we set the notesJson and notesData to nothing so that the rest of the code will work correctly
       console.log("Error: " + err);
       console.log("Creating new notesData.json");
-      fs.mkdirSync("data");
+      //check if data directory exists. if not, create it
+      if (!fs.existsSync("data")) {
+        fs.mkdirSync("data");
+      }
       notesJson = [];
       notesData = [];
     }
@@ -122,7 +125,7 @@ function checkValidNote(req, res) {
   //if tests weren't passed, gather up all the error messages and take the user to the error page
   if (!passed) {
     message = message.join('');
-    res.render("new", {title: req.body.title, note: req.body.note, message: message});
+    res.render("index", {title: req.body.title, note: req.body.note, message: message});
   }
   return passed;
 }
