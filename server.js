@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
     res.render("notes/notes.ejs")
 });
 app.get("/new", (req, res)=>{
-    res.render("notes/new")
+    res.render("notes/new.ejs")
 })
 app.post("/new", (req ,res)=>{
     console.log(req.body.note)

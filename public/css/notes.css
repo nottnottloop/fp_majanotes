@@ -23,6 +23,12 @@ h2.noteBody {
 	grid-template-columns: repeat(3, 1fr);
 	margin-top: 0px;
 }
+.deleteButton { /* Added this for the delete button on each note */
+	display: block;
+	background-image: url('../bin.png'); 
+	width: 30px;
+	height:30px;
+}
 
 .emojiButton {
 	display: inline-block;
