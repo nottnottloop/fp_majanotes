@@ -18,12 +18,14 @@
 	<h1 id="homeButton"><a href="/">home</a></h1>
 	<main id="notesGrid">
 	</main>
+	<h1>Comments</h1>
+	<section id="commentsSection">
+	</section>
 	<form method="POST">
 		<label id="commentLabel" for="commentBox">Leave a comment (max 200 chars):<br>
 			<textarea id="commentBox" required name="comment" rows="8", cols="50"><%= locals.comment %></textarea>
 		</label><br>
 		<button id="submitButton" type="submit">Submit</button>
 	</form>
-	<input type="button" value="Go back!" onclick="history.back()">
 </body>
 </html>
