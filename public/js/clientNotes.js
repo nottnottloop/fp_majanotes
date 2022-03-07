@@ -11,13 +11,7 @@ function renderNotes(data) {
 	notesGrid.style.opacity = "1";
 
 	for (let i = 0; i < notesCount; i++) {
-		const heart = document.querySelector(`#heart${i}`);
-		const thumbs = document.querySelector(`#thumbs${i}`);
-		const neutral = document.querySelector(`#neutral${i}`);
-
-		addEmojiFunctionality(heart, "heart", i);
-		addEmojiFunctionality(thumbs, "thumbs", i);
-		addEmojiFunctionality(neutral, "neutral", i);
+		addAllEmojiFunctionality(i);
 	}
 }
 

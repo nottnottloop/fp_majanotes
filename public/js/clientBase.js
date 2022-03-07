@@ -19,3 +19,13 @@ function updateTextBoxCounter(e) {
     document.querySelector('#charNum').textContent = 200 - len;
   }
 }
+
+function addAllEmojiFunctionality(id) {
+	const heart = document.querySelector(`#heart${id}`);
+	const thumbs = document.querySelector(`#thumbs${id}`);
+	const neutral = document.querySelector(`#neutral${id}`);
+
+	addEmojiFunctionality(heart, "heart", id);
+	addEmojiFunctionality(thumbs, "thumbs", id);
+	addEmojiFunctionality(neutral, "neutral", id);
+}
