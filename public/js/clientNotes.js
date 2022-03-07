@@ -61,7 +61,7 @@ function addEmojiFunctionality(element, emoji, id) {
 		let xhr = new XMLHttpRequest();
 		xhr.open("POST", `${protocol}//${host}/emoji`);
 		xhr.setRequestHeader('Content-Type', 'application/json');
-		let str = JSON.stringify({emoji:emoji, index:id})
+		let str = JSON.stringify({emoji:emoji, id:id})
 		console.log(str)
 		xhr.send(JSON.stringify({
 			emoji: emoji,
