@@ -22,6 +22,6 @@ app.use("/new", newRouter);
 app.use("/emoji", emojiRouter);
 app.use("/comment", commentRouter);
 
-app.listen(3000, ()=>{
-    console.log("MajaNotes listening on port 3000")
-});
+
+
+module.exports=app;
