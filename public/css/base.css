@@ -63,9 +63,17 @@ figure {
 	max-width: 10%;
 }
 
-.disabled-link{
+.disabledLink{
 	cursor: default;
 	pointer-events: none;        
 	text-decoration: none;
 	color: black;
+}
+
+.selectedGif {
+	border: 5px solid greenyellow;
+}
+
+#giphyGifs {
+	display: flex;
 }

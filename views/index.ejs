@@ -36,13 +36,14 @@
 					<option value="red">Red</option>
 					<option value="yellow">Yellow</option>
 				</select><br>
+				</label>
 				<label for="giphySearch">Search for GIFs</label>
 				<input id="giphySearch" type="search">
 				<button id="giphyButton">Go</button>
 				<button id="giphyRemove">Remove GIF</button>
 				<input id="giphyUrl" name="gif">
 				<h2 id="selectGifText"><br>Select your GIF:</h2>
-				<a class="disabled-link" href="javascript:void(0)"><div id="giphyGifs"></div></a>
+				<div id="giphyGifs"></div>
 			</label>
 			<h3 id="errorMessages"><%- locals.message %></h3>
 			<button id="submitButton" type="submit">Submit</button>

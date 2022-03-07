@@ -17,20 +17,30 @@ document.querySelector("#giphyButton").addEventListener('click', e => {
 	.then(content => {
 		//data, pagination, meta
 		console.log(content.data)
-		content.data.forEach(e => {
+		for (let i = 0; i < content.data.length; i++) {
 			//figure for body of image
-			let fig = document.createElement('figure');
+			let fig = document.createElement(`figure${i}`);
 			let img = document.createElement('img');
 			//fig caption for a caption of an image
 			let fc = document.createElement('figcaption');
-			img.src = e.images.downsized.url;
-			img.alt = e.title;
-			fc.textContent = e.title;
+			img.src = content.data[i].images.downsized.url;
+			img.alt = content.data[i].title;
+			fc.textContent = content.data[i].title;
 			fig.appendChild(img);
 			fig.appendChild(fc);
 			//this actually makes the image render on the page
 			giphyGifs.insertAdjacentElement("beforeend", fig);
-		})
+
+			fig.addEventListener("click", () => {
+				selectedGif = img.src;
+				console.log(selectedGif);
+
+				for (const e of giphyGifs.children) {
+					e.classList.remove("selectedGif");
+				}
+				fig.classList.add("selectedGif");
+			});
+		}
 
 		selectGifText.style.display = "initial";
 		//this was all successful, so we save the selected gif for later
