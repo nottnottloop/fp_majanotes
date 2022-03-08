@@ -6,7 +6,7 @@ router.get("/", (req, res)=>{
 
 router.post("/input", (req, res)=>{
     console.log(req.body.loginuser,req.body.loginpass)
-    res.send(JSON.stringify({username: req.body.loginuser, password: req.body.loginpass}))
+    res.send(JSON.stringify({username: req.body.reguser, password: req.body.regpass}))
 })
 
 module.exports =router;
