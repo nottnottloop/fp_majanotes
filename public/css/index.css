@@ -10,30 +10,38 @@ a:hover {
 	text-decoration: none;
 }
 
-.createBtn {
+#createButton {
 	position: absolute;
-    top: -61%;
-    left: 86%;
-    border-radius: 20px;
-    padding: 10px 0px;
-    cursor: pointer;
-    background-color: lightgray;
-    color: black;
-    font-size: 2vw;
-    width: 15%;
-    text-align: center;
-	font-weight: normal;
+	top: 0;
+	right: 30%;
+}
 
+#loginButton {
+	position: absolute;
+	top: 0;
+	right: 10%;
+}
+
+.mainBtn {
+	border-radius: 20px;
+	padding: 10px 0px;
+	cursor: pointer;
+	background-color: lightgray;
+	color: black;
+	font-size: 2vw;
+	width: 10%;
+	text-align: center;
+	font-weight: normal;
 }
 
 .title {
-	position: relative;
+		position: relative;
+		left: 100px;
     /* display: flex; */
     flex-direction: row; 
     font-family: 'Indie Flower', cursive; 
     font-weight: bold; 
     font-size: 4rem;
-	margin: 10%;
 }
 
 
@@ -41,7 +49,8 @@ button {
     margin-left: auto;
     border-radius: 20px;
     border-style: none;
-    padding: 10px;
+    padding: 5px;
+		background-color: gainsboro;
     cursor: pointer;
 }
 
@@ -104,8 +113,6 @@ h2.noteBody {
 	}
 }
 
-
-
 .noteImage {
 	width: 50%;
 	height: 50%;
@@ -115,4 +122,8 @@ h2.noteBody {
 	margin-right: auto;
 	display: block;
 	/*display: none;*/
+}
+
+#mainArea {
+	margin: 0 !important;
 }
