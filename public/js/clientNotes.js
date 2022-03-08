@@ -107,3 +107,5 @@ function addEmojiFunctionality(element, emoji, id) {
 		usedEmojiButton.textContent = parseInt(usedEmojiButton.textContent) + 1;
 	});
 }
+
+module.exports = {renderNotes}
