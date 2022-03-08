@@ -8,6 +8,10 @@ describe('API server', () => {
         title: 'Hi',
         note: "Hi",
     };
+    let testUser= {
+        loginuser: "Michael",
+        loginpass: '123'
+    }
 
     beforeAll(() => {
         // start the server and store it in the api variable
@@ -42,6 +46,12 @@ describe('API server', () => {
     })
     it('responds to post /comment/:id with unknown id with error status 500', (done )=>{
         request(api).post('/comment/20000000').send({comment: "HI"}).expect(500,done)
+    })
+    it('gets login page', (done )=>{
+        request(api).get('/login').expect(200,done)
+    })
+    it('posts data to login/input ', (done )=>{
+        request(api).post('/login/input').send(testUser).expect(200, done)
     })
 
     it('retrieves a note by id', (done) => {

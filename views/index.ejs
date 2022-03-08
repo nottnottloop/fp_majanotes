@@ -4,6 +4,8 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
 	<link rel="stylesheet" href="/public/css/base.css">
 	<link rel="stylesheet" href="/public/css/index.css">
 	<link rel="stylesheet" href="/public/css/new.css">
@@ -14,10 +16,14 @@
 	<script defer src="/public/js/clientNew.js"></script>
 	<title>MajaNotes</title>
 </head>
-<body>
-	<!-- This button's href means it will look like a link but really we're just using javascript for everything here -->
-	<h1 id="createButton"><a href="javascript:void(0)">+create</a></h1>
-	<h1>MajaNotes</h1>
+<body class="bg-white">
+	<section id="mainArea" class="bg-light py-4 my-5">
+			<header class="mx-3 title">
+				<h1 class="text-danger title">MajaNotes</h1>
+				<a id="createButton" href="javascript:void(0);" class="mainBtn">+ create</a>
+				<a id="loginButton" href="/login" class="mainBtn">Login</a>
+			</header>
+        <div class="container">
 	<section id="newMajanote">
 		<h1>New MajaNote</h1>
 		<form action="./new" method="POST">
@@ -49,7 +55,8 @@
 			<button id="submitButton" type="submit">Submit</button>
 		</form>
 	</section>
-	<main id="notesGrid">
-	</main>
+		<div class="row" id="notesGrid"></div>
+    </section>
+	<!-- This button's href means it will look like a link but really we're just using javascript for everything here -->
 </body>
 </html>
