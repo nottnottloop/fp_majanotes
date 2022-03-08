@@ -62,7 +62,6 @@ button {
 }
 
 
-
 .card {
     border-radius: 20px;
 	margin: 10px 30px;
@@ -103,10 +102,14 @@ h2.noteBody {
 
 #notesGrid {
 	opacity: 0;
-	transition: all 0.5s ease-in;
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	margin-top: 0px;
+    transition: all 0.5s ease-in;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 0px;
+    width: 77%;
+    text-align: center;
+    align-items: center;
+    margin-left: 70px;
 	
 }
 @media screen and (max-width: 1200px) {
