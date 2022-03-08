@@ -29,8 +29,8 @@ describe('API server', () => {
     it('responds to get /data with status 200', (done) => {
         request(api).get('/data').expect(200, done);
     });
-    it('responds to get /new with status 200', (done) => {
-        request(api).get('/new').expect(200, done);
+    it('responds to get /new with status 404', (done) => {
+        request(api).get('/new').expect(404, done);
     });
 
     it('responds to post /new with redirection status 302', (done) => {

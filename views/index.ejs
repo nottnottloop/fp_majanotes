@@ -6,15 +6,49 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/public/css/base.css">
 	<link rel="stylesheet" href="/public/css/index.css">
+	<link rel="stylesheet" href="/public/css/new.css">
 	<link rel="icon" href="/public/favicon.ico">
 	<script defer src="/public/js/clientBase.js"></script>
 	<script defer src="/public/js/clientIndex.js"></script>
 	<script defer src="/public/js/clientNotes.js"></script>
+	<script defer src="/public/js/clientNew.js"></script>
 	<title>MajaNotes</title>
 </head>
 <body>
-	<h1 id="createButton"><a href="/new">+create</a></h1>
+	<!-- This button's href means it will look like a link but really we're just using javascript for everything here -->
+	<h1 id="createButton"><a href="javascript:void(0)">+create</a></h1>
 	<h1>MajaNotes</h1>
+	<section id="newMajanote">
+		<h1>New MajaNote</h1>
+		<form action="./new" method="POST">
+			<label id="titleLabel" for="titleBox">Title:
+				<input type="text" required id="titleBox" name="title" value="<%= locals.title %>">
+			</label><br>
+			<label id="noteLabel" for="noteBox">MajaNote: (max 200 chars)<br>
+				<textarea id="noteBox" required name="note" rows="8", cols="50"><%= locals.note %></textarea>
+			<label id="charNum" for="noteBox">200
+			</label></label><br>
+			<label id="colorLabel" for="colorDropdown">Color:
+				<select name="color" id="colorDropdown">
+					<option selected value="white">White</option>
+					<option value="blue">Blue</option>
+					<option value="green">Green</option>
+					<option value="red">Red</option>
+					<option value="yellow">Yellow</option>
+				</select><br>
+				</label>
+				<label for="giphySearch">Search for GIFs</label>
+				<input id="giphySearch" type="search">
+				<button id="giphyButton">Go</button>
+				<button id="giphyRemove">Remove GIF</button>
+				<input id="giphyUrl" name="gif">
+				<h2 id="selectGifText"><br>Select your GIF:</h2>
+				<div id="giphyGifs"></div>
+			</label>
+			<h3 id="errorMessages"><%- locals.message %></h3>
+			<button id="submitButton" type="submit">Submit</button>
+		</form>
+	</section>
 	<main id="notesGrid">
 	</main>
 </body>
