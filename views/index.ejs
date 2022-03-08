@@ -16,30 +16,13 @@
 	<script defer src="/public/js/clientNew.js"></script>
 	<title>MajaNotes</title>
 </head>
-<body class="bg-white" >
-
-	<section class="bg-light py-4 my-5">
-        
-        
+<body class="bg-white">
+	<section id="mainArea" class="bg-light py-4 my-5">
         <div class="container">
             <header class="mx-3 title">
-                <h1 class=" text-danger title">MajaNotes</h1>
-
-                <a href="/new" class="createBtn">+ create
-				</a>
-                
+                <h1 class="text-danger title">MajaNotes</h1>
+                <a id="createButton" href="javascript:void(0);" class="createBtn">+ create</a>
         </header>
-				
-		<div class="row" id="notesGrid"></div>
-
-	
-    </section>
-
-	
-<body>
-	<!-- This button's href means it will look like a link but really we're just using javascript for everything here -->
-	<h1 id="createButton"><a href="javascript:void(0)">+create</a></h1>
-	<h1>MajaNotes</h1>
 	<section id="newMajanote">
 		<h1>New MajaNote</h1>
 		<form action="./new" method="POST">
@@ -71,7 +54,8 @@
 			<button id="submitButton" type="submit">Submit</button>
 		</form>
 	</section>
-	<main id="notesGrid">
-	</main>
+		<div class="row" id="notesGrid"></div>
+    </section>
+	<!-- This button's href means it will look like a link but really we're just using javascript for everything here -->
 </body>
 </html>
