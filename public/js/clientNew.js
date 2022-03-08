@@ -3,6 +3,7 @@ let selectedGif = '';
 
 const giphyGifs = document.querySelector('#giphyGifs');
 const selectGifText = document.querySelector('#selectGifText');
+const giphyRemove = document.querySelector('#giphyRemove');
 
 document.querySelector("#giphyButton").addEventListener('click', e => {
 	e.preventDefault();
@@ -45,6 +46,7 @@ document.querySelector("#giphyButton").addEventListener('click', e => {
 		}
 
 		selectGifText.style.display = "initial";
+		giphyRemove.style.display = "initial";
 		//this was all successful, so we save the selected gif for later
 		selectedGif = content.data[0].images.downsized.url;
 	})
@@ -53,10 +55,11 @@ document.querySelector("#giphyButton").addEventListener('click', e => {
 	})
 });
 
-document.querySelector("#giphyRemove").addEventListener('click', e => {
+giphyRemove.addEventListener('click', e => {
 	e.preventDefault();
 	selectedGif = '';
 	selectGifText.style.display = "none";
+	giphyRemove.style.display = "none";
 	giphyGifs.innerHTML = '';
 });
 

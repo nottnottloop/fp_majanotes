@@ -3,6 +3,7 @@
 }
 
 #selectGifText {
+	margin-top: 100px;
 	display: none;
 }
 
@@ -11,7 +12,6 @@ label {
 }
 
 #giphyGifs {
-	margin-top: 100px;
 	display: relative;
 }
 
@@ -36,4 +36,12 @@ figure {
 .sticky-content {
 	width: 115%;
 	height: 115%;
+}
+
+#giphyRemove {
+	display: none;
+	position: absolute;
+	white-space: nowrap;
+	top: 286px;
+	right: -70px;
 }

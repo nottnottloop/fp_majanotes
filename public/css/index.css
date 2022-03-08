@@ -139,20 +139,20 @@ h2.noteBody {
 form {
     font-size: 18px;
     padding: 36px;
-	font-family: 'Indie Flower', cursive; 
-	font-weight: bold;
-
+    font-family: 'Indie Flower', cursive; 
+    font-weight: bold;
+    position: absolute;
+    left: 4px;
+    top: 35px;
 }
 
+/*leave this unclosed comment exactly how it is. didn't notice it, built entire css around this being here, leave it*/
 * Some positioning and ratios */
 .sticky-container {
   /* max-width: 270px; */
   margin-left: 20%;
   position: relative;
-}
-
-.sticky-container {
-    /*margin-left: 20%;*/
+  margin-bottom: 44px;
 }
 
 .sticky-outer {
@@ -160,6 +160,7 @@ form {
   padding-top: 35%;
   position: relative;
   width: 50%;
+  margin-bottom:40px;
 }
 
 .sticky {
