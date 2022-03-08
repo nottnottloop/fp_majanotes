@@ -11,10 +11,10 @@ router
   .post((req, res) => {
     //replace all html tags so that we don't have code injections
     //without this, you can type valid html into the page and it will render!
-    req.body.title = req.body.title.replaceAll("<", "&lt;")
-    req.body.title = req.body.title.replaceAll(">", "&gt;")
-    req.body.note = req.body.note.replaceAll("<", "&lt;")
-    req.body.note = req.body.note.replaceAll(">", "&gt;")
+    req.body.title = req.body.title.replace(/</g, "&lt;")
+    req.body.title = req.body.title.replace(/>/g, "&gt;")
+    req.body.note = req.body.note.replace(/</g, "&lt;")
+    req.body.note = req.body.note.replace(/>/g, "&gt;")
 
     //perform our data validation function. 
     //if the data is not valid, make sure we don't continue with the rest of this post request as if it was successful. we do this with a return
