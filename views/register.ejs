@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/public/css/base.css">
+	<link rel="stylesheet" href="/public/css/index.css">
+	<link rel="stylesheet" href="/public/css/comment.css">
+	<link rel="icon" href="/public/favicon.ico">
+	<script defer src="/public/js/clientBase.js"></script>
+	<script defer src="/public/js/clientComment.js"></script>
+	<script defer src="/public/js/clientNotes.js"></script>
+	<title>Leave a comment</title>
+</head>
+<body>
+	<h1>Leave a comment</h1>
+	<h1 id="homeButton"><a href="/">home</a></h1>
+	<main id="notesGrid">
+	</main>
+	<section id="commentsSection">
+		<h1 id="commentHeader"></h1>
+	</section>
+	<form method="POST">
+		<label id="commentLabel" for="commentBox">Leave a comment (max 200 chars):<br>
+			<textarea id="commentBox" required name="comment" rows="8", cols="50"><%= locals.comment %></textarea>
+			<label id="charNum" for="comentBox">200
+		</label></label><br>
+		<button id="submitButton" type="submit">Submit</button>
+	</form>
+</body>
+</html>
