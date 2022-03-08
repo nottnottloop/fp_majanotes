@@ -17,21 +17,37 @@
 	<title>MajaNotes</title>
 </head>
 <body class="bg-white">
+	<div class="container">
 	<section id="mainArea" class="bg-light py-4 my-5">
 			<header class="mx-3 title">
 				<h1 class="text-danger title">MajaNotes</h1>
 				<a id="createButton" href="javascript:void(0);" class="mainBtn">+ create</a>
 				<a id="loginButton" href="/login" class="mainBtn">Login</a>
 			</header>
-        <div class="container">
-	<section id="newMajanote">
-		<h1>New MajaNote</h1>
-		<form action="./new" method="POST">
+
+			<section id="newMajanote">
+			<div class="sticky-container">
+				<div class="sticky-outer">
+				  <div class="sticky">
+					<svg width="0" height="0">
+					  <defs>
+						<clipPath id="stickyClip" clipPathUnits="objectBoundingBox">
+						  <path
+							d="M 0 0 Q 0 0.69, 0.03 0.96 0.03 0.96, 1 0.96 Q 0.96 0.69, 0.96 0 0.96 0, 0 0"
+							stroke-linejoin="round"
+							stroke-linecap="square"
+						  />
+						</clipPath>
+					  </defs>
+					</svg>
+					<div class="sticky-content">
+					  <form action="./new" method="POST" >
+			<h3>Create Your Note</h3>
 			<label id="titleLabel" for="titleBox">Title:
 				<input type="text" required id="titleBox" name="title" value="<%= locals.title %>">
 			</label><br>
 			<label id="noteLabel" for="noteBox">MajaNote: (max 200 chars)<br>
-				<textarea id="noteBox" required name="note" rows="8", cols="50"><%= locals.note %></textarea>
+				<textarea id="noteBox" required name="note" rows="5", cols="40"><%= locals.note %></textarea>
 			<label id="charNum" for="noteBox">200
 			</label></label><br>
 			<label id="colorLabel" for="colorDropdown">Color:
@@ -54,7 +70,13 @@
 			<h3 id="errorMessages"><%- locals.message %></h3>
 			<button id="submitButton" type="submit">Submit</button>
 		</form>
-	</section>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</section>
+	
+		</div>
 		<div class="row" id="notesGrid"></div>
     </section>
 	<!-- This button's href means it will look like a link but really we're just using javascript for everything here -->
