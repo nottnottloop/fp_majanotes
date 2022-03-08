@@ -9,3 +9,24 @@
 label {
 	margin: 0;
 }
+
+#giphyGifs {
+	display: relative;
+}
+
+.selectedGif {
+	border: 5px solid lime;
+}
+
+.gifFigure {
+	display: inline-block;
+}
+
+figure {
+	margin: 0;
+}
+
+.sticky-content {
+	width: 115%;
+	height: 115%;
+}

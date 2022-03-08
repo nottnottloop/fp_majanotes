@@ -6,7 +6,7 @@ const selectGifText = document.querySelector('#selectGifText');
 
 document.querySelector("#giphyButton").addEventListener('click', e => {
 	e.preventDefault();
-	let url = `http://api.giphy.com/v1/gifs/search?api_key=${apiKey}&limit=14&q=`
+	let url = `http://api.giphy.com/v1/gifs/search?api_key=${apiKey}&limit=7&q=`
 	//trim method removes extra whitespace at the ends of the query
 	let str = document.querySelector("#giphySearch").value.trim();
 	//concat to add the contents of str onto url
@@ -19,7 +19,9 @@ document.querySelector("#giphyButton").addEventListener('click', e => {
 		console.log(content.data)
 		for (let i = 0; i < content.data.length; i++) {
 			//figure for body of image
-			let fig = document.createElement(`figure${i}`);
+			let fig = document.createElement(`figure`);
+			fig.id = `figure${i}`
+			fig.classList.add(`gifFigure`);
 			let img = document.createElement('img');
 			//fig caption for a caption of an image
 			let fc = document.createElement('figcaption');
