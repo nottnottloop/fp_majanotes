@@ -39,7 +39,7 @@ router.post("/input", (req, res)=>{
     userData.push(newUser)
     userJson= JSON.stringify(userData, null, 2);
     fs.writeFileSync(path.resolve(__dirname, "../data/userData.json"), userJson, "utf-8");
-    res.redirect("/")
+    res.redirect("/login")
 })
 
 
