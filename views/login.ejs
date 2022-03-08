@@ -4,29 +4,43 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
 	<link rel="stylesheet" href="/public/css/base.css">
 	<link rel="stylesheet" href="/public/css/index.css">
-	<link rel="stylesheet" href="/public/css/comment.css">
+	<link rel="stylesheet" href="/public/css/new.css">
 	<link rel="icon" href="/public/favicon.ico">
 	<script defer src="/public/js/clientBase.js"></script>
-	<script defer src="/public/js/clientComment.js"></script>
+	<script defer src="/public/js/clientIndex.js"></script>
 	<script defer src="/public/js/clientNotes.js"></script>
-	<title>Leave a comment</title>
+	<script defer src="/public/js/clientNew.js"></script>
+	<title>MajaNotes</title>
 </head>
-<body>
-	<h1>Leave a comment</h1>
-	<h1 id="homeButton"><a href="/">home</a></h1>
-	<main id="notesGrid">
-	</main>
-	<section id="commentsSection">
-		<h1 id="commentHeader"></h1>
-	</section>
-	<form method="POST">
-		<label id="commentLabel" for="commentBox">Leave a comment (max 200 chars):<br>
-			<textarea id="commentBox" required name="comment" rows="8", cols="50"><%= locals.comment %></textarea>
-			<label id="charNum" for="comentBox">200
-		</label></label><br>
-		<button id="submitButton" type="submit">Submit</button>
-	</form>
+<body class="bg-white">
+	<section id="mainArea" class="bg-light py-4 my-5">
+			<header class="mx-3 title">
+				<h1 class="text-danger title">MajaNotes</h1>
+				<a id="createButton" href="/" class="mainBtn">Home</a>
+				<a id="loginButton" href="/register" class="mainBtn">Register</a>
+			</header>
+        <div class="container">
+	<section id="newMajanote">
+		<h1>Heres our login page</h1>
+		<form action="/login/input" method="POST">
+			<label id="loginLabel" for="commentBox">Enter Username:<br>
+			<input type="text" required name="loginuser">
+			<label id="passwordLabel" type="password">Enter Password:</label>
+			<input type="password" required name="loginpass">
+			<button id="submitButton" type="submit">Submit</button>
+		</form>
+		
+
 </body>
 </html>
+
+
+
+
+
+
+
