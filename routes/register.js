@@ -18,7 +18,9 @@ router.post("/input", (req, res)=>{
       userData = JSON.parse(userJson);
       let userExists= userData.filter(d=>d.username==req.body.reguser)
       if(userExists.length!==0) {
-          res.send(`Please choose a different username:${req.body.reguser} already exists in our file system`)
+          let e=`Please choose a different username ${req.body.reguser} already exists in our file system`
+          res.render('regerr.ejs',{error: e} )
+
           return;
       }
 
