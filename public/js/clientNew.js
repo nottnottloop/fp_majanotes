@@ -45,7 +45,7 @@ document.querySelector("#giphyButton").addEventListener('click', e => {
 			});
 		}
 
-		selectGifText.style.display = "initial";
+		selectGifText.style.display = "block";
 		giphyRemove.style.display = "initial";
 		//this was all successful, so we save the selected gif for later
 		selectedGif = content.data[0].images.downsized.url;
