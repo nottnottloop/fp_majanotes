@@ -31,6 +31,8 @@ router
       notesJson = [];
       notesData = [];
     }
+    const noteToDelete = notesData.find(e => e.id == req.params.id);
+    console.log(`\nDeleted post ID ${noteToDelete.id} with title ${noteToDelete.title} by ${noteToDelete.author}`)
     notesData = notesData.filter(e => e.id != req.params.id);
     notesJson = JSON.stringify(notesData, null, 2);
     fs.writeFileSync(path.resolve(__dirname, "../data/notesData.json"), notesJson, "utf-8");

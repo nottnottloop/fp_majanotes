@@ -114,7 +114,9 @@ function newNote(req, res, editing=false) {
 
   //write the json file
   fs.writeFileSync(path.resolve(__dirname, "../data/notesData.json"), notesJson, "utf-8");
-  console.log(`\nNew note added:\nAuthor: ${debugAuthor}\nID: ${newNote.id}\nTitle: ${newNote.title}\nNote: ${newNote.note}\nColor: ${newNote.color}\nGIF: ${debugGif}`)
+  let term;
+  editing ? term = 'Note edited:' : term = 'New note added:';
+  console.log(`\n${term}\nAuthor: ${debugAuthor}\nID: ${newNote.id}\nTitle: ${newNote.title}\nNote: ${newNote.note}\nColor: ${newNote.color}\nGIF: ${debugGif}`)
   res.redirect("/");
 }
 
