@@ -45,8 +45,20 @@ figure {
 .sticky-content {
 	width: 115%;
 	height: 115%;
+}  
+
+@media screen and (max-width: 1200px) {
+	.sticky-content {
+			height: 135%;
+	}
 }
 
+@media screen and (max-width: 992px) {
+  .sticky-content {
+    height: 190%;
+		width: 130%;
+  }
+}
 #giphyRemove {
 	display: none;
 	position: absolute;

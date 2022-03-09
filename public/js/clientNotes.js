@@ -142,7 +142,7 @@ function addDeleteButtons(data, id) {
 						'Content-Type': 'application/json'
 					},
 					"body": JSON.stringify({username: localStorage.getItem('username'), password: localStorage.getItem('password')})})
-			.then(resp => console.log(resp))
+			.then(resp => location.reload())
 			.catch(err => console.log(err));
 		});
 	}
