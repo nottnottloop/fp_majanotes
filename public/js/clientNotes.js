@@ -11,19 +11,32 @@ function renderNotes(data) {
 	notesGrid.style.opacity = "1";
 
 	for (let i = 0; i < notesCount; i++) {
-		const heart = document.querySelector(`#heart${i}`);
-		const thumbs = document.querySelector(`#thumbs${i}`);
-		const neutral = document.querySelector(`#neutral${i}`);
-
-		addEmojiFunctionality(heart, "heart", i);
-		addEmojiFunctionality(thumbs, "thumbs", i);
-		addEmojiFunctionality(neutral, "neutral", i);
+		addAllEmojiFunctionality(i);
 	}
 }
 
+// `<div class="card" >
+// <a href="${window.location.href}comment/${data.id}" class="gif-img" >
+// </div>
+// <div class="card-body">
+// <h3 class="card-title"><a href="#" class="text-secondary">What is Lorem Ipsum?</a></h3>
+// <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p>
+// <div class="reactions"><span>❤️</span><span>👍</span><span>😑</span></div>
+// <a href="#" class="btn btn-danger">Read More</a>
+// </div>`
+
 function buildNoteElement(data) {
-	let newElement = document.createElement("section");
-	newElement.classList.add("noteBody");
+	let newElement = document.createElement("div");
+	
+	let cardCol = document.createElement("div")
+	cardCol.classList.add("col-md-6", "col-lg-4")
+	let cardMargin = document.createElement("div")
+	cardMargin.classList.add("card", "my-3");
+	
+	cardMargin.insertAdjacentElement('afterend', newElement)
+	newElement.insertAdjacentElement('afterend', cardMargin)
+	cardCol.insertAdjacentElement('beforebegin', cardMargin)
+	
 	//notes aren't guaranteed to have 'heart', 'thumbs' or 'neutral' fields
 	//if they don't exist, make sure the count values equal 0 instead of undefined
 	//that's why we can't just use e.g. data[i].heart 
@@ -35,6 +48,7 @@ function buildNoteElement(data) {
 		commentCount = data['comments'].length;
 	}
 
+	newElement.classList.add("card");
 	let commentLinkElement = document.createElement("a");
 	let commentButtonElement = document.createElement("button");
 
@@ -51,13 +65,17 @@ function buildNoteElement(data) {
 	}
 
 	if (data.gif) {
-		newElement.insertAdjacentHTML("beforeend", `<img class="noteImage" src="${data.gif}">`);
+		newElement.insertAdjacentHTML("beforeend", `<img class="gif-img" src="${data.gif}">`);
 	}
-	newElement.insertAdjacentHTML("beforeend", `<h2 class="noteTitle">${data.title}</h2>`);
-	newElement.insertAdjacentHTML("beforeend", `<p class="noteContent">${data.note}</p>`);
-	newElement.insertAdjacentHTML("beforeend", `<button id="heart${data.id}" class="emojiButton">❤️</p><p class="emojiCount" id="heartCount${data.id}">${heartCount}</p>`);
-	newElement.insertAdjacentHTML("beforeend", `<button id="neutral${data.id}" class="emojiButton">😐</p><p class="emojiCount" id="neutralCount${data.id}">${neutralCount}</p>`);
-	newElement.insertAdjacentHTML("beforeend", `<button id="thumbs${data.id}" class="emojiButton">👎</p><p class="emojiCount" id="thumbsCount${data.id}">${thumbsCount}</p>`);
+
+	let cardBody = document.createElement("div")
+	cardBody.classList.add("card-body")
+	cardBody.insertAdjacentHTML("beforeend", `<h2 class="card-title">${data.title}</h2>`);
+	cardBody.insertAdjacentHTML("beforeend", `<p class="noteContent">${data.note}</p>`);
+	cardBody.insertAdjacentHTML("beforeend", `<button id="heart${data.id}" class="emojiButton">❤️</p><p class="emojiCount" id="heartCount${data.id}">${heartCount}</p>`);
+	cardBody.insertAdjacentHTML("beforeend", `<button id="neutral${data.id}" class="emojiButton">😐</p><p class="emojiCount" id="neutralCount${data.id}">${neutralCount}</p>`);
+	cardBody.insertAdjacentHTML("beforeend", `<button id="thumbs${data.id}" class="emojiButton">👎</p><p class="emojiCount" id="thumbsCount${data.id}">${thumbsCount}</p>`);
+	newElement.insertAdjacentElement('beforeend', cardBody)
 	newElement.style.backgroundColor = data.color;
 	return newElement;
 }
@@ -89,3 +107,5 @@ function addEmojiFunctionality(element, emoji, id) {
 		usedEmojiButton.textContent = parseInt(usedEmojiButton.textContent) + 1;
 	});
 }
+
+module.exports = {renderNotes, buildNoteElement, scoreAndSortNotes, addEmojiFunctionality}
