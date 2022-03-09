@@ -51,3 +51,7 @@ img {
 #accountError {
 	margin-top: 50px;
 }
+
+.title {
+	user-select: none;
+}
