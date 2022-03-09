@@ -15,16 +15,26 @@ const redirectLogin =()=>{
     return
 }
 
+document.getElementById('logoutButton').addEventListener('click', ()=>{
+    window.localStorage.clear()
+    console.log(user)
+    user=window.localStorage.clear();
+    dataFetch();
+})
+
+function dataFetch(){
 user?fetch(`${protocol}//${host}/data`)
 	.then(resp => resp.json())
-	.then(data => renderNotes(data))
-	.catch(e => console.log(`Error: ${e}`)):
+	.then(data => renderNotes(data)):
     redirectLogin();
-if (errors) {
-        newMajanote.style.display = "initial";
-} else {
-        newMajanote.style.display = "none";
+
 }	
+
+if (errors) {
+    newMajanote.style.display = "initial";
+} else {
+    newMajanote.style.display = "none";
+}
     
 
 createButton.addEventListener('click', () => {
@@ -34,5 +44,7 @@ createButton.addEventListener('click', () => {
             newMajanote.style.display = "none";
     }
 });
+
+dataFetch();
     
 
