@@ -5,13 +5,13 @@ const app = express();
 
 const notesRouter = require("./routes/index");
 const dataRouter = require("./routes/data");
-const newRouter = require("./routes/new")['router'];
+const newRouter = require("./routes/new");
 const editRouter = require("./routes/edit");
 const deleteRouter = require("./routes/delete");
 const emojiRouter = require("./routes/emoji");
 const commentRouter = require("./routes/comment");
-const loginRouter= require("./routes/login")
-const registerRouter= require("./routes/register")
+const loginRouter= require("./routes/login");
+const registerRouter= require("./routes/register");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

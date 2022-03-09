@@ -3,23 +3,25 @@ const fs = require("fs");
 const path = require('path');
 const router = express.Router();
 
-const note = require(path.resolve(__dirname, "../model/noteModel"));
-const constants = require(path.resolve(__dirname, "constants"));
 const sharedFunctions = require(path.resolve(__dirname, "sharedFunctions"));
 
 router
   .route("/:id")
   .post((req, res) => {
+    //verify user
+    if (sharedFunctions.checkUserValid(req, res) != 'ok') {
+      return res.send(403);
+    }
     let usersJson;
     let usersData;
     try {
-      usersJson = fs.readFileSync(path.resolve(__dirname, "../data/usersJson.json"), "utf-8");
+      usersJson = fs.readFileSync(path.resolve(__dirname, "../data/userData.json"), "utf-8");
       usersData = JSON.parse(usersJson);
     } catch (err) {
+      console.log(err);
       res.sendStatus(418);
     }
 
-    console.log(req.body.username)
     let notesJson;
     let notesData;
     try {
