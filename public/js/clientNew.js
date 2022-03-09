@@ -1,11 +1,13 @@
 const apiKey = `B9l8mpk3zgHi1IkTjbd0IK5PcGqAVGAp`;
 let selectedGif = '';
-const protocol = window.location.protocol;
-const host = window.location.host;
+
+const giphyGifs = document.querySelector('#giphyGifs');
+const selectGifText = document.querySelector('#selectGifText');
+const giphyRemove = document.querySelector('#giphyRemove');
 
 document.querySelector("#giphyButton").addEventListener('click', e => {
 	e.preventDefault();
-	let url = `http://api.giphy.com/v1/gifs/search?api_key=${apiKey}&limit=1&q=`
+	let url = `http://api.giphy.com/v1/gifs/search?api_key=${apiKey}&limit=32&q=`
 	//trim method removes extra whitespace at the ends of the query
 	let str = document.querySelector("#giphySearch").value.trim();
 	//concat to add the contents of str onto url
@@ -16,20 +18,35 @@ document.querySelector("#giphyButton").addEventListener('click', e => {
 	.then(content => {
 		//data, pagination, meta
 		console.log(content.data)
-		console.log('Meta', content.meta)
-		//figure for body of image
-		let fig = document.createElement('figure');
-		let img = document.createElement('img');
-		//fig caption for a caption of an image
-		let fc = document.createElement('figcaption');
-		img.src = content.data[0].images.downsized.url;
-		img.alt = content.data[0].title;
-		fc.textContent = content.data[0].title;
-		fig.appendChild(img);
-		fig.appendChild(fc);
-		//this actually makes the image render on the page
-		document.querySelector('#giphyGifs').innerHTML = fig.innerHTML;
+		for (let i = 0; i < content.data.length; i++) {
+			//figure for body of image
+			let fig = document.createElement(`figure`);
+			fig.id = `figure${i}`
+			fig.classList.add(`gifFigure`);
+			let img = document.createElement('img');
+			//fig caption for a caption of an image
+			//let fc = document.createElement('figcaption');
+			img.src = content.data[i].images.downsized.url;
+			img.alt = content.data[i].title;
+			//fc.textContent = content.data[i].title;
+			fig.appendChild(img);
+			//fig.appendChild(fc);
+			//this actually makes the image render on the page
+			giphyGifs.insertAdjacentElement("beforeend", fig);
 
+			fig.addEventListener("click", () => {
+				selectedGif = img.src;
+				console.log(selectedGif);
+
+				for (const e of giphyGifs.children) {
+					e.classList.remove("selectedGif");
+				}
+				fig.classList.add("selectedGif");
+			});
+		}
+
+		selectGifText.style.display = "block";
+		giphyRemove.style.display = "initial";
 		//this was all successful, so we save the selected gif for later
 		selectedGif = content.data[0].images.downsized.url;
 	})
@@ -38,10 +55,12 @@ document.querySelector("#giphyButton").addEventListener('click', e => {
 	})
 });
 
-document.querySelector("#giphyRemove").addEventListener('click', e => {
+giphyRemove.addEventListener('click', e => {
 	e.preventDefault();
 	selectedGif = '';
-	document.querySelector('#giphyGifs').innerHTML = '';
+	selectGifText.style.display = "none";
+	giphyRemove.style.display = "none";
+	giphyGifs.innerHTML = '';
 });
 
 document.querySelector("#submitButton").addEventListener('click', e => {
@@ -54,6 +73,9 @@ document.querySelector("#submitButton").addEventListener('click', e => {
 	document.querySelector("#giphyUrl").value = selectedGif;
 });
 
+const noteBox = document.querySelector("#noteBox");
+noteBox.addEventListener('keyup', updateTextBoxCounter);
+noteBox.addEventListener('keydown', updateTextBoxCounter);
 
 //document.querySelector("#submitButton").addEventListener('click', e => {
 //	e.preventDefault();

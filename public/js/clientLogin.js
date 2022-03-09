@@ -9,3 +9,6 @@ user?fetch(`${protocol}//${host}/data`)
 	.then(data => renderNotes(data))
 	.catch(e => console.log(`Error: ${e}`)):
 	fetch(`${protocol}//${host}/loggedout`)
+
+
+

@@ -17,6 +17,10 @@ router.get("/", (req, res) => {
   }
 });
 
+router.get("/loggedout", (req, res) =>{
+  res.render("login.ejs")
+})
+
 //request only one note, and their comments
 router.get("/:id", (req, res) => {
   res.set('Content-Type', 'application/json');

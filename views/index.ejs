@@ -4,18 +4,85 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="/public/css/base.css">
 	<link rel="stylesheet" href="/public/css/index.css">
+	<link rel="stylesheet" href="/public/css/new.css">
 	<link rel="icon" href="/public/favicon.ico">
 	<script defer src="/public/js/clientBase.js"></script>
 	<script defer src="/public/js/clientIndex.js"></script>
 	<script defer src="/public/js/clientNotes.js"></script>
+	<script defer src="/public/js/clientNew.js"></script>
 	<title>MajaNotes</title>
 </head>
-<body>
-	<h1 id="createButton"><a href="/new">+create</a></h1>
-	<h1>MajaNotes</h1>
-	<main id="notesGrid">
-	</main>
+<body class="bg-white">
+	<div class="container">
+	<section id="mainArea" class="py-4 my-5">
+			<header class="mx-3 title">
+				<h1 class="text-danger title">MajaNotes</h1>
+				<a id="createButton" href="javascript:void(0);" class="mainBtn">+ create</a>
+				<a id="loginButton" href="/login" class="mainBtn">Login</a>
+			</header>
+
+			<section id="newMajanote">
+			<div class="sticky-container">
+				<div class="sticky-outer">
+				  <div class="sticky">
+					<svg width="0" height="0">
+					  <defs>
+						<clipPath id="stickyClip" clipPathUnits="objectBoundingBox">
+						  <path
+							d="M 0 0 Q 0 0.69, 0.03 0.96 0.03 0.96, 1 0.96 Q 0.96 0.69, 0.96 0 0.96 0, 0 0"
+							stroke-linejoin="round"
+							stroke-linecap="square"
+						  />
+						</clipPath>
+					  </defs>
+					</svg>
+					<div class="sticky-content">
+					  <form action="./new" method="POST" >
+			<h3>Create Your Note</h3>
+			<label id="titleLabel" for="titleBox">Title:
+				<input type="text" required id="titleBox" name="title" value="<%= locals.title %>">
+			</label><br>
+			<label id="noteLabel" for="noteBox">MajaNote: (max 200 chars)<br>
+				<textarea id="noteBox" required name="note" rows="5", cols="40"><%= locals.note %></textarea>
+			<label id="charNum" for="noteBox">200
+			</label></label><br>
+			<label id="colorLabel" for="colorDropdown">Color:
+				<select name="color" id="colorDropdown">
+					<option selected value="white">White</option>
+					<option value="blue">Blue</option>
+					<option value="green">Green</option>
+					<option value="red">Red</option>
+					<option value="yellow">Yellow</option>
+				</select><br>
+				</label>
+				<label for="giphySearch">Search for GIFs</label>
+				<input id="giphySearch" type="search">
+				<button id="giphyButton">Go</button>
+				<button id="giphyRemove">Remove GIF</button>
+				<input id="giphyUrl" name="gif">
+			</label>
+			<h3 id="errorMessages"><%- locals.message %></h3>
+			<button id="submitButton" type="submit">Submit</button>
+		</form>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			  <br>
+				<h2 id="selectGifText" class="mt-5">Select your GIF:</h2>
+				<div id="giphyGifs"></div>
+			</section>
+			
+			<div class="container mt-5 py-4 my-5">
+				<div id="notesGrid"></div>
+			</div>
+		</div>
+		
+		
+    </section>
+	<!-- This button's href means it will look like a link but really we're just using javascript for everything here -->
 </body>
 </html>
