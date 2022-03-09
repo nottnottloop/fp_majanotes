@@ -38,11 +38,18 @@
 	function formCallback(){
 		let loginuser=document.getElementById('loginuser')
 		let loginpass=document.getElementById('loginpass')
-		console.log(loginpass.value,loginuser.value)
+		reqOptions={method: 'POST', body: JSON.stringify({loginuser:loginuser.value,loginpass:loginpass.value}), headers:{"Content-Type": "application/json" }}
+		fetch('http://localhost:3000/login/input',reqOptions)
+		  .then(d=>window.location.href="/")
+		/*.then(res => res.text()).then(htmlStr => {
+          document.open();
+          document.write(htmlStr);
+          document.close();
+		})*/
 	}
 	form.addEventListener("submit", (e)=>{
 		e.preventDefault();
-		alert("FORM SUBMITTED!")
+
 		formCallback()
 	})
 </script>

@@ -32,8 +32,9 @@ router.post("/input", (req, res)=>{
           return
       }
       else {
-          let resObj= {user: req.body.loginuser}
-          res.send(JSON.stringify(resObj))
+          let resObj= {user1: req.body.loginuser}
+          //res.send(JSON.stringify(resObj))
+          res.render('index.ejs')
           return
       }
 

@@ -27,6 +27,7 @@
         <div class="container">
 	<section id="newMajanote">
 		<h1>New MajaNote</h1>
+		
 		<form action="./new" method="POST">
 			<label id="titleLabel" for="titleBox">Title:
 				<input type="text" required id="titleBox" name="title" value="<%= locals.title %>">
@@ -52,12 +53,15 @@
 				<h2 id="selectGifText"><br>Select your GIF:</h2>
 				<div id="giphyGifs"></div>
 			</label>
-			<h3 id="errorMessages"><%- locals.message %></h3>
 			<button id="submitButton" type="submit">Submit</button>
 		</form>
 	</section>
 		<div class="row" id="notesGrid"></div>
     </section>
 	<!-- This button's href means it will look like a link but really we're just using javascript for everything here -->
+<script>
+	let user1=document.getElementById('userData')
+	console.log(user1,user1.innerHTML)
+</script>
 </body>
 </html>

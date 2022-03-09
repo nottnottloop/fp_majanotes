@@ -7,10 +7,6 @@ router.get("/", (req, res) => {
   res.render("index.ejs");
 });
 
-router.get("/loggedout", (req, res)=>{
-  res.send("Logged out")
-
-})
 
 
 
