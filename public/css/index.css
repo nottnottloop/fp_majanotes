@@ -225,8 +225,8 @@ h2.noteBody {
 
 @media screen and (min-width: 1024px) {
   .sticky:before {
-    height: 73%;
-    width: 90%;
+    height: 88%;
+    width: 106%;
   }
   /* .sticky-content {
     font-size: 1.875rem;
