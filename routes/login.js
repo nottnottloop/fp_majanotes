@@ -7,6 +7,8 @@ router.get("/", (req, res)=>{
     res.render('login.ejs')
 })
 
+
+
 router.post("/input", (req, res)=>{
     console.log(req.body.loginuser,req.body.loginpass)
     let userJson;
@@ -30,7 +32,8 @@ router.post("/input", (req, res)=>{
           return
       }
       else {
-          res.send("Succesfully logged in")
+          let resObj= {user: req.body.loginuser}
+          res.send(JSON.stringify(resObj))
           return
       }
 

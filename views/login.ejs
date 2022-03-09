@@ -9,7 +9,6 @@
 	<link rel="stylesheet" href="/public/css/index.css">
 	<link rel="stylesheet" href="/public/css/new.css">
 	<link rel="icon" href="/public/favicon.ico">
-	<script defer src="/public/js/clientLogin.js"></script>
 	
 	<title>MajaNotes</title>
 </head>
@@ -25,14 +24,28 @@
 		<h1>Heres our login page</h1>
 		<form action="/login/input" method="POST">
 			<label id="loginLabel" for="commentBox">Enter Username:<br>
-			<input type="text" required name="loginuser">
+			<input type="text" required id="loginuser" name="loginuser">
 			<label id="passwordLabel" type="password">Enter Password:</label>
-			<input type="password" required name="loginpass">
+			<input type="password" required id="loginpass" name="loginpass">
 			<button id="submitButton" type="submit">Submit</button>
 		</form>
 		
 
 </body>
+<script>
+	const form =document.querySelector('form')
+	console.log(form)
+	function formCallback(){
+		let loginuser=document.getElementById('loginuser')
+		let loginpass=document.getElementById('loginpass')
+		console.log(loginpass.value,loginuser.value)
+	}
+	form.addEventListener("submit", (e)=>{
+		e.preventDefault();
+		alert("FORM SUBMITTED!")
+		formCallback()
+	})
+</script>
 </html>
 
 

@@ -6,11 +6,18 @@ const errorMessages = document.querySelector("#errorMessages");
 
 let user= window.localStorage.getItem("User")
 
+const redirectLogin =()=>{
+    window.location.href=`${protocol}//${host}/login`
+    return
+}
+
 user?fetch(`${protocol}//${host}/data`)
 	.then(resp => resp.json())
 	.then(data => renderNotes(data))
 	.catch(e => console.log(`Error: ${e}`)):
-	fetch(`${protocol}//${host}/loggedout`)
+    redirectLogin();
+	
+    
 
     createButton.addEventListener('click', () => {
         if (newMajanote.style.display === 'none') {
