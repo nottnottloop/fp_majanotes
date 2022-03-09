@@ -18,11 +18,11 @@ router
       case 'nouser':
         e =`Username ${req.body.username} does not exist in our file system. Go to register
         to create a user account`
-        res.status(401).render('regerr.ejs',{error: e} )
+        res.status(401).render('accounterror',{error: e} )
         return;
       case 'wrongpass':
         e = `Wrong password. Try again`
-        res.status(401).render('wrongpass.ejs', {error: e})
+        res.status(401).render('accounterror', {error: e})
         return;
       case 'ok':
         break;

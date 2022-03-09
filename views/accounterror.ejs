@@ -17,14 +17,12 @@
 	<title>MajaNotes</title>
 </head>
 <body class="bg-white">
-	<section id="mainArea" class="bg-light py-4 my-5">
+	<section id="mainArea" class="py-4 my-5">
 			<header class="mx-3 title">
 				<h1 class="text-danger title">MajaNotes</h1>
 				<a id="loginButton" href="/login" class="mainBtn">Login</a>
 			</header>
         <div class="container">
-	<section id="newMajanote">
-		<h1><%= error %></h1>
-
+		<h1 id="accountError"><%- locals.error %></h1>
 </body>
 </html>
