@@ -161,36 +161,11 @@ function addEditFunctionality(data, id) {
 		editButton.style.display = "none"
 	} else {
 		editButton.addEventListener('click', e => {
-			document.querySelector(".sticky-content").classList.add("sticky-content-edit");
-			document.querySelector("#noteCreateText").textContent = "Edit Your Note";
-
-			document.querySelector("#titleBox").value = data.title;
-			document.querySelector("#noteBox").value = data.note;
-			document.querySelector("#colorDropdown").value = data.formColor;
-			document.querySelector("#editId").value = id;
-
-			document.querySelector("#submitButton").textContent = "Edit note";
-			document.querySelector("#stopEdit").style.display = "initial";
-
-			document.querySelector("#newForm").action = `./edit/${id}`;
-
-			document.querySelector("#newMajanote").style.display = "initial";
+			changeToEditForm(data, id, e);
 		});
 	}
 }
 
 document.querySelector("#stopEdit").addEventListener('click', e => {
-	e.preventDefault();
-	document.querySelector(".sticky-content").classList.remove("sticky-content-edit");
-	document.querySelector("#noteCreateText").textContent = "Create Your Note";
-
-	document.querySelector("#titleBox").value = '';
-	document.querySelector("#noteBox").value = '';
-	document.querySelector("#colorDropdown").value = 'white';
-	document.querySelector("#editId").value = '';
-
-	document.querySelector("#submitButton").textContent = "Edit note";
-	document.querySelector("#stopEdit").style.display = "none";
-
-	document.querySelector("#newForm").action = `./add`;
+	changeToCreateForm(data, id, e);
 });

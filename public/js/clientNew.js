@@ -94,6 +94,47 @@ const noteBox = document.querySelector("#noteBox");
 noteBox.addEventListener('keyup', updateTextBoxCounter);
 noteBox.addEventListener('keydown', updateTextBoxCounter);
 
+function changeToEditForm(data, id, e) {
+	document.querySelector(".sticky-content").classList.add("sticky-content-edit");
+	document.querySelector("#noteCreateText").textContent = "Edit Your Note";
+
+	document.querySelector("#titleBox").value = data.title;
+	document.querySelector("#noteBox").value = data.note;
+	document.querySelector("#colorDropdown").value = data.formColor;
+	document.querySelector("#editId").value = id;
+	document.querySelector("#giphySearch").value = '';
+	resetGifDisplay(e);
+
+	document.querySelector("#submitButton").textContent = "Edit note";
+	document.querySelector("#stopEdit").style.display = "initial";
+
+	document.querySelector("#newForm").action = `./edit/${id}`;
+
+	document.querySelector("#newMajanote").style.display = "initial";
+}
+
+function changeToCreateForm(data, id, e) {
+	e.preventDefault();
+	document.querySelector(".sticky-content").classList.remove("sticky-content-edit");
+	document.querySelector("#noteCreateText").textContent = "Create Your Note";
+
+	document.querySelector("#titleBox").value = '';
+	document.querySelector("#noteBox").value = '';
+	document.querySelector("#colorDropdown").value = 'white';
+	document.querySelector("#editId").value = '';
+	document.querySelector("#giphySearch").value = '';
+	resetGifDisplay(e);
+
+	document.querySelector("#submitButton").textContent = "Edit note";
+	document.querySelector("#stopEdit").style.display = "none";
+
+	document.querySelector("#newForm").action = `./add`;
+}
+
+
+
+
+//graveyard:
 //document.querySelector("#addNewNote").addEventListener('submit', e => {
 //	e.preventDefault();
 //    let title = document.querySelector("#titleBox").value;
