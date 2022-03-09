@@ -112,12 +112,14 @@ h2.noteBody {
 }
 @media screen and (max-width: 1200px) {
 	#notesGrid {
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(4, 1fr);
 	}
+
 }
+
 @media screen and (max-width: 810px) {
 	#notesGrid {
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: repeat(3, 1fr);
 	}
 }
 
@@ -202,6 +204,16 @@ h2.noteBody {
   font-size: 1rem;
 
   clip-path: url(#stickyClip);
+}
+
+.sticky-content-edit {
+  background: linear-gradient(
+    180deg,
+    rgba(191, 255, 187, 1) 0%,
+    rgba(191, 255, 187, 1) 12%,
+    rgba(191, 255, 187, 1) 75%,
+    rgba(191, 255, 187, 1) 100%
+  ) !important;
 }
 
 /* Add responsiveness */

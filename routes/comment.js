@@ -3,8 +3,6 @@ const fs = require("fs");
 const path = require('path');
 const router = express.Router();
 
-const constants = require("constants");
-
 router
   .route("/:id")
   .get((req, res) => {

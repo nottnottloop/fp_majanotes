@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 
-#giphyUrl {
+#giphyUrl, #usernameField, #passwordField, #editId {
+	display: none;
+}
+
+#stopEdit {
+	position: absolute;
+	white-space: nowrap;
+	right: 50%;
+	bottom: 9%;
 	display: none;
 }
 
@@ -45,8 +53,20 @@ figure {
 .sticky-content {
 	width: 115%;
 	height: 115%;
+}  
+
+@media screen and (max-width: 1200px) {
+	.sticky-content {
+			height: 135%;
+	}
 }
 
+@media screen and (max-width: 992px) {
+  .sticky-content {
+    height: 190%;
+		width: 130%;
+  }
+}
 #giphyRemove {
 	display: none;
 	position: absolute;
