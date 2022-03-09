@@ -58,12 +58,11 @@ router
         break;
     }
     let newID = 0;
-    for (let i = 0; i < notesData.length + 1; i++) {
-      if (notesData.find(e => e.id != i)) {
-        newID = i;
-        break;
+    let i = 0;
+      while (notesData.some(e => e.id == i)) {
+        i++;
       }
-    }
+    newID = i;
     //create a new note object, using the model, based on response we recieved from the user
     //the first field, the ID, is equal to the length of notesData
     const newNote = new note(newID, req.body.title, req.body.note, modifiedColor);
