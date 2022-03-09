@@ -92,6 +92,7 @@ function newNote(req, res, editing=false) {
     newNote.heart = oldNote.heart;
     newNote.neutral = oldNote.neutral;
     newNote.thumbs = oldNote.thumbs;
+    newNote.author = oldNote.author;
     notesData = notesData.filter(e => e.id != newID);
   }
   //append our new note
