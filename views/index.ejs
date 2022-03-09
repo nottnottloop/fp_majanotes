@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="/public/css/new.css">
 	<link rel="icon" href="/public/favicon.ico">
 	<script defer src="/public/js/clientBase.js"></script>
-	<script defer src="/public/js/clientLogin.js"></script>
+	<script defer src="/public/js/clientIndex.js"></script>
 	<script defer src="/public/js/clientNotes.js"></script>
 	<script defer src="/public/js/clientNew.js"></script>
 	<title>MajaNotes</title>
@@ -20,9 +20,9 @@
 	<section id="mainArea" class="py-4 my-5">
 			<header class="mx-3 title">
 				<h1 class="text-danger title">MajaNotes</h1>
-				<h1> You are logged in as <%= userData %></h1>
+				<h1 id="loggedInText"></h1>
 				<a id="createButton" href="javascript:void(0);" class="mainBtn">+ create</a>
-				<a id="logoutButton" class="mainBtn">Logout</a>
+				<a id="loginButton" class="mainBtn" href="/login">Login</a>
 			</header>
 
 			<section id="newMajanote">
@@ -81,15 +81,6 @@
 				<div id="notesGrid"></div>
 			</div>
 		</div>
-		
-		
     </section>
-	<!-- This button's href means it will look like a link but really we're just using javascript for everything here -->
-<script>
-	user=window.localStorage.setItem("User", '<%= userData %>')
-	console.log(user)
-	
-
-</script>
 </body>
 </html>

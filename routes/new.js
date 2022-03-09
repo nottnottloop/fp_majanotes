@@ -2,8 +2,10 @@ const express = require("express");
 const fs = require("fs");
 const path = require('path');
 const router = express.Router();
+
 const note = require(path.resolve(__dirname, "../model/noteModel"));
 const constants = require(path.resolve(__dirname, "constants"));
+const sharedFunctions = require(path.resolve(__dirname, "sharedFunctions"));
 
 router
   .route("/")
@@ -35,14 +37,7 @@ router
       notesData = JSON.parse(notesJson);
 
     } catch (err) {
-      //this code is executed if the file does not exist (node calls this ENOENT). in this case, we will make a new file
-      //we set the notesJson and notesData to nothing so that the rest of the code will work correctly
-      console.log("Error: " + err);
-      console.log("Creating new notesData.json");
-      //check if data directory exists. if not, create it
-      if (!fs.existsSync("data")) {
-        fs.mkdirSync("data");
-      }
+      sharedFunctions.createNewDataFile("notesData.json", err);
       notesJson = [];
       notesData = [];
     }
@@ -83,8 +78,7 @@ router
     //write the json file
     fs.writeFileSync(path.resolve(__dirname, "../data/notesData.json"), notesJson, "utf-8");
     console.log(`\nNew note added:\nID: ${newNote.id}\nTitle: ${newNote.title}\nNote: ${newNote.note}\nColor: ${newNote.color}\nGIF: ${debugGif}`)
-
-    res.redirect("/guest");
+    res.redirect("/");
   });
 
 function checkValidNote(req, res) {

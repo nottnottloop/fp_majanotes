@@ -3,41 +3,30 @@ const router = express.Router();
 const fs = require("fs");
 const path = require('path');
 
-router.get("/", (req, res)=>{
+router
+  .route("/")
+  .get((req, res) => {
     res.render('login.ejs')
-})
-
-
-
-router.post("/input", (req, res)=>{
-    console.log(req.body.loginuser,req.body.loginpass)
+  })
+  .post((req, res) => {
     let userJson;
     let userData;
     try {
-    
       userJson = fs.readFileSync(path.resolve(__dirname, "../data/userData.json"), "utf-8");
       userData = JSON.parse(userJson);
-      let userExists= userData.filter(d=>d.username==req.body.loginuser)
-      console.log(userExists)
-      if(userExists.length==0) {
-          let e=`Username ${req.body.loginuser} does not exist in our file system. Go to register
+      let user = userData.find(e => e.username == req.body.username)
+      console.log(user)
+      if (!user) {
+          let e =`Username ${req.body.username} does not exist in our file system. Go to register
           to create a user account`
-          res.render('regerr.ejs',{error: e} )
-
+          res.status(401).render('regerr.ejs',{error: e} )
           return;
       }
-      else if(req.body.loginpass !==userExists[0].password){
-          let e=`Wrong password. Try again`
-          res.render('wrongpass.ejs', {error: e})
-          return
+      else if (req.body.password !== user.password) {
+          let e = `Wrong password. Try again`
+          res.status(401).render('wrongpass.ejs', {error: e})
+          return;
       }
-      else {
-          let resObj= {user1: req.body.loginuser}
-          //res.send(JSON.stringify(resObj))
-          res.render('index.ejs', {userData: req.body.loginuser})
-          return
-      }
-
     } catch (err) {
       console.log("Error: " + err);
       console.log("Creating new userData.json");
@@ -48,7 +37,8 @@ router.post("/input", (req, res)=>{
       userJson = [];
       userData = [];
     }
-    
+    console.log(`User ${req.body.username} logged in`)
+    res.redirect("/");
 })
 
 module.exports =router;

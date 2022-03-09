@@ -4,14 +4,7 @@ const router = express.Router();
 //router.use(bodyParser.json())
 
 router.get("/", (req, res) => {
-  res.render("index.ejs",{userData:""});
+  res.render("index.ejs");
 });
-
-router.get("/guest", (req, res)=>{
-  res.render("guest.ejs")
-})
-
-
-
 
 module.exports = router;
