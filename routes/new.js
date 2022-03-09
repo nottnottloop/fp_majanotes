@@ -74,8 +74,8 @@ function newNote(req, res, editing=false) {
 
   //create a new note object, using the model, based on response we recieved from the user
   //the first field, the ID, is equal to the length of notesData
-  const newNote = new note(newID, req.body.title, req.body.note, modifiedColor, req.body.color);
-  if (req.body.username) {
+  newNote = new note(newID, req.body.title, req.body.note, modifiedColor, req.body.color);
+  if (req.body.username && !editing) {
     newNote.author = req.body.username;
   }
 
@@ -86,9 +86,13 @@ function newNote(req, res, editing=false) {
   const debugGif = newNote.gif || "No gif :("
   const debugAuthor = newNote.author || "Anonymous"
 
-  //remove existing note if editing a note
+  //remove existing note if editing a note. retain all emoji reactions
   if (editing) {
-    notesData = notesData.filter(e => e.id !== newID);
+    oldNote = notesData.find(e => e.id == newID);
+    newNote.heart = oldNote.heart;
+    newNote.neutral = oldNote.neutral;
+    newNote.thumbs = oldNote.thumbs;
+    notesData = notesData.filter(e => e.id != newID);
   }
   //append our new note
   notesData.push(newNote);
