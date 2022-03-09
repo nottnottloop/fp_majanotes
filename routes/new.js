@@ -9,85 +9,98 @@ const sharedFunctions = require(path.resolve(__dirname, "sharedFunctions"));
 
 router
   .route("/")
-  .post((req, res) => {
-    //replace all html tags so that we don't have code injections
-    //without this, you can type valid html into the page and it will render!
-    req.body.title = req.body.title.replace(/</g, "&lt;")
-    req.body.title = req.body.title.replace(/>/g, "&gt;")
-    req.body.note = req.body.note.replace(/</g, "&lt;")
-    req.body.note = req.body.note.replace(/>/g, "&gt;")
+  .post((req, res) => { newNote(req, res) });
 
-    //perform our data validation function. 
-    //if the data is not valid, make sure we don't continue with the rest of this post request as if it was successful. we do this with a return
-    if(!checkValidNote(req, res)) { return };
+function newNote(req, res, editing=false) {
+  //replace all html tags so that we don't have code injections
+  //without this, you can type valid html into the page and it will render!
+  req.body.title = req.body.title.replace(/</g, "&lt;")
+  req.body.title = req.body.title.replace(/>/g, "&gt;")
+  req.body.note = req.body.note.replace(/</g, "&lt;")
+  req.body.note = req.body.note.replace(/>/g, "&gt;")
 
-    //create notesJson (for the json string) and notesData (for our javascript object) outside of the scope of the upcoming blocks.
-    //this is so we can actually refer to these variables throughout the function
-    let notesJson;
-    let notesData;
-    try {
-      //open and read the notes json file we have stored
-      //we use path.resolve instead of just including a pathname (e.g argument 1 = "data/notesData.json") because
-      //in that case node will use the current working directory of the server instead of an absolute path regardless of cwd
-      notesJson = fs.readFileSync(path.resolve(__dirname, "../data/notesData.json"), "utf-8");
+  //perform our data validation function. 
+  //if the data is not valid, make sure we don't continue with the rest of this post request as if it was successful. we do this with a return
+  if(!checkValidNote(req, res)) { return };
 
-      //parse the notesJson (file) into a notesData object that works natively in JS. we can't manipulate a json directly
-      notesData = JSON.parse(notesJson);
+  //create notesJson (for the json string) and notesData (for our javascript object) outside of the scope of the upcoming blocks.
+  //this is so we can actually refer to these variables throughout the function
+  let notesJson;
+  let notesData;
+  try {
+    //open and read the notes json file we have stored
+    //we use path.resolve instead of just including a pathname (e.g argument 1 = "data/notesData.json") because
+    //in that case node will use the current working directory of the server instead of an absolute path regardless of cwd
+    notesJson = fs.readFileSync(path.resolve(__dirname, "../data/notesData.json"), "utf-8");
 
-    } catch (err) {
-      sharedFunctions.createNewDataFile("notesData.json", err);
-      notesJson = [];
-      notesData = [];
-    }
-    let modifiedColor;
-    switch (req.body.color) {
-      case "white":
-        modifiedColor = "white";
-        break;
-      case "blue":
-        modifiedColor = "cornflowerblue";
-        break;
-      case "green":
-        modifiedColor = "palegreen";
-        break;
-      case "red":
-        modifiedColor = "firebrick";
-        break;
-      case "yellow":
-        modifiedColor = "khaki";
-        break;
-    }
-    let newID = 0;
+    //parse the notesJson (file) into a notesData object that works natively in JS. we can't manipulate a json directly
+    notesData = JSON.parse(notesJson);
+
+  } catch (err) {
+    sharedFunctions.createNewDataFile("notesData.json", err);
+    notesJson = [];
+    notesData = [];
+  }
+  let modifiedColor;
+  switch (req.body.color) {
+    case "white":
+      modifiedColor = "white";
+      break;
+    case "blue":
+      modifiedColor = "cornflowerblue";
+      break;
+    case "green":
+      modifiedColor = "palegreen";
+      break;
+    case "red":
+      modifiedColor = "firebrick";
+      break;
+    case "yellow":
+      modifiedColor = "khaki";
+      break;
+  }
+
+  //only generate a new ID if the note is new
+  let newID = 0;
+  if (!editing) {
     let i = 0;
       while (notesData.some(e => e.id == i)) {
         i++;
       }
     newID = i;
-    //create a new note object, using the model, based on response we recieved from the user
-    //the first field, the ID, is equal to the length of notesData
-    const newNote = new note(newID, req.body.title, req.body.note, modifiedColor, req.body.color);
-    if (req.body.username) {
-      newNote.author = req.body.username;
-    }
+  } else {
+    newID = parseInt(req.body.id);
+  }
 
-    if (req.body.gif) {
-      newNote.gif = req.body.gif;
-    }
+  //create a new note object, using the model, based on response we recieved from the user
+  //the first field, the ID, is equal to the length of notesData
+  const newNote = new note(newID, req.body.title, req.body.note, modifiedColor, req.body.color);
+  if (req.body.username) {
+    newNote.author = req.body.username;
+  }
 
-    const debugGif = newNote.gif || "No gif :("
-    const debugAuthor = newNote.author || "Anonymous"
+  if (req.body.gif) {
+    newNote.gif = req.body.gif;
+  }
 
-    //append our new note
-    notesData.push(newNote);
+  const debugGif = newNote.gif || "No gif :("
+  const debugAuthor = newNote.author || "Anonymous"
 
-    //turn our native JS object back into a json file, ready to write it back
-    notesJson = JSON.stringify(notesData, null, 2);
+  //remove existing note if editing a note
+  if (editing) {
+    notesData = notesData.filter(e => e.id !== newID);
+  }
+  //append our new note
+  notesData.push(newNote);
 
-    //write the json file
-    fs.writeFileSync(path.resolve(__dirname, "../data/notesData.json"), notesJson, "utf-8");
-    console.log(`\nNew note added:\nAuthor: ${debugAuthor}\nID: ${newNote.id}\nTitle: ${newNote.title}\nNote: ${newNote.note}\nColor: ${newNote.color}\nGIF: ${debugGif}`)
-    res.redirect("/");
-  });
+  //turn our native JS object back into a json file, ready to write it back
+  notesJson = JSON.stringify(notesData, null, 2);
+
+  //write the json file
+  fs.writeFileSync(path.resolve(__dirname, "../data/notesData.json"), notesJson, "utf-8");
+  console.log(`\nNew note added:\nAuthor: ${debugAuthor}\nID: ${newNote.id}\nTitle: ${newNote.title}\nNote: ${newNote.note}\nColor: ${newNote.color}\nGIF: ${debugGif}`)
+  res.redirect("/");
+}
 
 function checkValidNote(req, res) {
   let passed = true;
@@ -127,4 +140,7 @@ function checkValidNote(req, res) {
   return passed;
 }
 
-module.exports = router;
+module.exports = {
+  router: router,
+  newNote: newNote
+};

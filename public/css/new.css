@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 
 #giphyUrl, #usernameField, #passwordField, #editId {
-	display: none;
+	/*display: none;*/
 }
 
 #stopEdit {

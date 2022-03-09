@@ -5,7 +5,8 @@ const app = express();
 
 const notesRouter = require("./routes/index");
 const dataRouter = require("./routes/data");
-const newRouter = require("./routes/new");
+const newRouter = require("./routes/new")['router'];
+const editRouter = require("./routes/edit");
 const deleteRouter = require("./routes/delete");
 const emojiRouter = require("./routes/emoji");
 const commentRouter = require("./routes/comment");
@@ -24,6 +25,7 @@ app.use("/public", express.static(path.resolve(__dirname, "public")));
 app.use("/", notesRouter);
 app.use("/data", dataRouter);
 app.use("/new", newRouter);
+app.use("/edit", editRouter);
 app.use("/delete", deleteRouter)
 app.use("/emoji", emojiRouter);
 app.use("/comment", commentRouter);

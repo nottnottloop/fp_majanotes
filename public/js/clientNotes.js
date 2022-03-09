@@ -11,9 +11,9 @@ function renderNotes(data) {
 	notesGrid.style.opacity = "1";
 
 	for (let i = 0; i < notesCount; i++) {
-		addEditFunctionality(data[i], i);
-		addDeleteFunctionality(data[i], i);
-		addAllEmojiFunctionality(i);
+		addEditFunctionality(data[i], data[i].id);
+		addDeleteFunctionality(data[i], data[i].id);
+		addAllEmojiFunctionality(data[i].id);
 	}
 }
 
