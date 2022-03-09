@@ -3,9 +3,45 @@
 }
 
 #selectGifText {
+	margin-top: 100px;
 	display: none;
 }
 
 label {
 	margin: 0;
+}
+
+#giphyGifs {
+	display: relative;
+}
+
+.selectedGif {
+	border: 5px solid lime;
+}
+
+.gifFigure {
+	display: inline-block;
+	margin: 20px;
+}
+
+.gifFigure img {
+	max-width: 100px;
+	max-height: 100px;
+}
+
+figure {
+	margin: 0;
+}
+
+.sticky-content {
+	width: 115%;
+	height: 115%;
+}
+
+#giphyRemove {
+	display: none;
+	position: absolute;
+	white-space: nowrap;
+	top: 286px;
+	right: -70px;
 }

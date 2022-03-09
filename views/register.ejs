@@ -17,19 +17,20 @@
 	<title>MajaNotes</title>
 </head>
 <body class="bg-white">
-	<section id="mainArea" class="bg-light py-4 my-5">
+	<section id="mainArea" class="py-4 my-5">
 			<header class="mx-3 title">
-				<h1 class="text-danger title">MajaNotes</h1>
+				<a id="titleLink" href="/"><h1 class="text-danger title">MajaNotes</h1></a>
 				<a id="loginButton" href="/login" class="mainBtn">Login</a>
+				<a id="createButton" href="/" class="mainBtn">Home</a>
 			</header>
         <div class="container">
 	<section id="newMajanote">
-		<h1>Heres our register page</h1>
+		<h1>Register</h1>
 		<form action="/register/input" method="POST">
-			<label id="loginLabel" for="commentBox">Enter Username:<br>
-			<input type="text" required name="reguser">
-			<label id="passwordLabel" type="password">Enter Password:</label>
-			<input type="password" required name="regpass">
+			<label id="loginLabel" for="commentBox">Username:<br>
+			<input type="text" required name="reguser"><br>
+			<label id="passwordLabel" type="password">Password:</label><br>
+			<input type="password" required name="regpass"><br>
 			<button id="submitButton" type="submit">Submit</button>
 		</form>
 		

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import 'https://fonts.googleapis.com/css?family=Reenie+Beanie';
 
 *{
     padding: 0;
@@ -11,15 +12,31 @@ a:hover {
 }
 
 #createButton {
-	position: absolute;
+	position: relative;
 	top: 0;
-	right: 30%;
+	width: 15%;
+  margin-left: 10%;
+  padding: 10px 20px 10px 20px;
+  white-space: nowrap;
 }
 
 #loginButton {
-	position: absolute;
+	position: relative;
 	top: 0;
-	right: 10%;
+	width: 10%;
+  margin-left: 50%;
+  padding: 10px 20px 10px 20px;
+  white-space: nowrap;
+}
+
+.title {
+		position: relative;
+    display: flex;
+    flex-direction: row; 
+    font-family: 'Indie Flower', cursive; 
+    font-weight: bold; 
+    font-size: 4rem;
+    align-items: center;
 }
 
 .mainBtn {
@@ -29,21 +46,9 @@ a:hover {
 	background-color: lightgray;
 	color: black;
 	font-size: 2vw;
-	width: 10%;
 	text-align: center;
 	font-weight: normal;
 }
-
-.title {
-		position: relative;
-		left: 100px;
-    /* display: flex; */
-    flex-direction: row; 
-    font-family: 'Indie Flower', cursive; 
-    font-weight: bold; 
-    font-size: 4rem;
-}
-
 
 button {
     margin-left: auto;
@@ -53,7 +58,6 @@ button {
 		background-color: gainsboro;
     cursor: pointer;
 }
-
 
 
 .card {
@@ -96,10 +100,14 @@ h2.noteBody {
 
 #notesGrid {
 	opacity: 0;
-	transition: all 0.5s ease-in;
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	margin-top: 0px;
+    transition: all 0.5s ease-in;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 0px;
+    width: 77%;
+    text-align: center;
+    align-items: center;
+    margin-left: 70px;
 	
 }
 @media screen and (max-width: 1200px) {
@@ -126,4 +134,101 @@ h2.noteBody {
 
 #mainArea {
 	margin: 0 !important;
+}
+
+form {
+    font-size: 18px;
+    padding: 36px;
+    font-family: 'Indie Flower', cursive; 
+    font-weight: bold;
+    position: absolute;
+    left: 4px;
+    top: 35px;
+}
+
+/*leave this unclosed comment exactly how it is. didn't notice it, built entire css around this being here, leave it*/
+* Some positioning and ratios */
+.sticky-container {
+  /* max-width: 270px; */
+  margin-left: 20%;
+  position: relative;
+  margin-bottom: 44px;
+}
+
+.sticky-outer {
+  display: flex;
+  padding-top: 35%;
+  position: relative;
+  width: 50%;
+  margin-bottom:40px;
+}
+
+.sticky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Shadow behind the sticky note */
+.sticky:before {
+  box-shadow: -2px 2px 15px 0 rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.25);
+  content: '';
+  width: 90%;
+  left: 5px;
+  height: 83%;
+  position: absolute;
+  top: 30%;
+}
+
+/* The sticky note itself */
+.sticky-content {
+  background: linear-gradient(
+    180deg,
+    rgba(187, 235, 255, 1) 0%,
+    rgba(187, 235, 255, 1) 12%,
+    rgba(170, 220, 241, 1) 75%,
+    rgba(195, 229, 244, 1) 100%
+  );
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Kalam', cursive;
+  font-size: 1rem;
+
+  clip-path: url(#stickyClip);
+}
+
+/* Add responsiveness */
+@media screen and (min-width: 640px) {
+  .sticky:before {
+    height: 79%;
+    width: 90%;
+  }
+  
+}
+
+@media screen and (min-width: 768px) {
+  .sticky:before {
+    height: 75%;
+    width: 90%;
+  }
+  /* .sticky-content {
+    font-size: 1.5rem;
+  } */
+}
+
+@media screen and (min-width: 1024px) {
+  .sticky:before {
+    height: 73%;
+    width: 90%;
+  }
+  /* .sticky-content {
+    font-size: 1.875rem;
+  } */
 }

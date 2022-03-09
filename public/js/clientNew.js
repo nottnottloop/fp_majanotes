@@ -3,10 +3,11 @@ let selectedGif = '';
 
 const giphyGifs = document.querySelector('#giphyGifs');
 const selectGifText = document.querySelector('#selectGifText');
+const giphyRemove = document.querySelector('#giphyRemove');
 
 document.querySelector("#giphyButton").addEventListener('click', e => {
 	e.preventDefault();
-	let url = `http://api.giphy.com/v1/gifs/search?api_key=${apiKey}&limit=14&q=`
+	let url = `http://api.giphy.com/v1/gifs/search?api_key=${apiKey}&limit=32&q=`
 	//trim method removes extra whitespace at the ends of the query
 	let str = document.querySelector("#giphySearch").value.trim();
 	//concat to add the contents of str onto url
@@ -19,15 +20,17 @@ document.querySelector("#giphyButton").addEventListener('click', e => {
 		console.log(content.data)
 		for (let i = 0; i < content.data.length; i++) {
 			//figure for body of image
-			let fig = document.createElement(`figure${i}`);
+			let fig = document.createElement(`figure`);
+			fig.id = `figure${i}`
+			fig.classList.add(`gifFigure`);
 			let img = document.createElement('img');
 			//fig caption for a caption of an image
-			let fc = document.createElement('figcaption');
+			//let fc = document.createElement('figcaption');
 			img.src = content.data[i].images.downsized.url;
 			img.alt = content.data[i].title;
-			fc.textContent = content.data[i].title;
+			//fc.textContent = content.data[i].title;
 			fig.appendChild(img);
-			fig.appendChild(fc);
+			//fig.appendChild(fc);
 			//this actually makes the image render on the page
 			giphyGifs.insertAdjacentElement("beforeend", fig);
 
@@ -43,6 +46,7 @@ document.querySelector("#giphyButton").addEventListener('click', e => {
 		}
 
 		selectGifText.style.display = "initial";
+		giphyRemove.style.display = "initial";
 		//this was all successful, so we save the selected gif for later
 		selectedGif = content.data[0].images.downsized.url;
 	})
@@ -51,10 +55,11 @@ document.querySelector("#giphyButton").addEventListener('click', e => {
 	})
 });
 
-document.querySelector("#giphyRemove").addEventListener('click', e => {
+giphyRemove.addEventListener('click', e => {
 	e.preventDefault();
 	selectedGif = '';
 	selectGifText.style.display = "none";
+	giphyRemove.style.display = "none";
 	giphyGifs.innerHTML = '';
 });
 
