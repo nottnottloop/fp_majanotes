@@ -26,16 +26,16 @@ img {
 	max-width: 100%;
 }
 
-.commentButton {
+.cardButton {
 	text-align: right;
-    font-weight: bold;
-    display: inline-block;
-    background: white;
-    border-width: 3px;
-    margin-left: 69%;
-    white-space: nowrap;
-    margin-bottom: 12%;
-    margin-top: 4%;
+	font-weight: bold;
+	display: inline-block;
+	background: white;
+	border-width: 3px;
+	white-space: nowrap;
+	margin-bottom: 12%;
+	margin-top: 4%;
+	margin-left: 5%;
 }
 
 .emojiButton {
