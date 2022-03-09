@@ -53,8 +53,13 @@ a:hover {
 button {
     border-radius: 20px;
     border-style: none;
-		background-color: transparent;
+		background-color: white;
     cursor: pointer;
+    padding: 5px;
+}
+
+.cardButtonsDiv button {
+  background-color: transparent;
 }
 
 
