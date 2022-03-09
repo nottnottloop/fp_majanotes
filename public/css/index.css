@@ -136,7 +136,7 @@ h2.noteBody {
 	margin: 0 !important;
 }
 
-form {
+#newForm {
     font-size: 18px;
     padding: 36px;
     font-family: 'Indie Flower', cursive; 
