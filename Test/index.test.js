@@ -23,7 +23,7 @@ describe('index.ejs', ()=> {
          expect(document.createElement("button")).toBeTruthy
 })
     test(`h1 heading has a correct text`, () =>{
-         expect(document.querySelector(`h1`).textContent).toContain(`MajaNotes`)
+         expect(document.querySelector(`title`).textContent).toContain(`MajaNotes`)
 })
 test (`to create a form`, () =>{
     expect(`form action="./new" method="POST"`).toBeTruthy
