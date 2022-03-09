@@ -11,6 +11,7 @@ function renderNotes(data) {
 	notesGrid.style.opacity = "1";
 
 	for (let i = 0; i < notesCount; i++) {
+		addDeleteButtons(data[i], i);
 		addAllEmojiFunctionality(i);
 	}
 }
@@ -26,6 +27,7 @@ function renderNotes(data) {
 // </div>`
 
 function buildNoteElement(data) {
+	console.log(data)
 	let newElement = document.createElement("div");
 	
 	let cardCol = document.createElement("div")
@@ -49,6 +51,16 @@ function buildNoteElement(data) {
 	}
 
 	newElement.classList.add("card");
+	let buttonsDiv = document.createElement("div");
+	let deleteButtonElement = document.createElement("button");
+
+	deleteButtonElement.classList.add("commentButton");
+	deleteButtonElement.id = `deleteButton${data.id}`;
+	deleteButtonElement.textContent = `❌`;
+	deleteButtonElement.style.margin = "0";
+
+	buttonsDiv.insertAdjacentElement("beforeend", deleteButtonElement);
+
 	let commentLinkElement = document.createElement("a");
 	let commentButtonElement = document.createElement("button");
 
@@ -56,8 +68,16 @@ function buildNoteElement(data) {
 	commentButtonElement.classList.add("commentButton");
 	commentButtonElement.id = `commentButton${data.id}`;
 	commentButtonElement.textContent = `💬: ${commentCount}`;
+	commentButtonElement.style.margin = "0";
+
 	commentLinkElement.insertAdjacentElement("beforeend", commentButtonElement);
-	newElement.insertAdjacentElement("beforeend", commentLinkElement);
+	buttonsDiv.insertAdjacentElement("beforeend", commentLinkElement);
+
+	//buttonsDiv.style.display = "flex";
+	//buttonsDiv.style.justifyContent = "right"
+	//buttonsDiv.style.marginLeft = "30%";
+	newElement.insertAdjacentElement("beforeend", buttonsDiv);
+
 	if (data.comments) {
 		commentButtonElement.style.borderColor = "green";
 	} else {
@@ -106,4 +126,24 @@ function addEmojiFunctionality(element, emoji, id) {
 		const usedEmojiButton = document.querySelector(`#${emoji}Count${id}`);
 		usedEmojiButton.textContent = parseInt(usedEmojiButton.textContent) + 1;
 	});
+}
+
+function addDeleteButtons(data, id) {
+	console.log(id)
+	const deleteButton = document.querySelector(`#deleteButton${id}`);
+	if (data.author !== localStorage.getItem('username')) {
+		deleteButton.style.display = "none"
+	} else {
+		deleteButton.addEventListener('click', () => {
+			fetch(`${protocol}//${host}/delete/${id}`, {
+					"method": 'POST',
+					"headers": {
+						'Accept': 'application/json',
+						'Content-Type': 'application/json'
+					},
+					"body": JSON.stringify({username: localStorage.getItem('username'), password: localStorage.getItem('password')})})
+			.then(resp => console.log(resp))
+			.catch(err => console.log(err));
+		});
+	}
 }

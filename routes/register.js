@@ -18,7 +18,7 @@ router
       userJson = fs.readFileSync(path.resolve(__dirname, "../data/userData.json"), "utf-8");
       userData = JSON.parse(userJson);
       let userExists = userData.find(e => e.username == req.body.username);
-      if (userExists) {
+      if (userExists || req.body.username.toLowerCase() === "anonymous") {
           let e = `Please choose a different username ${req.body.username} already exists in our file system`
           res.render('regerr.ejs',{error: e} )
           return;

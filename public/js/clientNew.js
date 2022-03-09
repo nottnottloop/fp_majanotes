@@ -71,6 +71,7 @@ document.querySelector("#submitButton").addEventListener('click', e => {
 	//however, this means that the client will not respond to the servers redirects correctly
 	//therefore this seems like the better solution
 	document.querySelector("#giphyUrl").value = selectedGif;
+	document.querySelector("#usernameField").value = localStorage.getItem('username');
 });
 
 const noteBox = document.querySelector("#noteBox");

@@ -10,8 +10,6 @@ const sharedFunctions = require(path.resolve(__dirname, "sharedFunctions"));
 router
   .route("/")
   .post((req, res) => {
-    
-    
     //replace all html tags so that we don't have code injections
     //without this, you can type valid html into the page and it will render!
     req.body.title = req.body.title.replace(/</g, "&lt;")
@@ -59,15 +57,26 @@ router
         modifiedColor = "khaki";
         break;
     }
+    let newID = 0;
+    for (let i = 0; i < notesData.length + 1; i++) {
+      if (notesData.find(e => e.id != i)) {
+        newID = i;
+        break;
+      }
+    }
     //create a new note object, using the model, based on response we recieved from the user
     //the first field, the ID, is equal to the length of notesData
-    const newNote = new note(notesData.length, req.body.title, req.body.note, modifiedColor);
+    const newNote = new note(newID, req.body.title, req.body.note, modifiedColor);
+    if (req.body.username) {
+      newNote.author = req.body.username;
+    }
 
     if (req.body.gif) {
       newNote.gif = req.body.gif;
     }
 
     const debugGif = newNote.gif || "No gif :("
+    const debugAuthor = newNote.author || "Anonymous"
 
     //append our new note
     notesData.push(newNote);
@@ -77,7 +86,7 @@ router
 
     //write the json file
     fs.writeFileSync(path.resolve(__dirname, "../data/notesData.json"), notesJson, "utf-8");
-    console.log(`\nNew note added:\nID: ${newNote.id}\nTitle: ${newNote.title}\nNote: ${newNote.note}\nColor: ${newNote.color}\nGIF: ${debugGif}`)
+    console.log(`\nNew note added:\nAuthor: ${debugAuthor}\nID: ${newNote.id}\nTitle: ${newNote.title}\nNote: ${newNote.note}\nColor: ${newNote.color}\nGIF: ${debugGif}`)
     res.redirect("/");
   });
 

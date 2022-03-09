@@ -9,6 +9,7 @@ router
     res.render('login.ejs')
   })
   .post((req, res) => {
+    console.log(req.method)
     let userJson;
     let userData;
     try {
@@ -41,4 +42,4 @@ router
     res.redirect("/");
 })
 
-module.exports =router;
+module.exports = router;
