@@ -1,6 +1,10 @@
 function renderNotes(data) {
 	const notesGrid = document.querySelector("#notesGrid");
-	notesCount = data.length;
+	if (data.length) {
+    newMajanote.style.display = "none";
+	} else {
+    newMajanote.style.display = "initial";
+	}
 	//sort the notes according to popularity
 	data = scoreAndSortNotes(data);
 	//iterate over all notes after they have been sorted
@@ -10,7 +14,7 @@ function renderNotes(data) {
 	//now change the opacity so the notes fade in using our transition CSS property :)
 	notesGrid.style.opacity = "1";
 
-	for (let i = 0; i < notesCount; i++) {
+	for (let i = 0; i < data.length; i++) {
 		addEditFunctionality(data[i], data[i].id);
 		addDeleteFunctionality(data[i], data[i].id);
 		addAllEmojiFunctionality(data[i].id);
