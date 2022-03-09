@@ -25,6 +25,7 @@
 				<a id="loginButton" href="/login" class="mainBtn">Login</a>
 			</header>
         <div class="container">
+			<h1 id="user">Logged in as <%= userData %></h1>
 	<section id="newMajanote">
 		<h1>New MajaNote</h1>
 		
@@ -60,8 +61,8 @@
     </section>
 	<!-- This button's href means it will look like a link but really we're just using javascript for everything here -->
 <script>
-	let user1=document.getElementById('userData')
-	console.log(user1,user1.innerHTML)
+	user=window.localStorage.setItem("User", '<%= userData %>')
+
 </script>
 </body>
 </html>

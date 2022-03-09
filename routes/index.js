@@ -4,7 +4,7 @@ const router = express.Router();
 //router.use(bodyParser.json())
 
 router.get("/", (req, res) => {
-  res.render("index.ejs");
+  res.render("index.ejs",{userData:""});
 });
 
 
