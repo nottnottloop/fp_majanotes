@@ -1,12 +1,32 @@
 #submitButton {
 	margin-bottom: 20px;
+	border: none;
+    color: rgb(138, 135, 135);
+	text-align: center;
+	display: inline-block;
+    font-size: 16px;
+	cursor: pointer;
+	border-radius: 5px;
 }
 
 #commentsSection {
 	padding: 0px 10px 0px 10px;
-	border-radius: 20px;
+	border-radius: 10px;
 	display: inline-block;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
+	margin-top: 10px;
+	background-color: #e4e9eb;
+	color: #161424;
+}
+
+.h1{
+	font-size: 10px;
+}
+
+#commentBox{
+	background-color: #e4e9eb;
+	display: inline-block;
+	border-radius: 5px 5px 0px 0px;
 }
 
 .commentButton {
