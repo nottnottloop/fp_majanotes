@@ -84,7 +84,7 @@ router
     fs.writeFileSync(path.resolve(__dirname, "../data/notesData.json"), notesJson, "utf-8");
     console.log(`\nNew note added:\nID: ${newNote.id}\nTitle: ${newNote.title}\nNote: ${newNote.note}\nColor: ${newNote.color}\nGIF: ${debugGif}`)
 
-    res.redirect("/");
+    res.redirect("/guest");
   });
 
 function checkValidNote(req, res) {
@@ -120,7 +120,7 @@ function checkValidNote(req, res) {
   //if tests weren't passed, gather up all the error messages and take the user to the error page
   if (!passed) {
     message = message.join('');
-    res.render("index", {title: req.body.title, note: req.body.note, message: message});
+    res.render("index.ejs", {title: req.body.title, note: req.body.note, message: message});
   }
   return passed;
 }

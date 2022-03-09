@@ -77,12 +77,13 @@ const noteBox = document.querySelector("#noteBox");
 noteBox.addEventListener('keyup', updateTextBoxCounter);
 noteBox.addEventListener('keydown', updateTextBoxCounter);
 
-//document.querySelector("#submitButton").addEventListener('click', e => {
-//	e.preventDefault();
-//	let title = document.querySelector("#titleBox").value;
-//	let note = document.querySelector("#noteBox").value;
-//	let color = document.querySelector("#colorDropdown").value;
-
+document.querySelector("#addNewNote").addEventListener('submit', e => {
+	e.preventDefault();
+    let title = document.querySelector("#titleBox").value;
+    let note = document.querySelector("#noteBox").value;
+    let color = document.querySelector("#colorDropdown").value;
+	let gif=document.querySelector("#giphyUrl").value;
+	console.log(title,note,color,gif)
 //	let xhr = new XMLHttpRequest();
 //	xhr.open("POST", `${protocol}//${host}/new`);
 //	xhr.setRequestHeader('Content-Type', 'application/json');
@@ -93,4 +94,4 @@ noteBox.addEventListener('keydown', updateTextBoxCounter);
 //		gif: selectedGif
 //	}));
 //	window.location.href = `${protocol}//${host}/notes`
-//});
+})

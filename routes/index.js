@@ -7,6 +7,10 @@ router.get("/", (req, res) => {
   res.render("index.ejs",{userData:""});
 });
 
+router.get("/guest", (req, res)=>{
+  res.render("guest.ejs")
+})
+
 
 
 
