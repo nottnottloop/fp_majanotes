@@ -109,11 +109,12 @@ function changeToEditForm(data, id, e) {
 	document.querySelector("#stopEdit").style.display = "initial";
 
 	document.querySelector("#newForm").action = `./edit/${id}`;
+	document.querySelector("#passwordField").value = localStorage.getItem('password');
 
 	document.querySelector("#newMajanote").style.display = "initial";
 }
 
-function changeToCreateForm(data, id, e) {
+function changeToCreateForm(e) {
 	e.preventDefault();
 	document.querySelector(".sticky-content").classList.remove("sticky-content-edit");
 	document.querySelector("#noteCreateText").textContent = "Create Your Note";
@@ -129,6 +130,7 @@ function changeToCreateForm(data, id, e) {
 	document.querySelector("#stopEdit").style.display = "none";
 
 	document.querySelector("#newForm").action = `./add`;
+	document.querySelector("#passwordField").value = '';
 }
 
 

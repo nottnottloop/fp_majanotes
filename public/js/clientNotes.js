@@ -167,5 +167,5 @@ function addEditFunctionality(data, id) {
 }
 
 document.querySelector("#stopEdit").addEventListener('click', e => {
-	changeToCreateForm(data, id, e);
+	changeToCreateForm(e);
 });
