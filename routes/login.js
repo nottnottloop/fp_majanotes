@@ -28,7 +28,7 @@ router.post("/input", (req, res)=>{
       }
       else if(req.body.loginpass !==userExists[0].password){
           let e=`Wrong password. Try again`
-          res.render('regerr.ejs', {error: e})
+          res.render('wrongpass.ejs', {error: e})
           return
       }
       else {
