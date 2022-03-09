@@ -11,7 +11,8 @@ function renderNotes(data) {
 	notesGrid.style.opacity = "1";
 
 	for (let i = 0; i < notesCount; i++) {
-		addDeleteButtons(data[i], i);
+		addEditFunctionality(data[i], i);
+		addDeleteFunctionality(data[i], i);
 		addAllEmojiFunctionality(i);
 	}
 }
@@ -27,7 +28,6 @@ function renderNotes(data) {
 // </div>`
 
 function buildNoteElement(data) {
-	console.log(data)
 	let newElement = document.createElement("div");
 	
 	let cardCol = document.createElement("div")
@@ -52,8 +52,16 @@ function buildNoteElement(data) {
 
 	newElement.classList.add("card");
 	let buttonsDiv = document.createElement("div");
-	let deleteButtonElement = document.createElement("button");
 
+	let editButtonElement = document.createElement("button");
+	editButtonElement.classList.add("commentButton");
+	editButtonElement.id = `editButton${data.id}`;
+	editButtonElement.textContent = `✏️`;
+	editButtonElement.style.margin = "0";
+
+	buttonsDiv.insertAdjacentElement("beforeend", editButtonElement);
+
+	let deleteButtonElement = document.createElement("button");
 	deleteButtonElement.classList.add("commentButton");
 	deleteButtonElement.id = `deleteButton${data.id}`;
 	deleteButtonElement.textContent = `❌`;
@@ -63,7 +71,6 @@ function buildNoteElement(data) {
 
 	let commentLinkElement = document.createElement("a");
 	let commentButtonElement = document.createElement("button");
-
 	commentLinkElement.href = `${window.location.href}comment/${data.id}`;
 	commentButtonElement.classList.add("commentButton");
 	commentButtonElement.id = `commentButton${data.id}`;
@@ -128,8 +135,7 @@ function addEmojiFunctionality(element, emoji, id) {
 	});
 }
 
-function addDeleteButtons(data, id) {
-	console.log(id)
+function addDeleteFunctionality(data, id) {
 	const deleteButton = document.querySelector(`#deleteButton${id}`);
 	if (data.author !== localStorage.getItem('username')) {
 		deleteButton.style.display = "none"
@@ -147,3 +153,44 @@ function addDeleteButtons(data, id) {
 		});
 	}
 }
+
+function addEditFunctionality(data, id) {
+	console.log(data)
+	const editButton = document.querySelector(`#editButton${id}`);
+	if (data.author !== localStorage.getItem('username')) {
+		editButton.style.display = "none"
+	} else {
+		editButton.addEventListener('click', e => {
+			document.querySelector(".sticky-content").classList.add("sticky-content-edit");
+			document.querySelector("#noteCreateText").textContent = "Edit Your Note";
+
+			document.querySelector("#titleBox").value = data.title;
+			document.querySelector("#noteBox").value = data.note;
+			document.querySelector("#colorDropdown").value = data.formColor;
+			document.querySelector("#editId").value = id;
+
+			document.querySelector("#submitButton").textContent = "Edit note";
+			document.querySelector("#stopEdit").style.display = "initial";
+
+			document.querySelector("#newForm").action = `./edit/${id}`;
+
+			document.querySelector("#newMajanote").style.display = "initial";
+		});
+	}
+}
+
+document.querySelector("#stopEdit").addEventListener('click', e => {
+	e.preventDefault();
+	document.querySelector(".sticky-content").classList.remove("sticky-content-edit");
+	document.querySelector("#noteCreateText").textContent = "Create Your Note";
+
+	document.querySelector("#titleBox").value = '';
+	document.querySelector("#noteBox").value = '';
+	document.querySelector("#colorDropdown").value = 'white';
+	document.querySelector("#editId").value = '';
+
+	document.querySelector("#submitButton").textContent = "Edit note";
+	document.querySelector("#stopEdit").style.display = "none";
+
+	document.querySelector("#newForm").action = `./add`;
+});

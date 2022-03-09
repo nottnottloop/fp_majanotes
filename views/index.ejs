@@ -42,7 +42,7 @@
 					</svg>
 					<div class="sticky-content">
 					  <form id="newForm" action="./new" method="POST" >
-			<h3>Create Your Note</h3>
+			<h3 id="noteCreateText">Create Your Note</h3>
 			<label id="titleLabel" for="titleBox">Title:
 				<input type="text" required id="titleBox" name="title" value="<%= locals.title %>">
 			</label><br>
@@ -63,11 +63,13 @@
 				<input id="giphySearch" type="search">
 				<button id="giphyButton">Go</button>
 				<button id="giphyRemove">Remove GIF</button>
+				<button id="stopEdit">Cancel Edit</button>
 				<input id="giphyUrl" name="gif">
 				<input id="usernameField" name="username">
+				<input id="editId" name="id">
 			</label>
 			<h3 id="errorMessages"><%- locals.message %></h3>
-			<button id="submitButton" type="submit">Submit</button>
+			<button id="submitButton" type="submit">Make new note</button>
 		</form>
 					</div>
 				  </div>
