@@ -1,17 +1,29 @@
 const apiKey = `B9l8mpk3zgHi1IkTjbd0IK5PcGqAVGAp`;
 let selectedGif = '';
 
+const giphySearch = document.querySelector('#giphySearch');
 const giphyGifs = document.querySelector('#giphyGifs');
 const selectGifText = document.querySelector('#selectGifText');
 const giphyRemove = document.querySelector('#giphyRemove');
 
+let loadedGifs = false;
+
 document.querySelector("#giphyButton").addEventListener('click', e => {
 	e.preventDefault();
+	const searchQuery = giphySearch.value.trim();
+	//don't load if there's nothing
+	if (!searchQuery) {
+		return;
+	}
+
+	if (loadedGifs) {
+		resetGifDisplay(e);
+	}
+
 	let url = `http://api.giphy.com/v1/gifs/search?api_key=${apiKey}&limit=32&q=`
 	//trim method removes extra whitespace at the ends of the query
-	let str = document.querySelector("#giphySearch").value.trim();
 	//concat to add the contents of str onto url
-	url = url.concat(str);
+	url = url.concat(searchQuery);
 	console.log(url);
 	fetch(url)
 	.then(resp => resp.json())
@@ -49,19 +61,23 @@ document.querySelector("#giphyButton").addEventListener('click', e => {
 		giphyRemove.style.display = "initial";
 		//this was all successful, so we save the selected gif for later
 		selectedGif = content.data[0].images.downsized.url;
+		loadedGifs = true;
 	})
 	.catch(err => {
 		console.error(err);
 	})
 });
 
-giphyRemove.addEventListener('click', e => {
+giphyRemove.addEventListener('click', resetGifDisplay);
+
+function resetGifDisplay(e) {
 	e.preventDefault();
 	selectedGif = '';
 	selectGifText.style.display = "none";
 	giphyRemove.style.display = "none";
 	giphyGifs.innerHTML = '';
-});
+	loadedGifs = false;
+}
 
 document.querySelector("#submitButton").addEventListener('click', e => {
 	//since we are sending a POST request via HTML, we need to manipulate a hidden form field to fill in the URL of the
