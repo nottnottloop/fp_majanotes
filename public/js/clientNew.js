@@ -126,10 +126,10 @@ function changeToCreateForm(e) {
 	document.querySelector("#giphySearch").value = '';
 	resetGifDisplay(e);
 
-	document.querySelector("#submitButton").textContent = "Edit note";
+	document.querySelector("#submitButton").textContent = "Make new note";
 	document.querySelector("#stopEdit").style.display = "none";
 
-	document.querySelector("#newForm").action = `./add`;
+	document.querySelector("#newForm").action = `./new`;
 	document.querySelector("#passwordField").value = '';
 }
 
