@@ -31,13 +31,15 @@
 			<button id="loginSubmitButton" type="submit" class="loginSubmit">Submit</button>
 			<h3 id="error" style="background-color: brown;"></h3>
 		</form>
+		<br>
 		<form id="registerForm" action="/register" method="POST">
 		<h1>Register</h1>
 			<label id="loginLabel" for="commentBox">Username:</label><br>
-			<input type="text" required name="username"><br>
+			<input type="text" required id="regUser" name="username"><br>
 			<label id="passwordLabel" type="password">Password:</label><br>
-			<input type="password" required name="password"><br>
+			<input type="password" required id="regPass" name="password"><br>
 			<button id="registerSubmitButton" type="submit" class="loginSubmit">Submit</button>
+			<h3 id="regerror"></h3>
 		</form>
 	</div>
 	</section>

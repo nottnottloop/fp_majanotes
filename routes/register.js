@@ -19,8 +19,8 @@ router
       userData = JSON.parse(userJson);
       let userExists = userData.find(e => e.username == req.body.username);
       if (userExists || req.body.username.toLowerCase() === "anonymous") {
-          let e = `Please choose a different username ${req.body.username} already exists in our file system`
-          res.render('regerr.ejs',{error: e} )
+          
+          res.status(401).send()
           return;
       }
     } catch (err) {

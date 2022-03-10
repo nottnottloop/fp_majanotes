@@ -32,8 +32,11 @@ createButton.addEventListener('click', () => {
 });
 
 const loggedInText = document.querySelector("#loggedInText");
-let username = localStorage.getItem("User");
+let username = localStorage.getItem("username");
 if (username) {
-    loggedInText.display = "initial";
-    loggedInText.textContent = `Logged in as ${username}`;
+    loggedInText.display = "inline";
+    loggedInText.innerHTML = `Logged in as ${username}`;
+}
+else {
+    loggedInText.innerHTML= `Posting anonymously`
 }
