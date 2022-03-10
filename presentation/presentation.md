@@ -21,3 +21,18 @@ Strict equality of types vs coerced equality
 DRY and WET code
 
 # Significant code
+Modularity of code. See sharedFunctions.js
+
+Note building system
+
+# Test coverage
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+# Future Features & What We've Learned
+We have learnt about DRY and WET code
+
+We can style sites using bootstrap better
+
+More general experience
+
+Future Features: ?????????????????????????????

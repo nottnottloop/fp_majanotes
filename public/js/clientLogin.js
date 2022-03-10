@@ -16,12 +16,14 @@ const registerSubmitButton=document.querySelector("#registerSubmitButton")
 const regUser=document.querySelector('#regUser');
 const regPass=document.querySelector('#regPass')
 const regForm=document.querySelector('#registerForm');
-loginForm.addEventListener('submit', (e)=>{
+loginForm.addEventListener('submit', e => {
     e.preventDefault();
 })
-regForm.addEventListener('submit', (e)=>{
+
+regForm.addEventListener('submit', e => {
     e.preventDefault();
 })
+
 let err=document.getElementById('error')
 let err2=document.getElementById('regerror')
 loginSubmitButton.addEventListener("click", () => {
@@ -40,12 +42,11 @@ loginSubmitButton.addEventListener("click", () => {
             localStorage.setItem('password', loginPass.value);
             window.location.href="/"
         }
-        else if(resp.status ==403){ //Wrong password HTTP code
+        else if (resp.status == 403) { //Wrong password HTTP code
             err.innerHTML="Wrong password"
-
         }
-        else if(resp.status ==401){//Unauthorized HTTP code
-            err.innerHTML=`Username ${loginUser.value} does not exist. Go to register
+        else if (resp.status == 401) {//Unauthorized HTTP code
+            err.innerHTML = `Username ${loginUser.value} does not exist. Go to register
             to create a user account`
         }
     
@@ -66,11 +67,8 @@ registerSubmitButton.addEventListener("click", () => {
         if (resp.status == 200) { 
             err2.innerHTML=""
             window.location.href="/login"
-        }
-    
-        else if(resp.status ==401){//Unauthorized HTTP code
+        } else if (resp.status ==401) {//Unauthorized HTTP code
             err2.innerHTML=`Username ${regUser.value} already exists. Choose a unique one`
         }
-    
     })
 });
