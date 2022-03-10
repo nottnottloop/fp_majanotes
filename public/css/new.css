@@ -55,9 +55,14 @@ figure {
 	height: 115%;
 }  
 
-@media screen and (max-width: 1200px) {
+
+@media screen and (max-width: 1400px) {
 	.sticky-content {
-			height: 135%;
+		height: 116%;
+	}
+	.sticky:before{
+		height: 91%;
+		width: 106%;
 	}
 }
 
@@ -66,7 +71,35 @@ figure {
     height: 190%;
 		width: 130%;
   }
+
+  .sticky:before {
+	height: 164%;
+	width: 115%;
+  }
 }
+
+@media screen and (max-width: 768px) {
+	.sticky:before {
+		height: 168%;
+		width: 120%;
+	}
+  
+	#newForm {
+	  font-size: 10px;
+  }
+  }
+
+  @media screen and (max-width: 500px) {
+	.sticky-content {
+		display: none;
+	}
+	.sticky:before{
+		display:none
+	}
+}
+
+
+
 #giphyRemove {
 	display: none;
 	position: absolute;
