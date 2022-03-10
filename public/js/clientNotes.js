@@ -82,9 +82,7 @@ function buildNoteElement(data) {
 	commentLinkElement.insertAdjacentElement("beforeend", commentButtonElement);
 	buttonsDiv.insertAdjacentElement("beforeend", commentLinkElement);
 
-	buttonsDiv.style.display = "flex";
-	buttonsDiv.style.justifyContent = "right"
-	buttonsDiv.style.marginLeft = "30%";
+	buttonsDiv.style.marginLeft = "-5%";
 	newElement.insertAdjacentElement("beforeend", buttonsDiv);
 
 	if (data.comments) {
