@@ -32,5 +32,4 @@ app.use("/comment", commentRouter);
 app.use("/login", loginRouter)
 app.use("/register", registerRouter)
 
-
 module.exports = app;
