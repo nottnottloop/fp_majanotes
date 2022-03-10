@@ -28,7 +28,7 @@ Note building system
 # Test coverage
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
-# Future Features & What We've Learned
+# What We've Learned
 We have learnt about DRY and WET code
 
 We can style sites using bootstrap better
@@ -36,3 +36,10 @@ We can style sites using bootstrap better
 More general experience
 
 Future Features: ?????????????????????????????
+
+# Future Features
+Password hashing
+
+Audio notes
+
+Better algorithms for scale
