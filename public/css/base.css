@@ -1,9 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
 * {
 	box-sizing: border-box;
 }
 
 body {
+  font-family: 'India';
 	background-color: grey;
+}
+
+
+
+#loggedInText{
+  color: gray;
+  font-family: 'Indie Flower', cursive; 
+  font-size: 1.5rem;
 }
 
 #homeButton a {
@@ -90,10 +101,17 @@ a:hover {
 #loginButton {
 	position: relative;
 	top: 0;
+  left: -28%;
 	width: 10%;
   margin-left: 50%;
   padding: 10px 20px 10px 20px;
   white-space: nowrap;
+}
+
+#logoutButton {
+  position: relative;
+  left: -25%;
+  padding: 10px;
 }
 
 .title {

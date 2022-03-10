@@ -124,6 +124,13 @@ figure {
 @media screen and (max-width: 988.89px) {
 	#notesGrid {
 		margin-top: 123px;
+		margin-left: 0;
+	}
+  }
+
+  @media screen and (max-width: 300px) {
+	#notesGrid {
+		display:none;
 	}
   }
 
