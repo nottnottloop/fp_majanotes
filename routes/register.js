@@ -15,10 +15,9 @@ router
       userJson = fs.readFileSync(path.resolve(__dirname, "../data/userData.json"), "utf-8");
       userData = JSON.parse(userJson);
       let userExists = userData.find(e => e.username == req.body.username);
-      if (userExists || req.body.username.toLowerCase() === "anonymous") {
-          
-          res.status(401).send()
-          return;
+      if (userExists || req.body.username.toLowerCase() === "anonymous" || req.body.username.toLowerCase() === "anon") {
+        res.status(401).send()
+        return;
       }
     } catch (err) {
       sharedFunctions.createNewDataFile("userData.json", err);
