@@ -12,7 +12,7 @@ const host = window.location.host;
 //    user=window.localStorage.clear();
 //    dataFetch();
 //})
-
+console.log(protocol,host)
 const loginSubmitButton = document.querySelector("#loginSubmitButton");
 const loginUser = document.querySelector("#loginUser");
 const loginPass = document.querySelector("#loginPass");
@@ -25,9 +25,11 @@ loginSubmitButton.addEventListener("click", () => {
         },
         "body": JSON.stringify({username: loginUser.value, password: loginPass.value})})
     .then(resp => {
-        if (resp.status == 200) {
+        console.log(`Our res code is ${resp.status}`)
+        if (resp.status == 200) { 
             localStorage.setItem('username', loginUser.value);
             localStorage.setItem('password', loginPass.value);
         }
+        
     })
 });

@@ -58,6 +58,7 @@ function buildNoteElement(data) {
 	deleteButtonElement.id = `deleteButton${data.id}`;
 	deleteButtonElement.textContent = `❌`;
 	deleteButtonElement.style.margin = "0";
+	deleteButtonElement.style.display="flex"
 
 	buttonsDiv.insertAdjacentElement("beforeend", deleteButtonElement);
 
@@ -69,13 +70,14 @@ function buildNoteElement(data) {
 	commentButtonElement.id = `commentButton${data.id}`;
 	commentButtonElement.textContent = `💬: ${commentCount}`;
 	commentButtonElement.style.margin = "0";
+	
 
 	commentLinkElement.insertAdjacentElement("beforeend", commentButtonElement);
 	buttonsDiv.insertAdjacentElement("beforeend", commentLinkElement);
 
-	//buttonsDiv.style.display = "flex";
-	//buttonsDiv.style.justifyContent = "right"
-	//buttonsDiv.style.marginLeft = "30%";
+	buttonsDiv.style.display = "flex";
+	buttonsDiv.style.justifyContent = "right"
+	buttonsDiv.style.marginLeft = "30%";
 	newElement.insertAdjacentElement("beforeend", buttonsDiv);
 
 	if (data.comments) {

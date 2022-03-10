@@ -39,7 +39,7 @@ router
       userData = [];
     }
     console.log(`User ${req.body.username} logged in`)
-    res.redirect("/");
+    res.redirect("/")
 })
 
 module.exports = router;
