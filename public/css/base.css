@@ -47,6 +47,8 @@ img {
 }
 
 .cardButton {
+  font-family: 'Indie Flower', cursive; 
+  font-size: 1.3rem;
 	text-align: right;
 	font-weight: bold;
 	display: inline-block;
@@ -101,7 +103,7 @@ a:hover {
 #loginButton {
 	position: relative;
 	top: 0;
-  left: -28%;
+  left: 11%;
 	width: 10%;
   margin-left: 10%;
   padding: 10px 20px 10px 20px;
@@ -110,7 +112,7 @@ a:hover {
 
 #logoutButton {
   position: relative;
-  left: -25%;
+  right: -15%;
   padding: 10px;
 }
 
@@ -144,6 +146,7 @@ button {
 }
 
 .cardButtonsDiv button {
+  margin-left: -264px;
   background-color: transparent;
 }
 
