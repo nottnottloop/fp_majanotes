@@ -17,6 +17,11 @@ if (errors) {
     newMajanote.style.display = "none";
 }
     
+document.getElementById('logoutButton').addEventListener('click', ()=>{
+    window.localStorage.clear()
+    user=window.localStorage.clear();
+    window.location.href="/"
+})
 
 createButton.addEventListener('click', () => {
     if (newMajanote.style.display === 'none') {
@@ -27,8 +32,14 @@ createButton.addEventListener('click', () => {
 });
 
 const loggedInText = document.querySelector("#loggedInText");
-let username = localStorage.getItem("User");
+let username = localStorage.getItem("username");
 if (username) {
-    loggedInText.display = "initial";
-    loggedInText.textContent = `Logged in as ${username}`;
+    loggedInText.display = "inline";
+    loggedInText.innerHTML = `Logged in as ${username}`;
+    document.getElementById('logoutButton').style.display="block";
+
+}
+else {
+    loggedInText.innerHTML= `Posting anonymously`
+    document.getElementById('logoutButton').style.display="none";
 }

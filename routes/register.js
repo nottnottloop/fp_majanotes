@@ -15,15 +15,10 @@ router
       userJson = fs.readFileSync(path.resolve(__dirname, "../data/userData.json"), "utf-8");
       userData = JSON.parse(userJson);
       let userExists = userData.find(e => e.username == req.body.username);
-      if (req.body.username.toLowerCase() === "anonymous" || req.body.username.toLowerCase() === "anon") {
-        e = `If you want to be so anonymous, why are you making an account?`
-        res.render('accounterror',{error: e})
-        return;
-      }
-      if (userExists) {
-        let e = `Please choose a different username. ${req.body.username} already exists in our file system`
-        res.render('accounterror',{error: e})
-        return;
+      if (userExists || req.body.username.toLowerCase() === "anonymous") {
+          
+          res.status(401).send()
+          return;
       }
     } catch (err) {
       sharedFunctions.createNewDataFile("userData.json", err);
