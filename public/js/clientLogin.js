@@ -16,6 +16,10 @@ console.log(protocol,host)
 const loginSubmitButton = document.querySelector("#loginSubmitButton");
 const loginUser = document.querySelector("#loginUser");
 const loginPass = document.querySelector("#loginPass");
+const loginForm=document.querySelector('#loginForm');
+loginForm.addEventListener('submit', (e)=>{
+    e.preventDefault();
+})
 loginSubmitButton.addEventListener("click", () => {
     fetch(`${protocol}//${host}/login`, {
         "method": 'POST',

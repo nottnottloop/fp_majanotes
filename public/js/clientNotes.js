@@ -161,7 +161,7 @@ function addDeleteFunctionality(data, id) {
 }
 
 function addEditFunctionality(data, id) {
-	console.log(data)
+	//console.log(data)
 	const editButton = document.querySelector(`#editButton${id}`);
 	if (data.author !== localStorage.getItem('username')) {
 		editButton.style.display = "none"
