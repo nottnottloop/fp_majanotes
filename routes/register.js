@@ -8,9 +8,6 @@ const User = require(path.resolve(__dirname, "../model/userModel"));
 
 router
   .route("/")
-  .get((req, res) => {
-    res.render('register.ejs')
-  })
   .post((req, res) => {
     let userJson;
     let userData;
