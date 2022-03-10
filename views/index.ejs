@@ -19,9 +19,10 @@
 	<div class="container">
 	<section id="mainArea" class="py-4 my-5">
 			<header class="mx-3 title">
-				<h1 class="text-danger title">MajaNotes</h1>
+				<a id="titleLink" href="/"><img id="mainLogo" src="/public/logo.png" width="300"></a>
+				<h1 id="loggedInText"></h1>
 				<a id="createButton" href="javascript:void(0);" class="mainBtn">+ create</a>
-				<a id="loginButton" href="/login" class="mainBtn">Login</a>
+				<a id="loginButton" class="mainBtn" href="/login">Login</a>
 			</header>
 
 			<section id="newMajanote">
@@ -40,8 +41,8 @@
 					  </defs>
 					</svg>
 					<div class="sticky-content">
-					  <form action="./new" method="POST" >
-			<h3>Create Your Note</h3>
+					  <form id="newForm" action="./new" method="POST" >
+			<h3 id="noteCreateText">Create Your Note</h3>
 			<label id="titleLabel" for="titleBox">Title:
 				<input type="text" required id="titleBox" name="title" value="<%= locals.title %>">
 			</label><br>
@@ -54,7 +55,7 @@
 					<option selected value="white">White</option>
 					<option value="blue">Blue</option>
 					<option value="green">Green</option>
-					<option value="red">Red</option>
+					<option value="pink">Pink</option>
 					<option value="yellow">Yellow</option>
 				</select><br>
 				</label>
@@ -62,10 +63,14 @@
 				<input id="giphySearch" type="search">
 				<button id="giphyButton">Go</button>
 				<button id="giphyRemove">Remove GIF</button>
+				<button id="stopEdit">Cancel Edit</button>
 				<input id="giphyUrl" name="gif">
+				<input id="usernameField" name="username">
+				<input id="passwordField" name="password">
+				<input id="editId" name="id">
 			</label>
 			<h3 id="errorMessages"><%- locals.message %></h3>
-			<button id="submitButton" type="submit">Submit</button>
+			<button id="submitButton" type="submit">Make new note</button>
 		</form>
 					</div>
 				  </div>
@@ -80,9 +85,6 @@
 				<div id="notesGrid"></div>
 			</div>
 		</div>
-		
-		
     </section>
-	<!-- This button's href means it will look like a link but really we're just using javascript for everything here -->
 </body>
 </html>

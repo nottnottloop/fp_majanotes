@@ -40,7 +40,7 @@ test (`to contain max chars allowed `, () =>{
 test (`to contain more colours `, () =>{
     expect(document.querySelector(`colorDropdown`)).toBeTruthy
 })
-test(`to create your note in h3`, () =>{
+test(`to contain err in h3`, () =>{
     expect(document.querySelector(`h3`).textContent).toContain(`Create Your Note`)
 })
 test(`a button to select a gif`, () =>{
@@ -49,6 +49,8 @@ test(`a button to select a gif`, () =>{
 test(`select a gif`, () =>{
     expect(document.querySelector(`h2`).textContent).toBe(`Select your GIF:`)
 })
+
+
 
 // testing comment
 
@@ -83,12 +85,16 @@ describe('comment.ejs', ()=> {
     test(`h1 heading has a correct text`, () =>{
         expect(document.querySelector(`h1`).textContent).toContain(`Leave a comment`)
     })
-    // test(`border is green`, () =>{
-    //     expect(commentButtonElement.style.borderColor = "green").toBeTruthy
-    // })
-    // test(`has a h2 heading`, () =>{
-    //     expect(document.querySelector(`h2`)).toBeTruthy
-    // })
+    test(`border is green`, () =>{
+        expect(commentButtonElement.style.borderColor = "green").toBeTruthy
+    })
+    test(`has a h2 heading`, () =>{
+        expect(document.querySelector(`h2`)).toBeTruthy
+    })
+
+
+
+    
     
     
 })
@@ -155,28 +161,47 @@ describe('register.ejs', ()=> {
  })
 
 //test clientNotes
-//jest.mock(`../views/clientNotes.js`)
+jest.mock(`../public/js/clientNotes.js`)
+
+describe('buildNoteFunctions', () => {
+    let buildMock = buildNoteElement(data.data)
+    buildMock = jest.fn()
+
+    test('if function returns the data', () => {
+        buildMock(data.data)
+        expect(buildMock).toBeCalledTimes(1)
+        // expect(buildMock).toContain("card")
+    })
+
+    test('is buildNotes receiving a card', () => {
+    })
+})
+
 
 
 describe('renderNotes', () => {
-    let notesGrid;
-    let heart;
-	let neutral;
+     let heart;
     let notesCount
+    let notesGrid
 
     beforeEach(() =>{
-
-        notesCount = 10;
+        notesCount = 1;
         
     })
     test('it exist', ()=> {
         notesGrid = document.querySelector(`#notesGrid`)
-        heart = document.querySelector(`heart${data.id}`);
-	    neutral = document.querySelector(`neutral${data.id}`);
-        expect(renderNotes.notesGrid).not.toBeNull();
-        expect(renderNotes.heart).not.toBeNull();
-        expect(renderNotes.neutral).not.toBeNull();
+        heart = `#heart${data.data[0].id}`
+        neutral = `#neutral${data.data[0].neutral}`;
+        expect(heart).not.toBeNull();
+        expect(neutral).not.toBeNull();
         
     })
     
 })
+
+
+
+
+
+
+
