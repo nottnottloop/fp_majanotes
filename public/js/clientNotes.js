@@ -56,32 +56,28 @@ function buildNoteElement(data) {
 
 	newElement.classList.add("card");
 	let buttonsDiv = document.createElement("div");
+	buttonsDiv.classList.add("cardButtonsDiv");
 
 	let editButtonElement = document.createElement("button");
-	editButtonElement.classList.add("commentButton");
+	editButtonElement.classList.add("cardButton");
 	editButtonElement.id = `editButton${data.id}`;
 	editButtonElement.textContent = `✏️`;
-	editButtonElement.style.margin = "0";
 
 	buttonsDiv.insertAdjacentElement("beforeend", editButtonElement);
 
 	let deleteButtonElement = document.createElement("button");
-	deleteButtonElement.classList.add("commentButton");
+	deleteButtonElement.classList.add("cardButton");
 	deleteButtonElement.id = `deleteButton${data.id}`;
 	deleteButtonElement.textContent = `❌`;
-	deleteButtonElement.style.margin = "0";
-	deleteButtonElement.style.display="flex"
 
 	buttonsDiv.insertAdjacentElement("beforeend", deleteButtonElement);
 
 	let commentLinkElement = document.createElement("a");
 	let commentButtonElement = document.createElement("button");
 	commentLinkElement.href = `${window.location.href}comment/${data.id}`;
-	commentButtonElement.classList.add("commentButton");
+	commentButtonElement.classList.add("cardButton");
 	commentButtonElement.id = `commentButton${data.id}`;
 	commentButtonElement.textContent = `💬: ${commentCount}`;
-	commentButtonElement.style.margin = "0";
-	
 
 	commentLinkElement.insertAdjacentElement("beforeend", commentButtonElement);
 	buttonsDiv.insertAdjacentElement("beforeend", commentLinkElement);
@@ -161,7 +157,6 @@ function addDeleteFunctionality(data, id) {
 }
 
 function addEditFunctionality(data, id) {
-	//console.log(data)
 	const editButton = document.querySelector(`#editButton${id}`);
 	if (data.author !== localStorage.getItem('username')) {
 		editButton.style.display = "none"

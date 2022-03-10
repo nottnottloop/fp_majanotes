@@ -63,8 +63,8 @@ function newNote(req, res, editing=false) {
     case "green":
       modifiedColor = "palegreen";
       break;
-    case "red":
-      modifiedColor = "firebrick";
+    case "pink":
+      modifiedColor = "pink";
       break;
     case "yellow":
       modifiedColor = "khaki";
