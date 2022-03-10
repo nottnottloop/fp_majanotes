@@ -12,17 +12,17 @@ body {
 h1 {
 	font-family: 'Indie Flower', cursive; 
     font-weight: bold; 
-	
+
 }
 
 div.container {
 	border:2px solid black;
 	display:flex;
+	gap: 20%;
 	justify-content: center;
 	border-radius: 20px;
+	padding: 20px;
 }
 
 
-#registerForm {
-	margin-top: 100px;
-}
+
