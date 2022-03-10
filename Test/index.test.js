@@ -2,11 +2,14 @@ const fs = require('fs')
 const path = require('path')
 const ejs = fs.readFileSync(path.resolve(__dirname, '../views/index.ejs'), 'utf8');
 const comment = fs.readFileSync(path.resolve(__dirname, '../views/comment.ejs'), 'utf8');
+const login = fs.readFileSync(path.resolve(__dirname, '../views/login.ejs'), 'utf8');
+const register = fs.readFileSync(path.resolve(__dirname, '../views/register.ejs'), 'utf8');
 const data = require("./data")
 const {renderNotes, buildNoteElement} = require('../public/js/clientNotes');
 const { isInteger } = require('lodash');
 const { number } = require('yargs');
 const { expect } = require('@jest/globals');
+const { text } = require('body-parser');
 
 //test index.js
 
@@ -55,11 +58,11 @@ describe('comment.ejs', ()=> {
     beforeEach(()=> {
         document.documentElement.innerHTML = comment
     })
-    let commentCount
-    let newElement
-    let commentLinkElement
-	let commentButtonElement = document.createElement("button")
-    let borderColor
+    // let commentCount
+    // let newElement
+    // let commentLinkElement
+	// let commentButtonElement = document.createElement("button")
+    // let borderColor
     // test (`it creates a new element`, () =>{
     //    // commentLinkElement.href = `${window.location.href}comment/${data.id}`;
 	// commentButtonElement.classList.add("commentButton");
@@ -95,6 +98,67 @@ describe('comment.ejs', ()=> {
     
     
 })
+
+
+// testing login.ejs
+
+describe('login.ejs', ()=> {
+    beforeEach(()=> {
+        document.documentElement.innerHTML = login
+        
+    })
+    test('has a h1 heading', () => {
+        expect(document.querySelector('h1')).toBeTruthy()
+    })
+    test(`title heading has a correct text`, () =>{
+        expect(document.querySelector(`title`).textContent).toContain(`MajaNotes`)
+    })
+    test(`h1 heading has a correct text`, () =>{
+        expect(document.querySelector(`h1`).textContent).toContain(`MajaNotes`)
+    })
+    test(`to contain a form`, () =>{
+        expect(document.querySelector(`form`)).toBeTruthy
+    })
+    test(`form has an input type text`, () =>{
+        form = document.querySelector(`form`)
+        textInput = form.querySelector([type="text"])
+        expect(textInput).toBeTruthy
+    })
+    test(`form has an input type password`, () =>{
+        form = document.querySelector(`form`)
+        passwordInput = form.querySelector([type="password"])
+        expect(passwordInput).toBeTruthy
+    })
+})
+
+
+//test register
+describe('register.ejs', ()=> {
+    beforeEach(()=> {
+        document.documentElement.innerHTML = register
+        
+    })
+    test('has a h1 heading', () => {
+        expect(document.querySelector('h1')).toBeTruthy()
+    })
+
+     test(`title heading has a correct text`, () =>{
+          expect(document.querySelector(`title`).textContent).toContain(`MajaNotes`)
+     })
+     test(`h1 heading has a correct text`, () =>{
+           expect(document.querySelector(`h1`).textContent).toContain(`MajaNotes`)
+     })
+     test(`form has an input type text`, () =>{
+        form = document.querySelector(`form`)
+        textInput = form.querySelector([type="text"])
+        expect(textInput).toBeTruthy
+    })
+    test(`form has an input type password`, () =>{
+        form = document.querySelector(`form`)
+        passwordInput = form.querySelector([type="password"])
+        expect(passwordInput).toBeTruthy
+    })
+ })
 
 //test clientNotes
 jest.mock(`../public/js/clientNotes.js`)

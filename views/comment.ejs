@@ -16,6 +16,7 @@
 	<a id="titleLink" href="/"><img id="mainLogo" src="/public/logo.png" width="300"></a>
 	<h1>Leave a comment</h1>
 	<h1 id="homeButton"><a href="/">home</a></h1>
+	<div class="container">
 	<main id="notesGrid">
 	</main>
 	<section id="commentsSection">
@@ -24,9 +25,10 @@
 	<form method="POST">
 		<label id="commentLabel" for="commentBox">Leave a comment (max 200 chars):<br>
 			<textarea id="commentBox" required name="comment" rows="8", cols="50"><%= locals.comment %></textarea>
-			<label id="charNum" for="comentBox">200
-		</label></label><br>
+			<label class = "char" id="charNum" for="comentBox">200
+		</label></label><br></br>
 		<button id="submitButton" type="submit">Submit</button>
 	</form>
+</div>
 </body>
 </html>
