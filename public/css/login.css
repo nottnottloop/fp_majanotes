@@ -16,7 +16,7 @@ h1 {
 }
 
 div.container {
-	border:2px solid black;
+	margin-top: 9%;
 	display:flex;
 	gap: 20%;
 	justify-content: center;
