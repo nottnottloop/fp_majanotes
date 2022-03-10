@@ -103,7 +103,7 @@ function buildNoteElement(data) {
 	cardBody.insertAdjacentHTML("beforeend", `<button id="neutral${data.id}" class="emojiButton">😐</p><p class="emojiCount" id="neutralCount${data.id}">${neutralCount}</p>`);
 	cardBody.insertAdjacentHTML("beforeend", `<button id="thumbs${data.id}" class="emojiButton">👎</p><p class="emojiCount" id="thumbsCount${data.id}">${thumbsCount}</p>`);
 	const author = data.author || "anonymous";
-	cardBody.insertAdjacentHTML("beforeend", `<p class="noteAuthor"><span>-<span>${author}</p>`);
+	cardBody.insertAdjacentHTML("beforeend", `<p class="noteAuthor"><span>-<span> ${author}</p>`);
 	newElement.insertAdjacentElement('beforeend', cardBody)
 	newElement.style.backgroundColor = data.color;
 	return newElement;
