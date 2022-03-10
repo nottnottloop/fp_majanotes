@@ -7,12 +7,21 @@ body {
 }
 
 #homeButton a {
-	color: rgb(12, 12, 12);
+	color: #dc3545;
 	position: absolute;
-	top: 0;
-	right: 15%;
-	display: inline;
+	 top: 0;
+	right: 15%; 
+	display: inline; 
+	border-radius: 20px;
+	padding: 10px 10px;
+	cursor: pointer;
+	background-color: lightgray;
+	color: black;
+	font-size: 2vw;
+	text-align: center;
+	font-weight: normal;
 }
+
 
 #createButton a {
 	color: lime;

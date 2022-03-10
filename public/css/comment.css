@@ -3,12 +3,6 @@
 
 body {
 	background-color: white;
-	/* font-family: 'Indie Flower', cursive;
-    font-weight: bold;
-    font-size: 1.5rem;
-	color: #dc3545; */
-}
-.h1 {
 	font-family: 'Indie Flower', cursive;
     font-weight: bold;
     font-size: 1.5rem;
@@ -58,7 +52,7 @@ body {
 	color: #161424;
 	text-align: center;
 	position: relative;
-	left: 37%;
+	left: 35%;
 	
 }
 

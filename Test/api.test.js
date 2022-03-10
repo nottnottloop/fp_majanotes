@@ -2,28 +2,28 @@
 // const request = require('supertest');
 // const server = require('../server');
 
-const fs = require('fs')
-const path = require('path')
-const ejs = fs.readFileSync(path.resolve(__dirname, '../views/index.ejs'), 'utf8');
-const {renderNotes} = require('../public/js/clientNotes')
+// const fs = require('fs')
+// const path = require('path')
+// const ejs = fs.readFileSync(path.resolve(__dirname, '../views/index.ejs'), 'utf8');
+// const {renderNotes} = require('../public/js/clientNotes')
 
-describe('Client testing', ()=> {
-    beforeEach(()=> {
-        document.documentElement.innerHTML = ejs
-    })
+// describe('Client testing', ()=> {
+//     beforeEach(()=> {
+//         document.documentElement.innerHTML = ejs
+//     })
 
-    test('has a h1 heading', () => {
-        expect(document.querySelector('h1')).toBeTruthy()
-    })
+//     test('has a h1 heading', () => {
+//         expect(document.querySelector('h1')).toBeTruthy()
+//     })
 
-    test('h1 has correct text', () => {
-        expect(document.querySelector('h1').textContent).toEqual("MajaNotes")
-    })
+//     test('h1 has correct text', () => {
+//         expect(document.querySelector('h1').textContent).toEqual("MajaNotes")
+//     })
 
-    test('notes has emojis', () => {
-        expect()
-    })
-})
+//     test('notes has emojis', () => {
+//         expect()
+//     })
+// })
 
 
 // describe('API server', () => {
