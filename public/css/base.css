@@ -203,6 +203,7 @@ p.noteAuthor {
   text-align: end;
   margin-top: 21px;
   font-style: italic;
+	margin: 0;
 }
 
 .noteTitle {
