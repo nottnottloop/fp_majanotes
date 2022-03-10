@@ -71,13 +71,6 @@ figure {
 }
 
 @media screen and (max-width: 1198px) {
-	/* .sticky-content {
-		height: 116%;
-	}
-	.sticky:before{
-		height: 91%;
-		width: 92%;
-	} */
 
 	#newForm {
 		font-size: 15px;
@@ -120,7 +113,19 @@ figure {
 	.sticky:before{
 		display:none
 	}
+
+	#notesGrid{
+		grid-template-columns: repeat(1, 1fr);
+		margin-top: 50px;
+		margin-left: 0;
+	}
 }
+
+@media screen and (max-width: 988.89px) {
+	#notesGrid {
+		margin-top: 123px;
+	}
+  }
 
 
 
