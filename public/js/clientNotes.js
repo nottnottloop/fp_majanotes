@@ -1,6 +1,10 @@
 function renderNotes(data) {
 	const notesGrid = document.querySelector("#notesGrid");
-	notesCount = data.length;
+	if (data.length) {
+    newMajanote.style.display = "none";
+	} else {
+    newMajanote.style.display = "initial";
+	}
 	//sort the notes according to popularity
 	data = scoreAndSortNotes(data);
 	//iterate over all notes after they have been sorted
@@ -10,9 +14,10 @@ function renderNotes(data) {
 	//now change the opacity so the notes fade in using our transition CSS property :)
 	notesGrid.style.opacity = "1";
 
-	for (let i = 0; i < notesCount; i++) {
-		addDeleteButtons(data[i], i);
-		addAllEmojiFunctionality(i);
+	for (let i = 0; i < data.length; i++) {
+		addEditFunctionality(data[i], data[i].id);
+		addDeleteFunctionality(data[i], data[i].id);
+		addAllEmojiFunctionality(data[i].id);
 	}
 }
 
@@ -27,7 +32,6 @@ function renderNotes(data) {
 // </div>`
 
 function buildNoteElement(data) {
-	console.log(data)
 	let newElement = document.createElement("div");
 	
 	let cardCol = document.createElement("div")
@@ -52,8 +56,16 @@ function buildNoteElement(data) {
 
 	newElement.classList.add("card");
 	let buttonsDiv = document.createElement("div");
-	let deleteButtonElement = document.createElement("button");
 
+	let editButtonElement = document.createElement("button");
+	editButtonElement.classList.add("commentButton");
+	editButtonElement.id = `editButton${data.id}`;
+	editButtonElement.textContent = `✏️`;
+	editButtonElement.style.margin = "0";
+
+	buttonsDiv.insertAdjacentElement("beforeend", editButtonElement);
+
+	let deleteButtonElement = document.createElement("button");
 	deleteButtonElement.classList.add("commentButton");
 	deleteButtonElement.id = `deleteButton${data.id}`;
 	deleteButtonElement.textContent = `❌`;
@@ -64,7 +76,6 @@ function buildNoteElement(data) {
 
 	let commentLinkElement = document.createElement("a");
 	let commentButtonElement = document.createElement("button");
-
 	commentLinkElement.href = `${window.location.href}comment/${data.id}`;
 	commentButtonElement.classList.add("commentButton");
 	commentButtonElement.id = `commentButton${data.id}`;
@@ -130,8 +141,7 @@ function addEmojiFunctionality(element, emoji, id) {
 	});
 }
 
-function addDeleteButtons(data, id) {
-	console.log(id)
+function addDeleteFunctionality(data, id) {
 	const deleteButton = document.querySelector(`#deleteButton${id}`);
 	if (data.author !== localStorage.getItem('username')) {
 		deleteButton.style.display = "none"
@@ -149,3 +159,19 @@ function addDeleteButtons(data, id) {
 		});
 	}
 }
+
+function addEditFunctionality(data, id) {
+	console.log(data)
+	const editButton = document.querySelector(`#editButton${id}`);
+	if (data.author !== localStorage.getItem('username')) {
+		editButton.style.display = "none"
+	} else {
+		editButton.addEventListener('click', e => {
+			changeToEditForm(data, id, e);
+		});
+	}
+}
+
+document.querySelector("#stopEdit").addEventListener('click', e => {
+	changeToCreateForm(e);
+});

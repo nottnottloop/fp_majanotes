@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 
-#giphyUrl, #usernameField {
+#giphyUrl, #usernameField, #passwordField, #editId {
+	display: none;
+}
+
+#stopEdit {
+	position: absolute;
+	white-space: nowrap;
+	right: 50%;
+	bottom: 9%;
 	display: none;
 }
 

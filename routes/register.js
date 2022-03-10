@@ -3,8 +3,8 @@ const router = express.Router();
 const fs = require("fs");
 const path = require('path');
 
-const User = require('../model/userModel')
 const sharedFunctions = require(path.resolve(__dirname, "sharedFunctions"));
+const User = require(path.resolve(__dirname, "../model/userModel"));
 
 router
   .route("/")
@@ -28,7 +28,7 @@ router
       userJson = [];
       userData = [];
     }
-    const newUser = new User(userData.length, req.body.username, req.body.password);
+    const newUser = new User(userData.length, req.body.username.trim(), req.body.password.trim());
     userData.push(newUser);
     userJson= JSON.stringify(userData, null, 2);
     fs.writeFileSync(path.resolve(__dirname, "../data/userData.json"), userJson, "utf-8");

@@ -206,6 +206,16 @@ h2.noteBody {
   clip-path: url(#stickyClip);
 }
 
+.sticky-content-edit {
+  background: linear-gradient(
+    180deg,
+    rgba(191, 255, 187, 1) 0%,
+    rgba(191, 255, 187, 1) 12%,
+    rgba(191, 255, 187, 1) 75%,
+    rgba(191, 255, 187, 1) 100%
+  ) !important;
+}
+
 /* Add responsiveness */
 @media screen and (min-width: 640px) {
   .sticky:before {
