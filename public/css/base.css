@@ -73,6 +73,11 @@ a:hover {
   white-space: nowrap;
 }
 
+.card-title {
+  font-family: 'Indie Flower';
+  font-weight: bold;
+}
+
 #loginButton {
 	position: relative;
 	top: 0;
@@ -147,10 +152,14 @@ main {
 
 p.noteContent {
 	margin-bottom:10px;
+  font-family: 'Indie Flower';
 }
 
 .noteTitle {
 	margin: 10px;
+  font-family: 'Indie Flower';
+  font-weight: bold;
+
 }
 
 h2.noteBody {
