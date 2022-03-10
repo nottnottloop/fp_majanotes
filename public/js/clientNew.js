@@ -95,6 +95,7 @@ noteBox.addEventListener('keyup', updateTextBoxCounter);
 noteBox.addEventListener('keydown', updateTextBoxCounter);
 
 function changeToEditForm(data, id, e) {
+	window.scrollTo({top: 0});
 	document.querySelector(".sticky-content").classList.add("sticky-content-edit");
 	document.querySelector("#noteCreateText").textContent = "Edit Your Note";
 
