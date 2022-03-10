@@ -15,6 +15,12 @@ h1 {
 	
 }
 
+div.container {
+	border:2px solid black;
+	display:flex;
+	justify-content: center;
+	border-radius: 20px;
+}
 
 
 #registerForm {
