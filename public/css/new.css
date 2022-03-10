@@ -51,7 +51,7 @@ figure {
 }
 
 .sticky-content {
-	width: 115%;
+	/* width: 115%; */
 	height: 115%;
 }  
 
@@ -62,9 +62,29 @@ figure {
 	}
 	.sticky:before{
 		height: 91%;
-		width: 106%;
+		width: 92%;
+	}
+
+	#newForm {
+		font-size: 19px;
 	}
 }
+
+@media screen and (max-width: 1198px) {
+	/* .sticky-content {
+		height: 116%;
+	}
+	.sticky:before{
+		height: 91%;
+		width: 92%;
+	} */
+
+	#newForm {
+		font-size: 15px;
+	}
+}
+
+
 
 @media screen and (max-width: 992px) {
   .sticky-content {
@@ -76,6 +96,10 @@ figure {
 	height: 164%;
 	width: 115%;
   }
+
+  #newForm {
+	font-size: 17px;
+}
 }
 
 @media screen and (max-width: 768px) {
