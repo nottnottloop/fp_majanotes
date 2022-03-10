@@ -36,7 +36,10 @@ let username = localStorage.getItem("username");
 if (username) {
     loggedInText.display = "inline";
     loggedInText.innerHTML = `Logged in as ${username}`;
+    document.getElementById('logoutButton').style.display="block";
+
 }
 else {
     loggedInText.innerHTML= `Posting anonymously`
+    document.getElementById('logoutButton').style.display="none";
 }

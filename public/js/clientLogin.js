@@ -65,7 +65,6 @@ registerSubmitButton.addEventListener("click", () => {
         console.log(`Our res code is ${resp.status}`)
         if (resp.status == 200) { 
             err2.innerHTML=""
-           
             window.location.href="/login"
         }
     
