@@ -20,6 +20,7 @@ const loginForm=document.querySelector('#loginForm');
 loginForm.addEventListener('submit', (e)=>{
     e.preventDefault();
 })
+let err=document.getElementById('error')
 loginSubmitButton.addEventListener("click", () => {
     fetch(`${protocol}//${host}/login`, {
         "method": 'POST',
@@ -31,9 +32,14 @@ loginSubmitButton.addEventListener("click", () => {
     .then(resp => {
         console.log(`Our res code is ${resp.status}`)
         if (resp.status == 200) { 
+            err.innerHTML=""
             localStorage.setItem('username', loginUser.value);
             localStorage.setItem('password', loginPass.value);
+            window.location.href="/"
         }
-        
+        else if(resp.status ==401){
+            err.innerHTML="Wrong password"
+
+        }
     })
 });

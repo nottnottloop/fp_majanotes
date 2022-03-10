@@ -28,6 +28,6 @@ router
         break;
     }
     console.log(`User ${req.body.username} logged in`)
-    res.sendStatus(200);
+    res.redirect("/");
   })
 module.exports = router;
