@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/public/css/base.css">
 	<link rel="stylesheet" href="/public/css/comment.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="icon" href="/public/favicon.ico">
 	<script defer src="/public/js/clientBase.js"></script>
 	<script defer src="/public/js/clientComment.js"></script>
@@ -13,9 +14,10 @@
 	<title>Leave a comment</title>
 </head>
 <body>
-	<a id="titleLink" href="/"><img id="mainLogo" src="/public/logo.png" width="300"></a>
-	<h1>Leave a comment</h1>
-	<h1 id="homeButton"><a href="/">home</a></h1>
+	<div class="container-fluid">
+	<a id="titleLink" href="/"><img id="mainLogo" src="/public/logo.png" width="200"></a>
+	<h1 class = "title2">Leave a comment</h1>
+	<h1><a href="/" class="homeButton">home</a></h1>
 	<div class="container">
 	<main id="notesGrid">
 	</main>
@@ -29,6 +31,7 @@
 		</label></label><br></br>
 		<button id="submitButton" type="submit">Submit</button>
 	</form>
+</div>
 </div>
 </body>
 </html>
