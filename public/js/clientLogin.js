@@ -6,12 +6,7 @@ const host = window.location.host;
 //let errors;
 //errorMessages.textContent.length > 0 ? errors = true : errors = false;
 
-//document.getElementById('logoutButton').addEventListener('click', ()=>{
-//    window.localStorage.clear()
-//    console.log(user)
-//    user=window.localStorage.clear();
-//    dataFetch();
-//})
+
 console.log(protocol,host)
 const loginSubmitButton = document.querySelector("#loginSubmitButton");
 const loginUser = document.querySelector("#loginUser");

@@ -17,6 +17,11 @@ if (errors) {
     newMajanote.style.display = "none";
 }
     
+document.getElementById('logoutButton').addEventListener('click', ()=>{
+    window.localStorage.clear()
+    user=window.localStorage.clear();
+    window.location.href="/"
+})
 
 createButton.addEventListener('click', () => {
     if (newMajanote.style.display === 'none') {
