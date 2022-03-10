@@ -37,9 +37,14 @@ loginSubmitButton.addEventListener("click", () => {
             localStorage.setItem('password', loginPass.value);
             window.location.href="/"
         }
-        else if(resp.status ==401){
+        else if(resp.status ==403){ //Wrong password HTTP code
             err.innerHTML="Wrong password"
 
         }
+        else if(resp.status ==401){//Unauthorized HTTP code
+            err.innerHTML=`Username ${loginUser.value} does not exist. Go to register
+            to create a user account`
+        }
+    
     })
 });

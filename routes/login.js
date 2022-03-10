@@ -16,13 +16,10 @@ router
     let e;
     switch(sharedFunctions.checkUserValid(req, res)) {
       case 'nouser':
-        e =`Username ${req.body.username} does not exist in our file system. Go to register
-        to create a user account`
-        res.status(401).render('regerr.ejs',{error: e} )
+        res.status(401).send()
         return;
       case 'wrongpass':
-        e = `Wrong password. Try again`
-        res.status(401).render('wrongpass.ejs', {error: e})
+        res.status(403).send()
         return;
       case 'ok':
         break;
