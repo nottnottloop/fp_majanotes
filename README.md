@@ -1,5 +1,6 @@
-<!-- improve this README by following https://github.com/getfutureproof/fp_guides_wiki/wiki/Writing-READMEs -->
-# Majanotes
+
+# Project title: Majanotes
+# Project description:
 
 Anonymous journalling application built by 
 * Jesse Dodoo (jessedodoo)
@@ -20,11 +21,14 @@ Then run `npm run dev` to start a server on http://localhost:3000
 * [Giphy API](https://developers.giphy.com/)
 
 # Process
+Started by planning the features and work to be done
 Initially we focused on prototyping and getting the backend working first:
 
 ![](github/badfrontendscaled.png)
 
 ![](github/badfrontendnewmajanote.png)
+Added some CSS files to style the website
+Tested the features and the code
 
 Then we fixed up the frontend and got it looking nicer:
 
@@ -48,3 +52,15 @@ Additional features include:
 	* Errors are displayed individually if there are multiple errors
 	* All HTML tags are converted to ampersand character codes before being saved so HTML injection cannot occur
 ## Challenges
+Using git for the team work
+Dynamic card generation system posed a challenge to modifying the cards. Difference between static HTML and dynamic JS manipulation of elements
+Testing
+Strict equality of types vs coerced equality
+DRY and WET code
+## Future features:
+Password hashing, 
+Push notifications
+More emojis
+Security questions
+Search option
+
