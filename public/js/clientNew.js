@@ -20,7 +20,7 @@ document.querySelector("#giphyButton").addEventListener('click', e => {
 		resetGifDisplay(e);
 	}
 
-	let url = `http://api.giphy.com/v1/gifs/search?api_key=${apiKey}&limit=32&q=`
+	let url = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&limit=32&q=`
 	//trim method removes extra whitespace at the ends of the query
 	//concat to add the contents of str onto url
 	url = url.concat(searchQuery);
