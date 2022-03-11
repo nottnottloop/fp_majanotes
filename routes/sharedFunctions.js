@@ -177,7 +177,6 @@ function checkUserValid(req, res) {
   return 'ok';
 }
 
-
 module.exports = {
 	createNewDataFile,
 	newNote,

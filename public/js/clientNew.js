@@ -103,6 +103,7 @@ function changeToEditForm(data, id, e) {
 	document.querySelector("#noteBox").value = data.note;
 	document.querySelector("#colorDropdown").value = data.formColor;
 	document.querySelector("#editId").value = id;
+	document.querySelector("#giphyUrl").value = data.gif;
 	document.querySelector("#giphySearch").value = '';
 	resetGifDisplay(e);
 
@@ -124,6 +125,7 @@ function changeToCreateForm(e) {
 	document.querySelector("#noteBox").value = '';
 	document.querySelector("#colorDropdown").value = 'white';
 	document.querySelector("#editId").value = '';
+	document.querySelector("#giphyUrl").value = '';
 	document.querySelector("#giphySearch").value = '';
 	resetGifDisplay(e);
 
