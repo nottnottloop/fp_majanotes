@@ -13,8 +13,8 @@ router
   })
   .post((req, res) => {
     //verify user
-    if (sharedFunctions.checkUserValid(req, res) != 'ok') {
-      return res.send(403);
+    if (sharedFunctions.checkUserValid(req, res) != 'ok' && req.body.username) {
+      return res.sendStatus(403);
     }
     //replace all html tags so that we don't have code injections
     //without this, you can type valid html into the page and it will render!
