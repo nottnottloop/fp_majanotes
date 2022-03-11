@@ -51,13 +51,15 @@ Additional features include:
 * Good server-side data verfication. Posts are not allowed if they don't have a title or body, or if the title and body are too long
 	* Errors are displayed individually if there are multiple errors
 	* All HTML tags are converted to ampersand character codes before being saved so HTML injection cannot occur
+
 ## Challenges
 Using git for the team work
 Dynamic card generation system posed a challenge to modifying the cards. Difference between static HTML and dynamic JS manipulation of elements
 Testing
 Strict equality of types vs coerced equality
 DRY and WET code
-## Future features:
+
+# Future features:
 Password hashing, 
 Push notifications
 More emojis
