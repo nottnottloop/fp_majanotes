@@ -9,12 +9,12 @@ Jesse and Alina took the lead with CSS and Andrew and Mike added more features t
 # Technologies and Code - Andrew
 We used expressjs, nodemon for development and jest for testing
 
-# Challenges and Solutions - Andrew
+# Challenges and Solutions - Andrew, Jesse 
 Dynamic card generation system posed a challenge to modifying the cards. Difference between static HTML and dynamic JS manipulation of elements
 
 Dependency hell
 
-Testing
+Testing client side 
 
 Strict equality of types vs coerced equality
 
