@@ -1,17 +1,19 @@
 const request = require('supertest');
 const server = require('../server');
+const fs = require('fs')
+const path = require('path')
 
 describe('API server', () => {
 	let api;
 	let testNote = {
 		title: 'Hi',
-			note: "Hi",
+		note: "Hi",
 	};
 
 	beforeAll(() => {
 		// start the server and store it in the api variable
-			api = server.listen(5000, () =>
-				console.log('Test server running on port 5000')
+		api = server.listen(5000, () =>
+			console.log('Test server running on port 5000')
 		);
 	});
 
@@ -35,29 +37,31 @@ describe('API server', () => {
 
 	it('responds to post /new with redirection status 302', (done) => {
 			request(api).post('/new').send(testNote).expect(302, done)
-				
 	});
 
 	it('responds to post /comment/:id with redirection status 302', (done )=>{
-			request(api).post('/comment/2').send({comment: "HI"}).expect(302,done)
+			request(api).post('/comment/0').send({comment: "HI"}).expect(302, done)
 	})
 
-	it('responds to post /comment/:id with unknown id with error status 500', (done )=>{
-			request(api).post('/comment/20000000').send({comment: "HI"}).expect(500,done)
+	it('responds to post /comment/:id with unknown id with error status 500', (done)=>{
+			request(api).post('/comment/20000000').send({comment: "HI"}).expect(500, done)
 	})
 
 it('retrieves a note by id', (done) => {
 		request(api)
-				.get('/data/14').expect(200).expect({"id": 14,"title": "Hi","note": "Hi"}, done);
+				.get('/data/1').expect(200).expect({"id": 1,"title": "Hi","note": "Hi"}, done);
 	});
 
 it('responds to non existing paths with 404', (done) => {
 		request(api).get('/cats/42').expect(404).expect({}, done);
 });
 
-
-
-
+//it('deletes notes successfully', (done) => {
+	//fs.rmSync(path.resolve(__dirname, '../data/notesData.json'));
+	//request(api).post('/new').send(testNote).expect();
+	//request(api).post('/register').send({username: '123', password: '123'});
+	//request(api).post('/delete/0').expect(302).expect({username: '123', password: '123'}, done);
+//});
 	it('responds to invalid method request with 404', (done) => {
 			request(api).post('/').expect(404, done);
     });

@@ -86,14 +86,13 @@ a:hover {
 	/* box-shadow: 5px 5px 15px 5px #474747; */
 	font-family: 'Rubik', sans-serif;
 	color: #161424;
-	/* text-align: center; */
+	text-align: center;
 	/* position: relative;
 	left: 35%; */
 	display: block;
     margin-left: auto;
     margin-right: auto;
     width: 44%;
-	
 }
 
  label{
