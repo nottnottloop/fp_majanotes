@@ -9,7 +9,7 @@ body {
 }
 
 #usernameField, #passwordField {
- /*display: none;*/
+ display: none;
 }
 
 .title2{
