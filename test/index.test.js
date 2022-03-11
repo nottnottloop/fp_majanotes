@@ -3,15 +3,17 @@ const path = require('path')
 const data = require("./data");
 
 const index = fs.readFileSync(path.resolve(__dirname, '../views/index.ejs'));
-const buildNoteElement = 
+const login = fs.readFileSync(path.resolve(__dirname, '../views/login.ejs'));
+const comment = fs.readFileSync(path.resolve(__dirname, '../views/comment.ejs'));
+// const register = fs.readFileSync(path.resolve(__dirname, '../views/register.ejs'));
+
 
 //test index.js
 
 describe("index.ejs", () => {
   beforeEach(() => {
-    document.documentElement.innerHTML = ejs;
+    document.documentElement.innerHTML = index;
   });
-});
 test("has a h1 heading", () => {
 expect(document.querySelector("h1")).toBeTruthy();
 });
@@ -44,10 +46,12 @@ test(`a button to select a gif`, () => {
 test(`select a gif`, () => {
   expect(document.querySelector(`h2`).textContent).toBe(`Select your GIF:`);
 });
+});
 
 // testing comment
 
 describe("comment.ejs", () => {
+  let commentButtonElement = document.createElement("button");
   beforeEach(() => {
     document.documentElement.innerHTML = comment;
   });
@@ -83,7 +87,7 @@ describe("login.ejs", () => {
     expect(document.querySelector(`title`).textContent).toContain(`MajaNotes`);
   });
   test(`h1 heading has a correct text`, () => {
-    expect(document.querySelector(`h1`).textContent).toContain(`MajaNotes`);
+    expect(document.querySelector(`h1`).textContent).toContain(`Login`);
   });
   test(`to contain a form`, () => {
     expect(document.querySelector(`form`)).toBeTruthy;
@@ -101,46 +105,49 @@ describe("login.ejs", () => {
 });
 
 //test register
-describe("register.ejs", () => {
-  beforeEach(() => {
-    document.documentElement.innerHTML = register;
-  });
-  test("has a h1 heading", () => {
-    expect(document.querySelector("h1")).toBeTruthy();
-  });
+// describe("register.ejs", () => {
+//   beforeEach(() => {
+//     document.documentElement.innerHTML = register;
+//   });
+//   test("has a h1 heading", () => {
+//     expect(document.querySelector("h1")).toBeTruthy();
+//   });
 
-  test(`title heading has a correct text`, () => {
-    expect(document.querySelector(`title`).textContent).toContain(`MajaNotes`);
-  });
-  test(`h1 heading has a correct text`, () => {
-    expect(document.querySelector(`h1`).textContent).toContain(`MajaNotes`);
-  });
-  test(`form has an input type text`, () => {
-    form = document.querySelector(`form`);
-    textInput = form.querySelector([(type = "text")]);
-    expect(textInput).toBeTruthy;
-  });
-  test(`form has an input type password`, () => {
-    form = document.querySelector(`form`);
-    passwordInput = form.querySelector([(type = "password")]);
-    expect(passwordInput).toBeTruthy;
-  });
-});
+//   test(`title heading has a correct text`, () => {
+//     expect(document.querySelector(`title`).textContent).toContain(`MajaNotes`);
+//   });
+//   test(`h1 heading has a correct text`, () => {
+//     expect(document.querySelector(`h1`).textContent).toContain(`MajaNotes`);
+//   });
+//   test(`form has an input type text`, () => {
+//     form = document.querySelector(`form`);
+//     textInput = form.querySelector([(type = "text")]);
+//     expect(textInput).toBeTruthy;
+//   });
+//   test(`form has an input type password`, () => {
+//     form = document.querySelector(`form`);
+//     passwordInput = form.querySelector([(type = "password")]);
+//     expect(passwordInput).toBeTruthy;
+//   });
+// });
 
 //test clientNotes
-jest.mock(`../public/js/clientNotes.js`);
+// const mockTest = jest.mock(`../public/js/clientNotes.js`);
+const {buildNoteElement} = require('../public/js/clientNotes')
 
 describe("buildNoteFunctions", () => {
   let buildMock = buildNoteElement(data.data);
   buildMock = jest.fn();
 
-  test("if function returns the data", () => {
+  test("if functions runs once", () => {
     buildMock(data.data);
     expect(buildMock).toBeCalledTimes(1);
     // expect(buildMock).toContain("card")
   });
 
-  test("is buildNotes receiving a card", () => {});
+  test("is buildNotes receiving a card", () => {
+    // expect(buildMock).toContain("card")
+  });
 });
 
 describe("renderNotes", () => {

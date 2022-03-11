@@ -167,6 +167,8 @@ function addEditFunctionality(data, id) {
 	}
 }
 
-document.querySelector("#stopEdit").addEventListener('click', e => {
-	changeToCreateForm(e);
-});
+// document.querySelector("#stopEdit").addEventListener('click', e => {
+// 	changeToCreateForm(e);
+// });
+
+module.exports = {buildNoteElement, renderNotes, addEditFunctionality, addEmojiFunctionality, addDeleteFunctionality}
