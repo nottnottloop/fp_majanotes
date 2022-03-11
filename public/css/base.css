@@ -276,6 +276,7 @@ h2.noteBody {
   margin-left: 20%;
   position: relative;
   margin-bottom: 44px;
+  border: 20px solid black;
 }
 
 .sticky-outer {
