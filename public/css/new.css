@@ -64,14 +64,12 @@ figure {
 		height: 91%;
 		width: 92%;
 	}
-
 	#newForm {
 		font-size: 19px;
 	}
 }
 
 @media screen and (max-width: 1198px) {
-
 	#newForm {
 		font-size: 15px;
 	}
@@ -131,16 +129,60 @@ figure {
   }
   
 
-  @media screen and (max-width: 555px) {
-
-	.sticky-content, .sticky::before {
-		display: none;
+  @media screen and (max-width: 519px) {
+	#loginButton {
+		margin-left:0;
 	}
 
-	#notesGrid {
-		display:none;
+
+	.sticky-content .sticky:before {
+		height: 168%;
+		width: 120%;
+	}
+  
+	#newForm {
+	  font-size: 9px;
+		top: -10px;
+  }
+  }
+
+  @media screen and (max-width: 451px) {
+	#loginButton {
+		margin-left:0;
+	}
+	.sticky-content .sticky:before {
+		height: 168%;
+		width: 120%;
+	}
+  
+	#newForm {
+	  font-size: 9px;
+		top: -10px;
+		left: -20px;
+  }
+	#noteCreateText {
+		font-size: 20px;
 	}
   }
+	@media screen and (max-width: 375px) {
+	#loginButton {
+		margin-left:0;
+	}
+
+
+	.sticky-content .sticky:before {
+		height: 168%;
+		width: 120%;
+	}
+	
+	#newForm {
+		font-size: 9px;
+		top: -10px;
+	}
+	#noteCreateText {
+		font-size: 15px;
+	}
+	}
 
 #giphyRemove {
 	display: none;
