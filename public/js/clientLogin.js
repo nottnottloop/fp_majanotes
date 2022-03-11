@@ -53,7 +53,6 @@ loginSubmitButton.addEventListener("click", () => {
     })
 });
 
-
 registerSubmitButton.addEventListener("click", () => {
     fetch(`${protocol}//${host}/register`, {
         "method": 'POST',
@@ -66,7 +65,9 @@ registerSubmitButton.addEventListener("click", () => {
         console.log(`Our res code is ${resp.status}`)
         if (resp.status == 200) { 
             err2.innerHTML=""
-            window.location.href="/login"
+            localStorage.setItem('username', regUser.value);
+            localStorage.setItem('password', regPass.value);
+            window.location.href="/"
         } else if (resp.status ==401) {//Unauthorized HTTP code
             err2.innerHTML=`Username ${regUser.value} already exists. Choose a unique one`
         }

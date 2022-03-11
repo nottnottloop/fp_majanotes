@@ -29,7 +29,7 @@ router
     userJson= JSON.stringify(userData, null, 2);
     fs.writeFileSync(path.resolve(__dirname, "../data/userData.json"), userJson, "utf-8");
     console.log(`User ${req.body.username} registered`);
-    res.redirect("/login");
+    res.redirect("/");
 })
 
 module.exports = router;
