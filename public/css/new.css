@@ -142,13 +142,10 @@ figure {
 	}
   }
 
-
-
-
 #giphyRemove {
 	display: none;
 	position: absolute;
 	white-space: nowrap;
 	top: 327px;
-	right: -15px;
+	right: 20%;
 }
