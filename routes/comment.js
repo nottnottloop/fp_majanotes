@@ -18,8 +18,8 @@ router
     }
     //replace all html tags so that we don't have code injections
     //without this, you can type valid html into the page and it will render!
-    req.body.comment = req.body.comment.replaceAll("<", "&lt;")
-    req.body.comment = req.body.comment.replaceAll(">", "&gt;")
+    req.body.comment = req.body.comment.replace(/</g, "&lt;")
+    req.body.comment = req.body.comment.replace(/>/g, "&gt;")
 
     if(!checkValidComment(req, res)) { return };
 
