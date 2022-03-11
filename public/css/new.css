@@ -118,25 +118,10 @@ figure {
 	}
   
 	#newForm {
-	  font-size: 10px;
+	  font-size: 9px;
   }
   }
 
-  @media screen and (max-width: 500px) {
-	.sticky-content {
-		height: 90vw;
-		width:90vw;
-	}
-	.sticky:before{
-		display:none
-	}
-
-	#notesGrid{
-		grid-template-columns: repeat(1, 1fr);
-		margin-top: 50px;
-		margin-left: 0;
-	}
-}
 
 @media screen and (max-width: 988.89px) {
 	#notesGrid {
@@ -144,12 +129,19 @@ figure {
 		margin-left: 0;
 	}
   }
+  
 
-  @media screen and (max-width: 300px) {
+  @media screen and (max-width: 555px) {
+
+	.sticky-content, .sticky::before {
+		display: none;
+	}
+
 	#notesGrid {
 		display:none;
 	}
   }
+
 
 
 
