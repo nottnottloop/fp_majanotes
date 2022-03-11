@@ -86,9 +86,9 @@ function buildNoteElement(data) {
 	newElement.insertAdjacentElement("beforeend", buttonsDiv);
 
 	if (data.comments) {
-		commentButtonElement.style.color = "lime";
+		commentButtonElement.style.color = "limegreen";
 	} else {
-		commentButtonElement.style.color = "firebrick";
+		commentButtonElement.style.color = "crimson";
 	}
 
 	if (data.gif) {
