@@ -101,7 +101,7 @@ a:hover {
 
 #homeButton {
 	position: relative;
-	top: 0;
+	top: 20px;
   margin-left: 10%;
   padding: 10px 20px 10px 20px;
   white-space: nowrap;
@@ -121,6 +121,7 @@ a:hover {
   right: -15%;
   padding: 10px;
   width: 100%;
+  padding: 10px 20px 10px 20px;
 }
 
 .title {
@@ -134,6 +135,10 @@ a:hover {
 }
 .title div#buttons {
   display:flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  margin-left: 20px;
 }
 
 .mainBtn {
@@ -358,6 +363,14 @@ h2.noteBody {
   font-weight: bold; 
   font-size: 4rem;
   align-items: center;
+}
+.title div#buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom:5px;
 }
 
 
