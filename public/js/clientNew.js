@@ -29,7 +29,6 @@ document.querySelector("#giphyButton").addEventListener('click', e => {
 	.then(resp => resp.json())
 	.then(content => {
 		//data, pagination, meta
-		console.log(content.data)
 		for (let i = 0; i < content.data.length; i++) {
 			//figure for body of image
 			let fig = document.createElement(`figure`);
@@ -48,7 +47,6 @@ document.querySelector("#giphyButton").addEventListener('click', e => {
 
 			fig.addEventListener("click", () => {
 				selectedGif = img.src;
-				console.log(selectedGif);
 
 				for (const e of giphyGifs.children) {
 					e.classList.remove("selectedGif");
@@ -95,6 +93,8 @@ noteBox.addEventListener('keyup', updateTextBoxCounter);
 noteBox.addEventListener('keydown', updateTextBoxCounter);
 
 function changeToEditForm(data, id, e) {
+	e.preventDefault();
+	resetGifDisplay(e);
 	window.scrollTo({top: 0});
 	document.querySelector(".sticky-content").classList.add("sticky-content-edit");
 	document.querySelector("#noteCreateText").textContent = "Edit Your Note";
@@ -103,10 +103,8 @@ function changeToEditForm(data, id, e) {
 	document.querySelector("#noteBox").value = data.note;
 	document.querySelector("#colorDropdown").value = data.formColor;
 	document.querySelector("#editId").value = id;
-	document.querySelector("#giphyUrl").value = data.gif;
 	selectedGif = data.gif;
 	document.querySelector("#giphySearch").value = '';
-	resetGifDisplay(e);
 
 	document.querySelector("#submitButton").textContent = "Edit note";
 	document.querySelector("#stopEdit").style.display = "initial";
@@ -119,6 +117,7 @@ function changeToEditForm(data, id, e) {
 
 function changeToCreateForm(e) {
 	e.preventDefault();
+	resetGifDisplay(e);
 	document.querySelector(".sticky-content").classList.remove("sticky-content-edit");
 	document.querySelector("#noteCreateText").textContent = "Create Your Note";
 
@@ -128,7 +127,6 @@ function changeToCreateForm(e) {
 	document.querySelector("#editId").value = '';
 	document.querySelector("#giphyUrl").value = '';
 	document.querySelector("#giphySearch").value = '';
-	resetGifDisplay(e);
 
 	document.querySelector("#submitButton").textContent = "Make new note";
 	document.querySelector("#stopEdit").style.display = "none";
