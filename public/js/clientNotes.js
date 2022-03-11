@@ -1,6 +1,6 @@
 function renderNotes(data) {
 	const notesGrid = document.querySelector("#notesGrid");
-	if (data.length) {
+	if (data.length && !document.querySelector("#errorMessages")) {
     newMajanote.style.display = "none";
 	} else {
     newMajanote.style.display = "initial";
@@ -172,3 +172,4 @@ document.querySelector('#stopEdit').addEventListener('click', e => {
 	e.preventDefault();
 	changeToCreateForm(e);
 })
+

@@ -4,14 +4,11 @@ const createButton = document.querySelector("#createButton");
 const newMajanote = document.querySelector("#newMajanote");
 const errorMessages = document.querySelector("#errorMessages");
 
-let errors;
-errorMessages.textContent.length > 0 ? errors = true : errors = false;
-
 fetch(`${protocol}//${host}/data`)
 	.then(resp => resp.json())
 	.then(data => renderNotes(data))
    
-if (errors) {
+if (errorMessages.innerHTML.length > 0) {
     newMajanote.style.display = "initial";
 } else {
     newMajanote.style.display = "none";
