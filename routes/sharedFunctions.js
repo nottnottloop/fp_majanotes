@@ -172,14 +172,7 @@ function checkUserValid(req, res) {
       return 'wrongpass';
     }
   } catch (err) {
-    console.log("Error: " + err);
-    console.log("Creating new userData.json");
-    //check if data directory exists. if not, create it
-    if (!fs.existsSync("data")) {
-      fs.mkdirSync("data");
-    }
-    userJson = [];
-    userData = [];
+    return 'nouser';
   }
   return 'ok';
 }
