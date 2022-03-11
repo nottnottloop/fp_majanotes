@@ -184,6 +184,46 @@ figure {
 	}
 	}
 
+	@media screen and (max-width: 280px) {
+		#loginButton {
+			margin-left:0;
+			
+		}
+
+		#logoutButton {
+			font-size: 0.8rem;
+		}
+
+		#createButton {
+			font-size: 0.8rem;
+		}
+	
+	
+		.sticky-content {
+			height: 273%;
+    		width: 169%;
+		}
+
+		.sticky:before{
+			height: 265%;
+    		width: 148%;
+		}
+		
+		#newForm {
+			font-size: 9px;
+			top: -10px;
+		}
+		#noteCreateText {
+			font-size: 15px;
+		}
+
+		#notesGrid {
+			margin-top: 123px;
+    margin-left: 0;
+	grid-template-columns: repeat(1, 1fr);
+		}
+		}
+
 #giphyRemove {
 	display: none;
 	position: absolute;
