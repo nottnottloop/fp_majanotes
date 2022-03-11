@@ -37,9 +37,11 @@ if (username) {
     loggedInText.display = "inline";
     loggedInText.innerHTML = `Logged in as ${username}`;
     document.getElementById('logoutButton').style.display="block";
+    document.getElementById('loginButton').style.display="none"
 
 }
 else {
     loggedInText.innerHTML= `Posting anonymously`
     document.getElementById('logoutButton').style.display="none";
+    document.getElementById('loginButton').style.display="block"
 }

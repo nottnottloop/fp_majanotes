@@ -124,7 +124,8 @@ figure {
 
   @media screen and (max-width: 500px) {
 	.sticky-content {
-		display: none;
+		height: 90vw;
+		width:90vw;
 	}
 	.sticky:before{
 		display:none

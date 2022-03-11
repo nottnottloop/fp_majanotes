@@ -27,8 +27,7 @@ Initially we focused on prototyping and getting the backend working first:
 ![](github/badfrontendnewmajanote.png)
 
 # License
-
-[CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) (?????????)
+[CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 
 # Wins & Challenges
 ## Wins
