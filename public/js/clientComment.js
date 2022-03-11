@@ -33,7 +33,7 @@ function renderCommentHeader(data) {
 function renderComments(data) {
 	const commentsSection = document.querySelector("#commentsSection");
 	for (let i = 0; i < data.comments.length; i++) {
-		commentsSection.insertAdjacentHTML("beforeend", `<h3 class="comment">${i+1}. ${data.comments[i]}</h3>`);
+		commentsSection.insertAdjacentHTML("beforeend", `<h3 class="comment">${i+1}. ${data.comments[i].comment}</h3><h4 class="comment">-${data.comments[i].author}</h4>`);
 	}
 	commentsSection.style.backgroundColor = data.color;
 }
@@ -41,3 +41,10 @@ function renderComments(data) {
 const commentBox = document.querySelector("#commentBox");
 commentBox.addEventListener('keyup', updateTextBoxCounter);
 commentBox.addEventListener('keydown', updateTextBoxCounter);
+
+const submitButton = document.querySelector("#submitButton");
+
+submitButton.addEventListener("click", () => {
+	document.querySelector("#usernameField").value = localStorage.getItem('username');
+	document.querySelector("#passwordField").value = localStorage.getItem('password');
+});

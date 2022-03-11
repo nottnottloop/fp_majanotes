@@ -16,6 +16,7 @@
 <body>
 	<div class="container-fluid">
 	<a id="titleLink" href="/"><img id="mainLogo" src="/public/logo.png" width="200"></a>
+	<h1 id="loggedInText"></h1>
 	<h1 class = "title2">Leave a comment</h1>
 	<h1><a href="/" class="homeButton">home</a></h1>
 	<div class="container">
@@ -25,9 +26,11 @@
 		<h1 id="commentHeader"></h1>
 	</section>
 	<form method="POST">
+		<input id="usernameField" name="username">
+		<input id="passwordField" name="password">
 		<label id="commentLabel" for="commentBox">Leave a comment (max 200 chars):<br>
 			<textarea id="commentBox" required name="comment" rows="8", cols="50"><%= locals.comment %></textarea>
-			<label class = "char" id="charNum" for="comentBox">200
+			<label class = "char" id="charNum" for="commentBox">200
 		</label></label><br></br>
 		<button id="submitButton" type="submit">Submit</button>
 	</form>

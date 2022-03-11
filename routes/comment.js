@@ -4,6 +4,7 @@ const path = require('path');
 const router = express.Router();
 
 const constants = require(path.resolve(__dirname, "constants"));
+const sharedFunctions = require(path.resolve(__dirname, "sharedFunctions"));
 
 router
   .route("/:id")
@@ -11,6 +12,10 @@ router
 	res.render("comment");
   })
   .post((req, res) => {
+    //verify user
+    if (sharedFunctions.checkUserValid(req, res) != 'ok') {
+      return res.send(403);
+    }
     //replace all html tags so that we don't have code injections
     //without this, you can type valid html into the page and it will render!
     req.body.comment = req.body.comment.replaceAll("<", "&lt;")
@@ -28,12 +33,15 @@ router
       console.log("Error: " + err);
     }
     const noteToModify = notesData.find(e => e.id == req.params.id);
-    console.log(noteToModify)
     let commentsToModify = noteToModify['comments'];
     if (!commentsToModify) {
       commentsToModify = [];
     }
-    commentsToModify.push(req.body.comment);
+    if (req.body.username) {
+      commentsToModify.push({comment: req.body.comment, author: req.body.username});
+    } else {
+      commentsToModify.push({comment: req.body.comment, author: 'anonymous'});
+    }
     noteToModify['comments'] = commentsToModify;
 
     //you have to be mega careful to use the !=, and nothing but the != operand here

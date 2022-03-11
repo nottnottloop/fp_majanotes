@@ -7,6 +7,11 @@ body {
     font-weight: bold;
     font-size: 1.5rem; */
 }
+
+#usernameField, #passwordField {
+ /*display: none;*/
+}
+
 .title2{
 top: 10%;
 font-family: 'Indie Flower', cursive;
