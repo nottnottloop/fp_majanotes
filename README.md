@@ -26,6 +26,16 @@ Initially we focused on prototyping and getting the backend working first:
 
 ![](github/badfrontendnewmajanote.png)
 
+Then we fixed up the frontend and got it looking nicer:
+
+![](github/newfrontend.png)
+
+![](github/comments.png)
+
+We added a login system after we had finished the requirements for the project:
+
+![](github/loginpage.png)
+
 # License
 [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 
