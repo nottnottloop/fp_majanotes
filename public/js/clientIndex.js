@@ -8,7 +8,7 @@ fetch(`${protocol}//${host}/data`)
 	.then(resp => resp.json())
 	.then(data => renderNotes(data))
    
-if (errorMessages.innerHTML.length > 0) {
+if (errorMessages.textContent.length > 0) {
     newMajanote.style.display = "initial";
 } else {
     newMajanote.style.display = "none";
