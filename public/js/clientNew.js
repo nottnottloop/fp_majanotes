@@ -104,6 +104,7 @@ function changeToEditForm(data, id, e) {
 	document.querySelector("#colorDropdown").value = data.formColor;
 	document.querySelector("#editId").value = id;
 	document.querySelector("#giphyUrl").value = data.gif;
+	selectedGif = data.gif;
 	document.querySelector("#giphySearch").value = '';
 	resetGifDisplay(e);
 
