@@ -93,7 +93,6 @@ noteBox.addEventListener('keyup', updateTextBoxCounter);
 noteBox.addEventListener('keydown', updateTextBoxCounter);
 
 function changeToEditForm(data, id, e) {
-	e.preventDefault();
 	resetGifDisplay(e);
 	window.scrollTo({top: 0});
 	document.querySelector(".sticky-content").classList.add("sticky-content-edit");
@@ -116,7 +115,6 @@ function changeToEditForm(data, id, e) {
 }
 
 function changeToCreateForm(e) {
-	e.preventDefault();
 	resetGifDisplay(e);
 	document.querySelector(".sticky-content").classList.remove("sticky-content-edit");
 	document.querySelector("#noteCreateText").textContent = "Create Your Note";

@@ -162,7 +162,13 @@ function addEditFunctionality(data, id) {
 		editButton.style.display = "none"
 	} else {
 		editButton.addEventListener('click', e => {
+			e.preventDefault();
 			changeToEditForm(data, id, e);
 		});
 	}
 }
+
+document.querySelector('#stopEdit').addEventListener('click', e => {
+	e.preventDefault();
+	changeToCreateForm(e);
+})
