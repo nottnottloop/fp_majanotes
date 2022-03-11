@@ -80,6 +80,14 @@ figure {
 
 
 @media screen and (max-width: 992px) {
+	#loginButton {
+		left: 1%
+	}
+
+	#logoutButton {
+		right: -2%
+	}
+
   .sticky-content {
     height: 190%;
 		width: 130%;
@@ -93,9 +101,17 @@ figure {
   #newForm {
 	font-size: 17px;
 }
+
+
 }
 
 @media screen and (max-width: 768px) {
+
+	#loginButton {
+		margin-left:0;
+	}
+
+
 	.sticky:before {
 		height: 168%;
 		width: 120%;
